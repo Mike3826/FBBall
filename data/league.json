@@ -1,0 +1,1493 @@
+{
+  "leagueId": "r7yj6bpwmtswkp9p",
+  "leagueName": "The League II",
+  "seasonYear": 2026,
+  "startDate": "2026-10-20",
+  "endDate": "2027-03-28",
+  "draftType": "snake",
+  "scoringType": "HEAD_TO_HEAD_POINTS_BASED",
+  "scoring": [
+    {
+      "code": "INDIVIDUAL_ASSISTS",
+      "name": "Assists",
+      "shortName": "AST",
+      "points": 1.5
+    },
+    {
+      "code": "INDIVIDUAL_BLOCKS",
+      "name": "Blocks",
+      "shortName": "BLK",
+      "points": 2
+    },
+    {
+      "code": "INDIVIDUAL_POINTS",
+      "name": "Points",
+      "shortName": "PTS",
+      "points": 1
+    },
+    {
+      "code": "INDIVIDUAL_REBOUNDS",
+      "name": "Rebounds",
+      "shortName": "REB",
+      "points": 1.25
+    },
+    {
+      "code": "INDIVIDUAL_STEALS",
+      "name": "Steals",
+      "shortName": "ST",
+      "points": 2
+    },
+    {
+      "code": "INDIVIDUAL_THREE_POINTERS_MADE",
+      "name": "Three Pointers Made",
+      "shortName": "3PTM",
+      "points": 0.5
+    },
+    {
+      "code": "INDIVIDUAL_TRIPLE_DOUBLES",
+      "name": "Triple Doubles",
+      "shortName": "3D",
+      "points": 3
+    },
+    {
+      "code": "INDIVIDUAL_TURNOVERS",
+      "name": "Turnovers",
+      "shortName": "TO",
+      "points": -0.5
+    },
+    {
+      "code": "INDIVIDUAL_DOUBLE_DOUBLES_PLUS_TRIPLE_DOUBLES",
+      "name": "Double Doubles",
+      "shortName": "2D",
+      "points": 1.5
+    }
+  ],
+  "rosterInfo": {
+    "positionConstraints": {
+      "C": {
+        "maxActive": 20
+      },
+      "F": {
+        "maxActive": 20
+      },
+      "G": {
+        "maxActive": 20
+      }
+    },
+    "maxTotalPlayers": 31,
+    "maxTotalActivePlayers": 31,
+    "maxTotalReservePlayers": 0
+  },
+  "playoffs": {
+    "lastRegularSeasonPeriod": 18,
+    "numPlayoffTeams": 5,
+    "firstPlayoffPeriod": 19,
+    "mergePlayoffPeriods": false,
+    "used": true
+  },
+  "teams": [
+    {
+      "name": "Team Şengün and Friends",
+      "id": "htjic831mtswkpax"
+    },
+    {
+      "name": "onaisani",
+      "id": "f62m1qj2mtswkpax"
+    },
+    {
+      "name": "Notorious BI3",
+      "id": "rowc20kzmtswkpax"
+    },
+    {
+      "name": "Tony and the Gabagools",
+      "id": "k2ki420pmtswkpax"
+    },
+    {
+      "name": "achen88",
+      "id": "qqq57v0gmtswkpax"
+    },
+    {
+      "name": "LENGTH > GIRTH",
+      "id": "sj9cohbumtswkpax"
+    },
+    {
+      "name": "Masai & Bobby",
+      "id": "exf8aagxmtswkpax"
+    },
+    {
+      "name": "Ja Ja Binks",
+      "id": "pyisau22mtswkpax"
+    },
+    {
+      "name": "Mike Lee Double Team",
+      "id": "7f7redubmtswkpax"
+    },
+    {
+      "name": "mc911",
+      "id": "l9db00t1mtswkpax"
+    }
+  ],
+  "scoringPeriods": [
+    {
+      "number": 1,
+      "endDate": "2026-10-26T18:59:59.0-0400",
+      "startDate": "2026-10-20T15:00:00.0-0400"
+    },
+    {
+      "number": 2,
+      "endDate": "2026-11-02T18:59:59.0-0500",
+      "startDate": "2026-10-26T19:00:00.0-0400"
+    },
+    {
+      "number": 3,
+      "endDate": "2026-11-09T18:59:59.0-0500",
+      "startDate": "2026-11-02T19:00:00.0-0500"
+    },
+    {
+      "number": 4,
+      "endDate": "2026-11-16T18:59:59.0-0500",
+      "startDate": "2026-11-09T19:00:00.0-0500"
+    },
+    {
+      "number": 5,
+      "endDate": "2026-11-23T18:59:59.0-0500",
+      "startDate": "2026-11-16T19:00:00.0-0500"
+    },
+    {
+      "number": 6,
+      "endDate": "2026-11-30T18:59:59.0-0500",
+      "startDate": "2026-11-23T19:00:00.0-0500"
+    },
+    {
+      "number": 7,
+      "endDate": "2026-12-07T11:59:59.0-0500",
+      "startDate": "2026-11-30T19:00:00.0-0500"
+    },
+    {
+      "number": 8,
+      "endDate": "2026-12-14T18:59:59.0-0500",
+      "startDate": "2026-12-07T12:00:00.0-0500"
+    },
+    {
+      "number": 9,
+      "endDate": "2026-12-21T18:59:59.0-0500",
+      "startDate": "2026-12-14T19:00:00.0-0500"
+    },
+    {
+      "number": 10,
+      "endDate": "2026-12-28T19:29:59.0-0500",
+      "startDate": "2026-12-21T19:00:00.0-0500"
+    },
+    {
+      "number": 11,
+      "endDate": "2027-01-04T18:59:59.0-0500",
+      "startDate": "2026-12-28T19:30:00.0-0500"
+    },
+    {
+      "number": 12,
+      "endDate": "2027-01-11T18:59:59.0-0500",
+      "startDate": "2027-01-04T19:00:00.0-0500"
+    },
+    {
+      "number": 13,
+      "endDate": "2027-01-18T11:59:59.0-0500",
+      "startDate": "2027-01-11T19:00:00.0-0500"
+    },
+    {
+      "number": 14,
+      "endDate": "2027-01-25T18:59:59.0-0500",
+      "startDate": "2027-01-18T12:00:00.0-0500"
+    },
+    {
+      "number": 15,
+      "endDate": "2027-02-01T18:59:59.0-0500",
+      "startDate": "2027-01-25T19:00:00.0-0500"
+    },
+    {
+      "number": 16,
+      "endDate": "2027-02-08T18:59:59.0-0500",
+      "startDate": "2027-02-01T19:00:00.0-0500"
+    },
+    {
+      "number": 17,
+      "endDate": "2027-02-15T11:59:59.0-0500",
+      "startDate": "2027-02-08T19:00:00.0-0500"
+    },
+    {
+      "number": 18,
+      "endDate": "2027-03-01T18:59:59.0-0500",
+      "startDate": "2027-02-15T12:00:00.0-0500"
+    },
+    {
+      "number": 19,
+      "endDate": "2027-03-08T18:59:59.0-0500",
+      "startDate": "2027-03-01T19:00:00.0-0500"
+    },
+    {
+      "number": 20,
+      "endDate": "2027-03-15T18:59:59.0-0400",
+      "startDate": "2027-03-08T19:00:00.0-0500"
+    },
+    {
+      "number": 21,
+      "endDate": "2027-03-29T11:59:58.0-0400",
+      "startDate": "2027-03-15T19:00:00.0-0400"
+    }
+  ],
+  "matchups": [
+    {
+      "period": 1,
+      "matchupList": [
+        {
+          "away": {
+            "name": "Ja Ja Binks",
+            "id": "pyisau22mtswkpax",
+            "shortName": "JJBinks"
+          },
+          "home": {
+            "name": "mc911",
+            "id": "l9db00t1mtswkpax",
+            "shortName": "mc911"
+          }
+        },
+        {
+          "away": {
+            "name": "onaisani",
+            "id": "f62m1qj2mtswkpax",
+            "shortName": "onaisani"
+          },
+          "home": {
+            "name": "Team Şengün and Friends",
+            "id": "htjic831mtswkpax",
+            "shortName": "ScotBarn"
+          }
+        },
+        {
+          "away": {
+            "name": "Masai & Bobby",
+            "id": "exf8aagxmtswkpax",
+            "shortName": "MasaiBB"
+          },
+          "home": {
+            "name": "Notorious BI3",
+            "id": "rowc20kzmtswkpax",
+            "shortName": "Notoriou"
+          }
+        },
+        {
+          "away": {
+            "name": "LENGTH > GIRTH",
+            "id": "sj9cohbumtswkpax",
+            "shortName": "LOOOOONG"
+          },
+          "home": {
+            "name": "Mike Lee Double Team",
+            "id": "7f7redubmtswkpax",
+            "shortName": "MIKELEE"
+          }
+        },
+        {
+          "away": {
+            "name": "achen88",
+            "id": "qqq57v0gmtswkpax",
+            "shortName": "achen88"
+          },
+          "home": {
+            "name": "Tony and the Gabagools",
+            "id": "k2ki420pmtswkpax",
+            "shortName": "NO ZITI?"
+          }
+        }
+      ]
+    },
+    {
+      "period": 2,
+      "matchupList": [
+        {
+          "away": {
+            "name": "mc911",
+            "id": "l9db00t1mtswkpax",
+            "shortName": "mc911"
+          },
+          "home": {
+            "name": "onaisani",
+            "id": "f62m1qj2mtswkpax",
+            "shortName": "onaisani"
+          }
+        },
+        {
+          "away": {
+            "name": "Ja Ja Binks",
+            "id": "pyisau22mtswkpax",
+            "shortName": "JJBinks"
+          },
+          "home": {
+            "name": "Masai & Bobby",
+            "id": "exf8aagxmtswkpax",
+            "shortName": "MasaiBB"
+          }
+        },
+        {
+          "away": {
+            "name": "Team Şengün and Friends",
+            "id": "htjic831mtswkpax",
+            "shortName": "ScotBarn"
+          },
+          "home": {
+            "name": "LENGTH > GIRTH",
+            "id": "sj9cohbumtswkpax",
+            "shortName": "LOOOOONG"
+          }
+        },
+        {
+          "away": {
+            "name": "Notorious BI3",
+            "id": "rowc20kzmtswkpax",
+            "shortName": "Notoriou"
+          },
+          "home": {
+            "name": "achen88",
+            "id": "qqq57v0gmtswkpax",
+            "shortName": "achen88"
+          }
+        },
+        {
+          "away": {
+            "name": "Mike Lee Double Team",
+            "id": "7f7redubmtswkpax",
+            "shortName": "MIKELEE"
+          },
+          "home": {
+            "name": "Tony and the Gabagools",
+            "id": "k2ki420pmtswkpax",
+            "shortName": "NO ZITI?"
+          }
+        }
+      ]
+    },
+    {
+      "period": 3,
+      "matchupList": [
+        {
+          "away": {
+            "name": "Masai & Bobby",
+            "id": "exf8aagxmtswkpax",
+            "shortName": "MasaiBB"
+          },
+          "home": {
+            "name": "mc911",
+            "id": "l9db00t1mtswkpax",
+            "shortName": "mc911"
+          }
+        },
+        {
+          "away": {
+            "name": "LENGTH > GIRTH",
+            "id": "sj9cohbumtswkpax",
+            "shortName": "LOOOOONG"
+          },
+          "home": {
+            "name": "onaisani",
+            "id": "f62m1qj2mtswkpax",
+            "shortName": "onaisani"
+          }
+        },
+        {
+          "away": {
+            "name": "achen88",
+            "id": "qqq57v0gmtswkpax",
+            "shortName": "achen88"
+          },
+          "home": {
+            "name": "Ja Ja Binks",
+            "id": "pyisau22mtswkpax",
+            "shortName": "JJBinks"
+          }
+        },
+        {
+          "away": {
+            "name": "Tony and the Gabagools",
+            "id": "k2ki420pmtswkpax",
+            "shortName": "NO ZITI?"
+          },
+          "home": {
+            "name": "Team Şengün and Friends",
+            "id": "htjic831mtswkpax",
+            "shortName": "ScotBarn"
+          }
+        },
+        {
+          "away": {
+            "name": "Mike Lee Double Team",
+            "id": "7f7redubmtswkpax",
+            "shortName": "MIKELEE"
+          },
+          "home": {
+            "name": "Notorious BI3",
+            "id": "rowc20kzmtswkpax",
+            "shortName": "Notoriou"
+          }
+        }
+      ]
+    },
+    {
+      "period": 4,
+      "matchupList": [
+        {
+          "away": {
+            "name": "mc911",
+            "id": "l9db00t1mtswkpax",
+            "shortName": "mc911"
+          },
+          "home": {
+            "name": "LENGTH > GIRTH",
+            "id": "sj9cohbumtswkpax",
+            "shortName": "LOOOOONG"
+          }
+        },
+        {
+          "away": {
+            "name": "Masai & Bobby",
+            "id": "exf8aagxmtswkpax",
+            "shortName": "MasaiBB"
+          },
+          "home": {
+            "name": "achen88",
+            "id": "qqq57v0gmtswkpax",
+            "shortName": "achen88"
+          }
+        },
+        {
+          "away": {
+            "name": "onaisani",
+            "id": "f62m1qj2mtswkpax",
+            "shortName": "onaisani"
+          },
+          "home": {
+            "name": "Tony and the Gabagools",
+            "id": "k2ki420pmtswkpax",
+            "shortName": "NO ZITI?"
+          }
+        },
+        {
+          "away": {
+            "name": "Ja Ja Binks",
+            "id": "pyisau22mtswkpax",
+            "shortName": "JJBinks"
+          },
+          "home": {
+            "name": "Mike Lee Double Team",
+            "id": "7f7redubmtswkpax",
+            "shortName": "MIKELEE"
+          }
+        },
+        {
+          "away": {
+            "name": "Team Şengün and Friends",
+            "id": "htjic831mtswkpax",
+            "shortName": "ScotBarn"
+          },
+          "home": {
+            "name": "Notorious BI3",
+            "id": "rowc20kzmtswkpax",
+            "shortName": "Notoriou"
+          }
+        }
+      ]
+    },
+    {
+      "period": 5,
+      "matchupList": [
+        {
+          "away": {
+            "name": "achen88",
+            "id": "qqq57v0gmtswkpax",
+            "shortName": "achen88"
+          },
+          "home": {
+            "name": "mc911",
+            "id": "l9db00t1mtswkpax",
+            "shortName": "mc911"
+          }
+        },
+        {
+          "away": {
+            "name": "Tony and the Gabagools",
+            "id": "k2ki420pmtswkpax",
+            "shortName": "NO ZITI?"
+          },
+          "home": {
+            "name": "LENGTH > GIRTH",
+            "id": "sj9cohbumtswkpax",
+            "shortName": "LOOOOONG"
+          }
+        },
+        {
+          "away": {
+            "name": "Mike Lee Double Team",
+            "id": "7f7redubmtswkpax",
+            "shortName": "MIKELEE"
+          },
+          "home": {
+            "name": "Masai & Bobby",
+            "id": "exf8aagxmtswkpax",
+            "shortName": "MasaiBB"
+          }
+        },
+        {
+          "away": {
+            "name": "Notorious BI3",
+            "id": "rowc20kzmtswkpax",
+            "shortName": "Notoriou"
+          },
+          "home": {
+            "name": "onaisani",
+            "id": "f62m1qj2mtswkpax",
+            "shortName": "onaisani"
+          }
+        },
+        {
+          "away": {
+            "name": "Team Şengün and Friends",
+            "id": "htjic831mtswkpax",
+            "shortName": "ScotBarn"
+          },
+          "home": {
+            "name": "Ja Ja Binks",
+            "id": "pyisau22mtswkpax",
+            "shortName": "JJBinks"
+          }
+        }
+      ]
+    },
+    {
+      "period": 6,
+      "matchupList": [
+        {
+          "away": {
+            "name": "mc911",
+            "id": "l9db00t1mtswkpax",
+            "shortName": "mc911"
+          },
+          "home": {
+            "name": "Tony and the Gabagools",
+            "id": "k2ki420pmtswkpax",
+            "shortName": "NO ZITI?"
+          }
+        },
+        {
+          "away": {
+            "name": "achen88",
+            "id": "qqq57v0gmtswkpax",
+            "shortName": "achen88"
+          },
+          "home": {
+            "name": "Mike Lee Double Team",
+            "id": "7f7redubmtswkpax",
+            "shortName": "MIKELEE"
+          }
+        },
+        {
+          "away": {
+            "name": "LENGTH > GIRTH",
+            "id": "sj9cohbumtswkpax",
+            "shortName": "LOOOOONG"
+          },
+          "home": {
+            "name": "Notorious BI3",
+            "id": "rowc20kzmtswkpax",
+            "shortName": "Notoriou"
+          }
+        },
+        {
+          "away": {
+            "name": "Masai & Bobby",
+            "id": "exf8aagxmtswkpax",
+            "shortName": "MasaiBB"
+          },
+          "home": {
+            "name": "Team Şengün and Friends",
+            "id": "htjic831mtswkpax",
+            "shortName": "ScotBarn"
+          }
+        },
+        {
+          "away": {
+            "name": "onaisani",
+            "id": "f62m1qj2mtswkpax",
+            "shortName": "onaisani"
+          },
+          "home": {
+            "name": "Ja Ja Binks",
+            "id": "pyisau22mtswkpax",
+            "shortName": "JJBinks"
+          }
+        }
+      ]
+    },
+    {
+      "period": 7,
+      "matchupList": [
+        {
+          "away": {
+            "name": "Mike Lee Double Team",
+            "id": "7f7redubmtswkpax",
+            "shortName": "MIKELEE"
+          },
+          "home": {
+            "name": "mc911",
+            "id": "l9db00t1mtswkpax",
+            "shortName": "mc911"
+          }
+        },
+        {
+          "away": {
+            "name": "Notorious BI3",
+            "id": "rowc20kzmtswkpax",
+            "shortName": "Notoriou"
+          },
+          "home": {
+            "name": "Tony and the Gabagools",
+            "id": "k2ki420pmtswkpax",
+            "shortName": "NO ZITI?"
+          }
+        },
+        {
+          "away": {
+            "name": "Team Şengün and Friends",
+            "id": "htjic831mtswkpax",
+            "shortName": "ScotBarn"
+          },
+          "home": {
+            "name": "achen88",
+            "id": "qqq57v0gmtswkpax",
+            "shortName": "achen88"
+          }
+        },
+        {
+          "away": {
+            "name": "Ja Ja Binks",
+            "id": "pyisau22mtswkpax",
+            "shortName": "JJBinks"
+          },
+          "home": {
+            "name": "LENGTH > GIRTH",
+            "id": "sj9cohbumtswkpax",
+            "shortName": "LOOOOONG"
+          }
+        },
+        {
+          "away": {
+            "name": "onaisani",
+            "id": "f62m1qj2mtswkpax",
+            "shortName": "onaisani"
+          },
+          "home": {
+            "name": "Masai & Bobby",
+            "id": "exf8aagxmtswkpax",
+            "shortName": "MasaiBB"
+          }
+        }
+      ]
+    },
+    {
+      "period": 8,
+      "matchupList": [
+        {
+          "away": {
+            "name": "mc911",
+            "id": "l9db00t1mtswkpax",
+            "shortName": "mc911"
+          },
+          "home": {
+            "name": "Notorious BI3",
+            "id": "rowc20kzmtswkpax",
+            "shortName": "Notoriou"
+          }
+        },
+        {
+          "away": {
+            "name": "Mike Lee Double Team",
+            "id": "7f7redubmtswkpax",
+            "shortName": "MIKELEE"
+          },
+          "home": {
+            "name": "Team Şengün and Friends",
+            "id": "htjic831mtswkpax",
+            "shortName": "ScotBarn"
+          }
+        },
+        {
+          "away": {
+            "name": "Tony and the Gabagools",
+            "id": "k2ki420pmtswkpax",
+            "shortName": "NO ZITI?"
+          },
+          "home": {
+            "name": "Ja Ja Binks",
+            "id": "pyisau22mtswkpax",
+            "shortName": "JJBinks"
+          }
+        },
+        {
+          "away": {
+            "name": "achen88",
+            "id": "qqq57v0gmtswkpax",
+            "shortName": "achen88"
+          },
+          "home": {
+            "name": "onaisani",
+            "id": "f62m1qj2mtswkpax",
+            "shortName": "onaisani"
+          }
+        },
+        {
+          "away": {
+            "name": "LENGTH > GIRTH",
+            "id": "sj9cohbumtswkpax",
+            "shortName": "LOOOOONG"
+          },
+          "home": {
+            "name": "Masai & Bobby",
+            "id": "exf8aagxmtswkpax",
+            "shortName": "MasaiBB"
+          }
+        }
+      ]
+    },
+    {
+      "period": 9,
+      "matchupList": [
+        {
+          "away": {
+            "name": "Team Şengün and Friends",
+            "id": "htjic831mtswkpax",
+            "shortName": "ScotBarn"
+          },
+          "home": {
+            "name": "mc911",
+            "id": "l9db00t1mtswkpax",
+            "shortName": "mc911"
+          }
+        },
+        {
+          "away": {
+            "name": "Ja Ja Binks",
+            "id": "pyisau22mtswkpax",
+            "shortName": "JJBinks"
+          },
+          "home": {
+            "name": "Notorious BI3",
+            "id": "rowc20kzmtswkpax",
+            "shortName": "Notoriou"
+          }
+        },
+        {
+          "away": {
+            "name": "onaisani",
+            "id": "f62m1qj2mtswkpax",
+            "shortName": "onaisani"
+          },
+          "home": {
+            "name": "Mike Lee Double Team",
+            "id": "7f7redubmtswkpax",
+            "shortName": "MIKELEE"
+          }
+        },
+        {
+          "away": {
+            "name": "Masai & Bobby",
+            "id": "exf8aagxmtswkpax",
+            "shortName": "MasaiBB"
+          },
+          "home": {
+            "name": "Tony and the Gabagools",
+            "id": "k2ki420pmtswkpax",
+            "shortName": "NO ZITI?"
+          }
+        },
+        {
+          "away": {
+            "name": "LENGTH > GIRTH",
+            "id": "sj9cohbumtswkpax",
+            "shortName": "LOOOOONG"
+          },
+          "home": {
+            "name": "achen88",
+            "id": "qqq57v0gmtswkpax",
+            "shortName": "achen88"
+          }
+        }
+      ]
+    },
+    {
+      "period": 10,
+      "matchupList": [
+        {
+          "away": {
+            "name": "mc911",
+            "id": "l9db00t1mtswkpax",
+            "shortName": "mc911"
+          },
+          "home": {
+            "name": "Ja Ja Binks",
+            "id": "pyisau22mtswkpax",
+            "shortName": "JJBinks"
+          }
+        },
+        {
+          "away": {
+            "name": "Team Şengün and Friends",
+            "id": "htjic831mtswkpax",
+            "shortName": "ScotBarn"
+          },
+          "home": {
+            "name": "onaisani",
+            "id": "f62m1qj2mtswkpax",
+            "shortName": "onaisani"
+          }
+        },
+        {
+          "away": {
+            "name": "Notorious BI3",
+            "id": "rowc20kzmtswkpax",
+            "shortName": "Notoriou"
+          },
+          "home": {
+            "name": "Masai & Bobby",
+            "id": "exf8aagxmtswkpax",
+            "shortName": "MasaiBB"
+          }
+        },
+        {
+          "away": {
+            "name": "Mike Lee Double Team",
+            "id": "7f7redubmtswkpax",
+            "shortName": "MIKELEE"
+          },
+          "home": {
+            "name": "LENGTH > GIRTH",
+            "id": "sj9cohbumtswkpax",
+            "shortName": "LOOOOONG"
+          }
+        },
+        {
+          "away": {
+            "name": "Tony and the Gabagools",
+            "id": "k2ki420pmtswkpax",
+            "shortName": "NO ZITI?"
+          },
+          "home": {
+            "name": "achen88",
+            "id": "qqq57v0gmtswkpax",
+            "shortName": "achen88"
+          }
+        }
+      ]
+    },
+    {
+      "period": 11,
+      "matchupList": [
+        {
+          "away": {
+            "name": "onaisani",
+            "id": "f62m1qj2mtswkpax",
+            "shortName": "onaisani"
+          },
+          "home": {
+            "name": "mc911",
+            "id": "l9db00t1mtswkpax",
+            "shortName": "mc911"
+          }
+        },
+        {
+          "away": {
+            "name": "Masai & Bobby",
+            "id": "exf8aagxmtswkpax",
+            "shortName": "MasaiBB"
+          },
+          "home": {
+            "name": "Ja Ja Binks",
+            "id": "pyisau22mtswkpax",
+            "shortName": "JJBinks"
+          }
+        },
+        {
+          "away": {
+            "name": "LENGTH > GIRTH",
+            "id": "sj9cohbumtswkpax",
+            "shortName": "LOOOOONG"
+          },
+          "home": {
+            "name": "Team Şengün and Friends",
+            "id": "htjic831mtswkpax",
+            "shortName": "ScotBarn"
+          }
+        },
+        {
+          "away": {
+            "name": "achen88",
+            "id": "qqq57v0gmtswkpax",
+            "shortName": "achen88"
+          },
+          "home": {
+            "name": "Notorious BI3",
+            "id": "rowc20kzmtswkpax",
+            "shortName": "Notoriou"
+          }
+        },
+        {
+          "away": {
+            "name": "Tony and the Gabagools",
+            "id": "k2ki420pmtswkpax",
+            "shortName": "NO ZITI?"
+          },
+          "home": {
+            "name": "Mike Lee Double Team",
+            "id": "7f7redubmtswkpax",
+            "shortName": "MIKELEE"
+          }
+        }
+      ]
+    },
+    {
+      "period": 12,
+      "matchupList": [
+        {
+          "away": {
+            "name": "mc911",
+            "id": "l9db00t1mtswkpax",
+            "shortName": "mc911"
+          },
+          "home": {
+            "name": "Masai & Bobby",
+            "id": "exf8aagxmtswkpax",
+            "shortName": "MasaiBB"
+          }
+        },
+        {
+          "away": {
+            "name": "onaisani",
+            "id": "f62m1qj2mtswkpax",
+            "shortName": "onaisani"
+          },
+          "home": {
+            "name": "LENGTH > GIRTH",
+            "id": "sj9cohbumtswkpax",
+            "shortName": "LOOOOONG"
+          }
+        },
+        {
+          "away": {
+            "name": "Ja Ja Binks",
+            "id": "pyisau22mtswkpax",
+            "shortName": "JJBinks"
+          },
+          "home": {
+            "name": "achen88",
+            "id": "qqq57v0gmtswkpax",
+            "shortName": "achen88"
+          }
+        },
+        {
+          "away": {
+            "name": "Team Şengün and Friends",
+            "id": "htjic831mtswkpax",
+            "shortName": "ScotBarn"
+          },
+          "home": {
+            "name": "Tony and the Gabagools",
+            "id": "k2ki420pmtswkpax",
+            "shortName": "NO ZITI?"
+          }
+        },
+        {
+          "away": {
+            "name": "Notorious BI3",
+            "id": "rowc20kzmtswkpax",
+            "shortName": "Notoriou"
+          },
+          "home": {
+            "name": "Mike Lee Double Team",
+            "id": "7f7redubmtswkpax",
+            "shortName": "MIKELEE"
+          }
+        }
+      ]
+    },
+    {
+      "period": 13,
+      "matchupList": [
+        {
+          "away": {
+            "name": "LENGTH > GIRTH",
+            "id": "sj9cohbumtswkpax",
+            "shortName": "LOOOOONG"
+          },
+          "home": {
+            "name": "mc911",
+            "id": "l9db00t1mtswkpax",
+            "shortName": "mc911"
+          }
+        },
+        {
+          "away": {
+            "name": "achen88",
+            "id": "qqq57v0gmtswkpax",
+            "shortName": "achen88"
+          },
+          "home": {
+            "name": "Masai & Bobby",
+            "id": "exf8aagxmtswkpax",
+            "shortName": "MasaiBB"
+          }
+        },
+        {
+          "away": {
+            "name": "Tony and the Gabagools",
+            "id": "k2ki420pmtswkpax",
+            "shortName": "NO ZITI?"
+          },
+          "home": {
+            "name": "onaisani",
+            "id": "f62m1qj2mtswkpax",
+            "shortName": "onaisani"
+          }
+        },
+        {
+          "away": {
+            "name": "Mike Lee Double Team",
+            "id": "7f7redubmtswkpax",
+            "shortName": "MIKELEE"
+          },
+          "home": {
+            "name": "Ja Ja Binks",
+            "id": "pyisau22mtswkpax",
+            "shortName": "JJBinks"
+          }
+        },
+        {
+          "away": {
+            "name": "Notorious BI3",
+            "id": "rowc20kzmtswkpax",
+            "shortName": "Notoriou"
+          },
+          "home": {
+            "name": "Team Şengün and Friends",
+            "id": "htjic831mtswkpax",
+            "shortName": "ScotBarn"
+          }
+        }
+      ]
+    },
+    {
+      "period": 14,
+      "matchupList": [
+        {
+          "away": {
+            "name": "mc911",
+            "id": "l9db00t1mtswkpax",
+            "shortName": "mc911"
+          },
+          "home": {
+            "name": "achen88",
+            "id": "qqq57v0gmtswkpax",
+            "shortName": "achen88"
+          }
+        },
+        {
+          "away": {
+            "name": "LENGTH > GIRTH",
+            "id": "sj9cohbumtswkpax",
+            "shortName": "LOOOOONG"
+          },
+          "home": {
+            "name": "Tony and the Gabagools",
+            "id": "k2ki420pmtswkpax",
+            "shortName": "NO ZITI?"
+          }
+        },
+        {
+          "away": {
+            "name": "Masai & Bobby",
+            "id": "exf8aagxmtswkpax",
+            "shortName": "MasaiBB"
+          },
+          "home": {
+            "name": "Mike Lee Double Team",
+            "id": "7f7redubmtswkpax",
+            "shortName": "MIKELEE"
+          }
+        },
+        {
+          "away": {
+            "name": "onaisani",
+            "id": "f62m1qj2mtswkpax",
+            "shortName": "onaisani"
+          },
+          "home": {
+            "name": "Notorious BI3",
+            "id": "rowc20kzmtswkpax",
+            "shortName": "Notoriou"
+          }
+        },
+        {
+          "away": {
+            "name": "Ja Ja Binks",
+            "id": "pyisau22mtswkpax",
+            "shortName": "JJBinks"
+          },
+          "home": {
+            "name": "Team Şengün and Friends",
+            "id": "htjic831mtswkpax",
+            "shortName": "ScotBarn"
+          }
+        }
+      ]
+    },
+    {
+      "period": 15,
+      "matchupList": [
+        {
+          "away": {
+            "name": "Tony and the Gabagools",
+            "id": "k2ki420pmtswkpax",
+            "shortName": "NO ZITI?"
+          },
+          "home": {
+            "name": "mc911",
+            "id": "l9db00t1mtswkpax",
+            "shortName": "mc911"
+          }
+        },
+        {
+          "away": {
+            "name": "Mike Lee Double Team",
+            "id": "7f7redubmtswkpax",
+            "shortName": "MIKELEE"
+          },
+          "home": {
+            "name": "achen88",
+            "id": "qqq57v0gmtswkpax",
+            "shortName": "achen88"
+          }
+        },
+        {
+          "away": {
+            "name": "Notorious BI3",
+            "id": "rowc20kzmtswkpax",
+            "shortName": "Notoriou"
+          },
+          "home": {
+            "name": "LENGTH > GIRTH",
+            "id": "sj9cohbumtswkpax",
+            "shortName": "LOOOOONG"
+          }
+        },
+        {
+          "away": {
+            "name": "Team Şengün and Friends",
+            "id": "htjic831mtswkpax",
+            "shortName": "ScotBarn"
+          },
+          "home": {
+            "name": "Masai & Bobby",
+            "id": "exf8aagxmtswkpax",
+            "shortName": "MasaiBB"
+          }
+        },
+        {
+          "away": {
+            "name": "Ja Ja Binks",
+            "id": "pyisau22mtswkpax",
+            "shortName": "JJBinks"
+          },
+          "home": {
+            "name": "onaisani",
+            "id": "f62m1qj2mtswkpax",
+            "shortName": "onaisani"
+          }
+        }
+      ]
+    },
+    {
+      "period": 16,
+      "matchupList": [
+        {
+          "away": {
+            "name": "mc911",
+            "id": "l9db00t1mtswkpax",
+            "shortName": "mc911"
+          },
+          "home": {
+            "name": "Mike Lee Double Team",
+            "id": "7f7redubmtswkpax",
+            "shortName": "MIKELEE"
+          }
+        },
+        {
+          "away": {
+            "name": "Tony and the Gabagools",
+            "id": "k2ki420pmtswkpax",
+            "shortName": "NO ZITI?"
+          },
+          "home": {
+            "name": "Notorious BI3",
+            "id": "rowc20kzmtswkpax",
+            "shortName": "Notoriou"
+          }
+        },
+        {
+          "away": {
+            "name": "achen88",
+            "id": "qqq57v0gmtswkpax",
+            "shortName": "achen88"
+          },
+          "home": {
+            "name": "Team Şengün and Friends",
+            "id": "htjic831mtswkpax",
+            "shortName": "ScotBarn"
+          }
+        },
+        {
+          "away": {
+            "name": "LENGTH > GIRTH",
+            "id": "sj9cohbumtswkpax",
+            "shortName": "LOOOOONG"
+          },
+          "home": {
+            "name": "Ja Ja Binks",
+            "id": "pyisau22mtswkpax",
+            "shortName": "JJBinks"
+          }
+        },
+        {
+          "away": {
+            "name": "Masai & Bobby",
+            "id": "exf8aagxmtswkpax",
+            "shortName": "MasaiBB"
+          },
+          "home": {
+            "name": "onaisani",
+            "id": "f62m1qj2mtswkpax",
+            "shortName": "onaisani"
+          }
+        }
+      ]
+    },
+    {
+      "period": 17,
+      "matchupList": [
+        {
+          "away": {
+            "name": "Notorious BI3",
+            "id": "rowc20kzmtswkpax",
+            "shortName": "Notoriou"
+          },
+          "home": {
+            "name": "mc911",
+            "id": "l9db00t1mtswkpax",
+            "shortName": "mc911"
+          }
+        },
+        {
+          "away": {
+            "name": "Team Şengün and Friends",
+            "id": "htjic831mtswkpax",
+            "shortName": "ScotBarn"
+          },
+          "home": {
+            "name": "Mike Lee Double Team",
+            "id": "7f7redubmtswkpax",
+            "shortName": "MIKELEE"
+          }
+        },
+        {
+          "away": {
+            "name": "Ja Ja Binks",
+            "id": "pyisau22mtswkpax",
+            "shortName": "JJBinks"
+          },
+          "home": {
+            "name": "Tony and the Gabagools",
+            "id": "k2ki420pmtswkpax",
+            "shortName": "NO ZITI?"
+          }
+        },
+        {
+          "away": {
+            "name": "onaisani",
+            "id": "f62m1qj2mtswkpax",
+            "shortName": "onaisani"
+          },
+          "home": {
+            "name": "achen88",
+            "id": "qqq57v0gmtswkpax",
+            "shortName": "achen88"
+          }
+        },
+        {
+          "away": {
+            "name": "Masai & Bobby",
+            "id": "exf8aagxmtswkpax",
+            "shortName": "MasaiBB"
+          },
+          "home": {
+            "name": "LENGTH > GIRTH",
+            "id": "sj9cohbumtswkpax",
+            "shortName": "LOOOOONG"
+          }
+        }
+      ]
+    },
+    {
+      "period": 18,
+      "matchupList": [
+        {
+          "away": {
+            "name": "mc911",
+            "id": "l9db00t1mtswkpax",
+            "shortName": "mc911"
+          },
+          "home": {
+            "name": "Team Şengün and Friends",
+            "id": "htjic831mtswkpax",
+            "shortName": "ScotBarn"
+          }
+        },
+        {
+          "away": {
+            "name": "Notorious BI3",
+            "id": "rowc20kzmtswkpax",
+            "shortName": "Notoriou"
+          },
+          "home": {
+            "name": "Ja Ja Binks",
+            "id": "pyisau22mtswkpax",
+            "shortName": "JJBinks"
+          }
+        },
+        {
+          "away": {
+            "name": "Mike Lee Double Team",
+            "id": "7f7redubmtswkpax",
+            "shortName": "MIKELEE"
+          },
+          "home": {
+            "name": "onaisani",
+            "id": "f62m1qj2mtswkpax",
+            "shortName": "onaisani"
+          }
+        },
+        {
+          "away": {
+            "name": "Tony and the Gabagools",
+            "id": "k2ki420pmtswkpax",
+            "shortName": "NO ZITI?"
+          },
+          "home": {
+            "name": "Masai & Bobby",
+            "id": "exf8aagxmtswkpax",
+            "shortName": "MasaiBB"
+          }
+        },
+        {
+          "away": {
+            "name": "achen88",
+            "id": "qqq57v0gmtswkpax",
+            "shortName": "achen88"
+          },
+          "home": {
+            "name": "LENGTH > GIRTH",
+            "id": "sj9cohbumtswkpax",
+            "shortName": "LOOOOONG"
+          }
+        }
+      ]
+    },
+    {
+      "period": 19,
+      "matchupList": [
+        {
+          "away": {
+            "bye": true
+          },
+          "home": {
+            "seed": 1
+          }
+        },
+        {
+          "away": {
+            "seed": 5
+          },
+          "home": {
+            "seed": 4
+          }
+        },
+        {
+          "away": {
+            "bye": true
+          },
+          "home": {
+            "seed": 2
+          }
+        },
+        {
+          "away": {
+            "bye": true
+          },
+          "home": {
+            "seed": 3
+          }
+        }
+      ]
+    },
+    {
+      "period": 20,
+      "matchupList": [
+        {
+          "away": {
+            "TBD": true
+          },
+          "home": {
+            "TBD": true
+          }
+        },
+        {
+          "away": {
+            "TBD": true
+          },
+          "home": {
+            "TBD": true
+          }
+        }
+      ]
+    },
+    {
+      "period": 21,
+      "matchupList": [
+        {
+          "away": {
+            "TBD": true
+          },
+          "home": {
+            "TBD": true
+          }
+        }
+      ]
+    },
+    {
+      "period": 22,
+      "matchupList": [
+        {
+          "away": {
+            "TBD": true
+          },
+          "home": {
+            "TBD": true
+          }
+        }
+      ]
+    }
+  ]
+}

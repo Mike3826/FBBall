@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+@theme {
+  /* Toronto Raptors palette */
+  --color-court: #000000;
+  --color-court-2: #0c0c0c;
+  --color-court-3: #1a1a1a;
+  --color-raptor: #ce1141;
+  --color-raptor-deep: #a30d33;
+  /* Lighter red for small text on black (brand red is a little dark for type). */
+  --color-raptor-soft: #ef4a73;
+  --color-gold: #b4975a;
+  --color-gold-soft: #cdb67f;
+  --color-silver: #a1a1a4;
+
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-court text-slate-200 antialiased;
+}
+
+.card {
+  @apply rounded-lg border-2 border-white/15 bg-court-2;
+}
+
+.card-title {
+  @apply text-xs font-bold uppercase tracking-wider text-slate-400;
+}
+
+.table-base {
+  @apply w-full text-sm;
+}
+.table-base thead th {
+  @apply border-b-2 border-white/15 px-3 py-2 text-left text-xs font-bold uppercase tracking-wider text-slate-400;
+}
+.table-base tbody td {
+  @apply border-b border-white/10 px-3 py-2;
+}
+.table-dense thead th,
+.table-dense tbody td {
+  @apply px-2;
+}
+.table-base tbody tr:last-child td {
+  @apply border-b-0;
+}
+.table-base tbody tr:hover {
+  @apply bg-white/[0.04];
+}
+
+.pill {
+  @apply inline-flex items-center rounded px-1.5 py-0.5 text-[11px] font-bold leading-none;
+}
+.pill-G {
+  @apply bg-raptor/15 text-raptor-soft;
+}
+.pill-F {
+  @apply bg-gold/15 text-gold-soft;
+}
+.pill-C {
+  @apply bg-silver/15 text-slate-200;
+}
