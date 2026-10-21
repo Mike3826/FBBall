@@ -13,7 +13,7 @@ import {
   playerMap,
   type ScoringRule,
 } from "@/lib/data";
-import type { GameLog } from "@/lib/nba";
+import { isNbaPostseasonGame, type GameLog } from "@/lib/nba";
 import { fantasyPoints, isDoubleDouble, isTripleDouble } from "@/lib/scoring";
 import { rankInFpList, shortMatchup, type FpRank, type ScoredLog } from "@/lib/stats";
 
@@ -169,7 +169,13 @@ function historySeasonFpTotals(season: string): { id: string; fp: number }[] {
   for (const [id, rows] of Object.entries(file.players)) {
     if (!rows.length) continue;
     let fp = 0;
-    for (const row of rows) fp += fantasyPoints(rowToLog(id, row), rules);
+    let games = 0;
+    for (const row of rows) {
+      if (isNbaPostseasonGame(String(row[1]))) continue;
+      fp += fantasyPoints(rowToLog(id, row), rules);
+      games++;
+    }
+    if (!games) continue;
     totals.push({ id, fp: Math.round(fp * 100) / 100 });
   }
   totals.sort((a, b) => b.fp - a.fp || a.id.localeCompare(b.id));
@@ -184,7 +190,7 @@ export function historySeasonFpRank(playerId: string, season: string): FpRank | 
 export function getHistoryLogs(playerId: string, season: string): ScoredLog[] {
   const file = FILES[season];
   const rules = scoringForSeason(season);
-  const rows = file?.players[playerId] ?? [];
+  const rows = (file?.players[playerId] ?? []).filter((row) => !isNbaPostseasonGame(String(row[1])));
   const fx = playerMap[playerId];
   return rows.map((row) => {
     const log = rowToLog(playerId, row);

@@ -12,8 +12,10 @@
   --color-gold: #b4975a;
   --color-gold-soft: #cdb67f;
   --color-silver: #a1a1a4;
-  /* Warcraft Logs 99th-percentile / pink parse */
+  /* Warcraft Logs parse colors */
   --color-parse-pink: #e268a8;
+  --color-parse-orange: #ff8000;
+  --color-parse-green: #1eff00;
 
   --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
 }

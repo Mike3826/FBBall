@@ -17,6 +17,11 @@ export type GameLog = StatLine & {
   fantraxId: string | null;
 };
 
+/** NBA game IDs encode season type in the 3rd digit: 4 = playoffs, 5 = play-in. */
+export function isNbaPostseasonGame(gameId: string): boolean {
+  return gameId.length >= 3 && gameId.startsWith("00") && (gameId[2] === "4" || gameId[2] === "5");
+}
+
 export type Game = {
   gameId: string;
   date: string;

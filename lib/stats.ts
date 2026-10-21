@@ -7,7 +7,7 @@ import {
   playerTeamMap,
   type ScoringPeriod,
 } from "@/lib/data";
-import { getLiveGameLogs, type Game, type GameLog, type GameLogSnapshot } from "@/lib/nba";
+import { getLiveGameLogs, isNbaPostseasonGame, type Game, type GameLog, type GameLogSnapshot } from "@/lib/nba";
 import { fantasyPoints, isDoubleDouble, isTripleDouble } from "@/lib/scoring";
 
 export type { Game, GameLog } from "@/lib/nba";
@@ -94,7 +94,7 @@ function buildStats(snapshot: GameLogSnapshot): Stats {
     playerLogs: (id) => [...(byPlayer.get(id) ?? [])].sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0)),
     logsInPeriod,
     periodLeaders: (period) => aggregatePeriod(logsInPeriod(period)),
-    seasonLeaders: () => aggregatePeriod(logs),
+    seasonLeaders: () => aggregatePeriod(logs.filter((l) => !isNbaPostseasonGame(l.gameId))),
   };
 }
 

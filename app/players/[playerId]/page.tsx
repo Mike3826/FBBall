@@ -11,7 +11,7 @@ import {
   playerTeamMap,
 } from "@/lib/data";
 import { dynastyDraftPick, getHistoryLogs, historySeasonFpRank, resolveSeason, seasonOptions } from "@/lib/history";
-import { LIVE_TTL_MS } from "@/lib/nba";
+import { isNbaPostseasonGame, LIVE_TTL_MS } from "@/lib/nba";
 import { getRotowireProfile } from "@/lib/rotowire";
 import { formatFp } from "@/lib/scoring";
 import { getStats, rankInFpList, type FpRank, type ScoredLog } from "@/lib/stats";
@@ -39,6 +39,13 @@ export async function generateMetadata({ params }: { params: Params }) {
 
 const num = "text-right tabular-nums";
 
+function gameLogFpClass(fp: number): string {
+  if (fp >= 100) return "text-parse-green";
+  if (fp >= 75) return "text-parse-orange";
+  if (fp >= 50) return "text-parse-pink";
+  return "text-gold";
+}
+
 function avg(total: number, games: number): string {
   return games ? (total / games).toFixed(1) : "—";
 }
@@ -58,7 +65,9 @@ export default async function PlayerPage({ params, searchParams }: { params: Par
     selected.current ? getStats() : Promise.resolve(null),
     player.rotowireId ? getRotowireProfile(player.rotowireId) : Promise.resolve(null),
   ]);
-  const logs: ScoredLog[] = selected.current && stats ? stats.playerLogs(player.id) : getHistoryLogs(player.id, selected.key);
+  const logs: ScoredLog[] = (selected.current && stats ? stats.playerLogs(player.id) : getHistoryLogs(player.id, selected.key)).filter(
+    (l) => !isNbaPostseasonGame(l.gameId),
+  );
   const history = getPlayerTransactions(player.id);
   const draftPick = dynastyDraftPick(player.id);
   const draftSlot = draftPick ? `${draftPick.round}.${String(draftPick.pickInRound).padStart(2, "0")}` : null;
@@ -221,7 +230,7 @@ export default async function PlayerPage({ params, searchParams }: { params: Par
             )}
             {best && (
               <span className="text-xs text-slate-500">
-                Best game: <span className="font-semibold text-gold">{formatFp(best.fp)}</span> on{" "}
+                Best game: <span className={`font-semibold ${gameLogFpClass(best.fp)}`}>{formatFp(best.fp)}</span> on{" "}
                 {selected.current ? (
                   <Link href={`/daily-rankings?date=${best.date}`} className="text-slate-300 hover:text-gold">
                     {formatShortDate(best.date)}
@@ -302,14 +311,14 @@ export default async function PlayerPage({ params, searchParams }: { params: Par
                       <td className={num}>{l.blk}</td>
                       <td className={num}>{l.fg3m}</td>
                       <td className={`${num} text-slate-400`}>{l.tov}</td>
-                      <td className={`${num} font-bold text-gold`}>
+                      <td className={`${num} font-bold`}>
                         <span className="inline-flex items-center justify-end gap-1.5">
                           {l.td ? (
                             <span className="pill bg-raptor/20 text-gold">TD</span>
                           ) : l.dd ? (
                             <span className="pill bg-white/10 text-slate-200">DD</span>
                           ) : null}
-                          {formatFp(l.fp)}
+                          <span className={gameLogFpClass(l.fp)}>{formatFp(l.fp)}</span>
                         </span>
                       </td>
                     </tr>
