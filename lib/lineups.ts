@@ -5,6 +5,7 @@ import {
   getRoster,
   isTeamSide,
   leagueInfo,
+  standingsRows,
   type RosterPlayer,
   type ScoringPeriod,
   type Team,
@@ -24,7 +25,12 @@ export type LineupPlayer = {
   nbaTeam: string;
   slot: Slot;
   eligiblePos: string;
+  /** Game logs this week (used for sorting / team GP). */
   games: number;
+  /** Games started this week (final + in progress). */
+  gamesPlayed: number;
+  /** NBA games on this player's team this scoring period. */
+  weekGames: number;
   fp: number;
   /** Fantasy points from the player's most recent game log, if any. */
   lastGameFp: number | null;
@@ -38,6 +44,8 @@ export type LineupPlayer = {
 
 export type TeamLineup = {
   team: Team;
+  /** Official W-L-T from league standings. */
+  record: string;
   /** Weekly score from counting players only (6 G + 6 F + 3 C). */
   score: number;
   /** Weekly points from everyone on the roster. */
@@ -108,6 +116,8 @@ export function buildTeamLineups(stats: Stats, period: ScoringPeriod): TeamLineu
   const weekly = new Map(stats.periodLeaders(period).filter((t) => t.fantraxId).map((t) => [t.fantraxId!, t]));
   const today = new Map(stats.dailyLeaders(stats.meta.today).filter((l) => l.fantraxId).map((l) => [l.fantraxId!, l]));
   const lastGame = lastGameFpByPlayer(stats);
+  const weekDates = new Set(datesInPeriod(period));
+  const weekSlate = stats.games.filter((g) => weekDates.has(g.date));
 
   return leagueInfo.teams.map((team) => {
     const groups: Record<Slot, LineupPlayer[]> = { G: [], F: [], C: [] };
@@ -115,13 +125,20 @@ export function buildTeamLineups(stats: Stats, period: ScoringPeriod): TeamLineu
       const slot = playerSlot(p);
       const w = weekly.get(p.id);
       const t = today.get(p.id);
+      const slate = weekSlate.filter((g) => nbaTeamInGame(p.nbaTeam, g));
+      const started = slate.filter((g) => g.status >= 2).length;
+      const logged = w?.games ?? 0;
+      // In-progress games count as played even before a box score lands.
+      const gamesPlayed = Math.max(started, logged, t?.live ? 1 : 0);
       groups[slot].push({
         id: p.id,
         name: formatPlayerName(p.name),
         nbaTeam: p.nbaTeam,
         slot,
         eligiblePos: p.eligiblePos,
-        games: w?.games ?? 0,
+        games: logged,
+        gamesPlayed,
+        weekGames: Math.max(slate.length, gamesPlayed),
         fp: w?.fp ?? 0,
         lastGameFp: lastGame.has(p.id) ? lastGame.get(p.id)! : null,
         liveFp: t?.live ? t.fp : 0,
@@ -138,8 +155,7 @@ export function buildTeamLineups(stats: Stats, period: ScoringPeriod): TeamLineu
     let playedTodayCount = 0;
     let countingGames = 0;
     let gamesRemaining = 0;
-    const weekDates = new Set(datesInPeriod(period));
-    const upcoming = stats.games.filter((g) => weekDates.has(g.date) && g.status === 1);
+    const upcoming = weekSlate.filter((g) => g.status === 1);
     for (const slot of SLOTS) {
       groups[slot].sort((a, b) => b.fp - a.fp || b.games - a.games || a.name.localeCompare(b.name));
       groups[slot].forEach((p, i) => {
@@ -156,7 +172,8 @@ export function buildTeamLineups(stats: Stats, period: ScoringPeriod): TeamLineu
       });
     }
 
-    return { team, score: r2(score), rosterTotal: r2(rosterTotal), groups, liveCount, playedTodayCount, countingGames, gamesRemaining };
+    const record = standingsRows.find((s) => s.teamId === team.id)?.points ?? "";
+    return { team, record, score: r2(score), rosterTotal: r2(rosterTotal), groups, liveCount, playedTodayCount, countingGames, gamesRemaining };
   });
 }
 
