@@ -76,3 +76,150 @@ body {
 .pill-Flx {
   @apply bg-white/10 text-slate-300;
 }
+
+/* Season-rank badge: WoW quality 6+ / 2K Opal+Prismatic / parse pink 3–5 */
+.rank-mark {
+  --rank: #ffffff;
+  position: relative;
+  isolation: isolate;
+  border-color: color-mix(in srgb, var(--rank) 58%, transparent);
+  background: color-mix(in srgb, var(--rank) 14%, #000);
+  box-shadow: inset 0 0 28px color-mix(in srgb, var(--rank) 14%, transparent);
+}
+.rank-mark .rank-kicker,
+.rank-mark .rank-of {
+  color: color-mix(in srgb, var(--rank) 62%, #64748b);
+}
+.rank-mark .rank-num {
+  color: var(--rank);
+  text-shadow: 0 0 18px color-mix(in srgb, var(--rank) 50%, transparent);
+}
+
+.rank-grey {
+  --rank: #9d9d9d;
+}
+.rank-white {
+  --rank: #ffffff;
+}
+.rank-green {
+  --rank: #1eff00;
+}
+.rank-blue {
+  --rank: #0070dd;
+}
+.rank-purple {
+  --rank: #a335ee;
+}
+.rank-orange {
+  --rank: #ff8000;
+}
+.rank-gold {
+  --rank: #e6cc80;
+}
+.rank-pink {
+  --rank: var(--color-parse-pink);
+}
+
+.rank-opal {
+  --rank: #e1a6e7;
+  border-color: transparent;
+  background: linear-gradient(160deg, rgba(24, 143, 255, 0.18), rgba(225, 166, 231, 0.12) 50%, rgba(249, 162, 5, 0.14));
+  box-shadow:
+    inset 0 0 24px rgba(24, 143, 255, 0.18),
+    0 0 18px rgba(225, 166, 231, 0.28),
+    0 0 32px rgba(24, 143, 255, 0.16);
+}
+.rank-opal::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  padding: 2px;
+  pointer-events: none;
+  background: linear-gradient(120deg, #188fff, #e1a6e7, #f9a205, #188fff);
+  background-size: 220% 220%;
+  animation: rank-opal-border 5s linear infinite;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+.rank-opal .rank-num {
+  background: linear-gradient(90deg, #188fff, #e1a6e7, #f9a205, #7ef0ff, #188fff);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: none;
+  animation: rank-shimmer 4s linear infinite;
+}
+
+.rank-prismatic {
+  --rank: #ffffff;
+  border-color: transparent;
+  background: radial-gradient(circle at 50% 40%, rgba(255, 255, 255, 0.07), #0c0c0c 68%);
+  box-shadow:
+    0 0 16px rgba(255, 0, 76, 0.28),
+    0 0 28px rgba(0, 212, 255, 0.22),
+    0 0 40px rgba(163, 53, 238, 0.2);
+}
+.rank-prismatic::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  padding: 2px;
+  pointer-events: none;
+  background: conic-gradient(from var(--rank-angle, 0deg), #ff004c, #ff8a00, #ffe600, #1eff00, #00d4ff, #4d7cff, #a335ee, #ff004c);
+  animation: rank-spin 5s linear infinite;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+.rank-prismatic .rank-kicker,
+.rank-prismatic .rank-of {
+  color: #d4d4d8;
+}
+.rank-prismatic .rank-num {
+  background: linear-gradient(90deg, #ff4d6d, #ff8a00, #ffe600, #1eff00, #00d4ff, #a335ee, #ff4d6d);
+  background-size: 240% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: none;
+  animation: rank-shimmer 3s linear infinite;
+}
+
+@property --rank-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes rank-shimmer {
+  to {
+    background-position: 240% 0;
+  }
+}
+@keyframes rank-opal-border {
+  to {
+    background-position: 220% 0;
+  }
+}
+@keyframes rank-spin {
+  to {
+    --rank-angle: 360deg;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rank-opal::before,
+  .rank-opal .rank-num,
+  .rank-prismatic::before,
+  .rank-prismatic .rank-num {
+    animation: none;
+  }
+}

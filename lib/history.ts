@@ -15,7 +15,7 @@ import {
 } from "@/lib/data";
 import type { GameLog } from "@/lib/nba";
 import { fantasyPoints, isDoubleDouble, isTripleDouble } from "@/lib/scoring";
-import { shortMatchup, type ScoredLog } from "@/lib/stats";
+import { rankInFpList, shortMatchup, type FpRank, type ScoredLog } from "@/lib/stats";
 
 export type HistorySeasonMeta = {
   season: string;
@@ -152,6 +152,33 @@ function rowToLog(playerId: string, row: (string | number)[]): GameLog {
     live: false,
     fantraxId: playerId,
   };
+}
+
+const seasonFpCache = new Map<string, { id: string; fp: number }[]>();
+
+function historySeasonFpTotals(season: string): { id: string; fp: number }[] {
+  const hit = seasonFpCache.get(season);
+  if (hit) return hit;
+  const file = FILES[season];
+  if (!file) {
+    seasonFpCache.set(season, []);
+    return [];
+  }
+  const rules = scoringForSeason(season);
+  const totals: { id: string; fp: number }[] = [];
+  for (const [id, rows] of Object.entries(file.players)) {
+    if (!rows.length) continue;
+    let fp = 0;
+    for (const row of rows) fp += fantasyPoints(rowToLog(id, row), rules);
+    totals.push({ id, fp: Math.round(fp * 100) / 100 });
+  }
+  totals.sort((a, b) => b.fp - a.fp || a.id.localeCompare(b.id));
+  seasonFpCache.set(season, totals);
+  return totals;
+}
+
+export function historySeasonFpRank(playerId: string, season: string): FpRank | null {
+  return rankInFpList(historySeasonFpTotals(season), (row) => row.id === playerId, (row) => row.fp);
 }
 
 export function getHistoryLogs(playerId: string, season: string): ScoredLog[] {

@@ -10,11 +10,11 @@ import {
   playerMap,
   playerTeamMap,
 } from "@/lib/data";
-import { dynastyDraftPick, getHistoryLogs, resolveSeason, seasonOptions } from "@/lib/history";
+import { dynastyDraftPick, getHistoryLogs, historySeasonFpRank, resolveSeason, seasonOptions } from "@/lib/history";
 import { LIVE_TTL_MS } from "@/lib/nba";
 import { getRotowireProfile } from "@/lib/rotowire";
 import { formatFp } from "@/lib/scoring";
-import { getStats, type ScoredLog } from "@/lib/stats";
+import { getStats, rankInFpList, type FpRank, type ScoredLog } from "@/lib/stats";
 import AutoRefresh from "@/components/AutoRefresh";
 import {
   ACTION_STYLE,
@@ -88,6 +88,11 @@ export default async function PlayerPage({ params, searchParams }: { params: Par
     { fp: 0, min: 0, pts: 0, reb: 0, ast: 0, stl: 0, blk: 0, tov: 0, fg3m: 0, dd: 0, td: 0 },
   );
   const best = logs.reduce<(typeof logs)[number] | null>((b, l) => (!b || l.fp > b.fp ? l : b), null);
+  const fpRank: FpRank | null = selected.current
+    ? stats
+      ? rankInFpList(stats.seasonLeaders(), (t) => t.fantraxId === player.id, (t) => t.fp)
+      : null
+    : historySeasonFpRank(player.id, selected.key);
 
   const summary = [
     { label: "GP", value: String(gp) },
@@ -228,16 +233,19 @@ export default async function PlayerPage({ params, searchParams }: { params: Par
             )}
           </span>
         </div>
-        <dl className="mt-4 grid grid-cols-4 gap-x-4 gap-y-4 sm:grid-cols-6 lg:grid-cols-12">
-          {summary.map((s) => (
-            <div key={s.label}>
-              <dt className="text-[11px] font-semibold uppercase tracking-wider text-slate-500">{s.label}</dt>
-              <dd className={`mt-0.5 text-lg font-bold tabular-nums ${s.label === "FPts" || s.label === "FP/G" ? "text-gold" : "text-white"}`}>
-                {s.value}
-              </dd>
-            </div>
-          ))}
-        </dl>
+        <div className={`mt-4 ${fpRank ? "flex flex-col gap-5 sm:flex-row sm:items-stretch" : ""}`}>
+          {fpRank && <SeasonRankMark rank={fpRank} href={selected.current ? "/season" : undefined} />}
+          <dl className={`grid grid-cols-4 gap-x-4 gap-y-4 sm:grid-cols-6 ${fpRank ? "min-w-0 flex-1" : "lg:grid-cols-12"}`}>
+            {summary.map((s) => (
+              <div key={s.label}>
+                <dt className="text-[11px] font-semibold uppercase tracking-wider text-slate-500">{s.label}</dt>
+                <dd className={`mt-0.5 text-lg font-bold tabular-nums ${s.label === "FPts" || s.label === "FP/G" ? "text-gold" : "text-white"}`}>
+                  {s.value}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
         {gp > 0 && finished.length < gp && <p className="mt-3 text-xs text-slate-500">Includes a game in progress.</p>}
       </section>
 
@@ -295,12 +303,14 @@ export default async function PlayerPage({ params, searchParams }: { params: Par
                       <td className={num}>{l.fg3m}</td>
                       <td className={`${num} text-slate-400`}>{l.tov}</td>
                       <td className={`${num} font-bold text-gold`}>
-                        {formatFp(l.fp)}
-                        {l.td ? (
-                          <span className="pill ml-1.5 bg-raptor/20 text-gold">TD</span>
-                        ) : l.dd ? (
-                          <span className="pill ml-1.5 bg-white/10 text-slate-200">DD</span>
-                        ) : null}
+                        <span className="inline-flex items-center justify-end gap-1.5">
+                          {l.td ? (
+                            <span className="pill bg-raptor/20 text-gold">TD</span>
+                          ) : l.dd ? (
+                            <span className="pill bg-white/10 text-slate-200">DD</span>
+                          ) : null}
+                          {formatFp(l.fp)}
+                        </span>
                       </td>
                     </tr>
                   ))}
@@ -409,6 +419,37 @@ export default async function PlayerPage({ params, searchParams }: { params: Par
         </div>
       </div>
     </div>
+  );
+}
+
+function rankMarkClass(rank: number): string {
+  if (rank === 1) return "rank-prismatic";
+  if (rank === 2) return "rank-opal";
+  if (rank <= 5) return "rank-pink";
+  if (rank <= 10) return "rank-gold";
+  if (rank <= 25) return "rank-orange";
+  if (rank <= 50) return "rank-purple";
+  if (rank <= 100) return "rank-blue";
+  if (rank <= 200) return "rank-green";
+  if (rank <= 400) return "rank-white";
+  return "rank-grey";
+}
+
+function SeasonRankMark({ rank, href }: { rank: FpRank; href?: string }) {
+  const inner = (
+    <>
+      <p className="rank-kicker text-[11px] font-semibold uppercase tracking-wider">Season Rank</p>
+      <p className="rank-num mt-1 text-5xl font-black tabular-nums leading-none sm:text-6xl">{rank.rank}</p>
+      <p className="rank-of mt-2 text-xs tabular-nums">of {rank.of} players</p>
+    </>
+  );
+  const cls = `rank-mark flex shrink-0 flex-col items-center justify-center rounded-lg border-2 px-7 py-4 sm:min-w-[9.5rem] ${rankMarkClass(rank.rank)}`;
+  return href ? (
+    <Link href={href} className={cls} title="Season player leaders">
+      {inner}
+    </Link>
+  ) : (
+    <div className={cls}>{inner}</div>
   );
 }
 

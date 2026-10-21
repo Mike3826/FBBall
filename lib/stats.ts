@@ -129,6 +129,18 @@ export function toYmd(d: Date): string {
   return `${y}-${m}-${day}`;
 }
 
+export type FpRank = { rank: number; of: number };
+
+/** Competition rank in a list already sorted by fantasy points descending. */
+export function rankInFpList<T>(sortedDesc: T[], pred: (row: T) => boolean, fp: (row: T) => number): FpRank | null {
+  const i = sortedDesc.findIndex(pred);
+  if (i < 0) return null;
+  const value = fp(sortedDesc[i]);
+  let rank = i + 1;
+  while (rank > 1 && fp(sortedDesc[rank - 2]) === value) rank--;
+  return { rank, of: sortedDesc.length };
+}
+
 export type PeriodPlayerTotal = {
   key: string;
   displayName: string;
