@@ -4,28 +4,27 @@ import PlayerLink from "@/components/PlayerLink";
 import { SECTION_ITEMS } from "@/lib/nav";
 import { LIVE_TTL_MS } from "@/lib/nba";
 import {
-  draftResults,
   formatDate,
-  formatPlayerName,
   formatShortDate,
   getCurrentPeriod,
   getMatchupsForPeriod,
-  getTeamName,
   isTeamSide,
   leagueInfo,
-  playerMap,
   standingsRows,
 } from "@/lib/data";
+import { formatFp } from "@/lib/scoring";
 import { getStats } from "@/lib/stats";
 
 const SECTION_BLURBS: Record<string, string> = {
-  "/live": "This week's matchups, live scores, and every team's counting lineup.",
+  "/live": "This week's matchups, live scores, and every team's bestball lineup.",
   "/teams": "Rosters, records, and points for all 10 franchises.",
   "/players": "Search the full player pool — rostered, free agents, and waivers.",
   "/daily-rankings": "Who produced the most fantasy points last night.",
   "/weekly-rankings": "Top performers for the current scoring period.",
-  "/analytics": "Draft breakdowns, roster construction, and league trends.",
-  "/trade-log": "Every deal in league history.",
+  "/season": "Season-long team points and player leaders.",
+  "/analytics": "To be implemented soon.",
+  "/transactions": "Every deal in league history.",
+  "/history": "Champions, playoff brackets, and final rosters from past seasons.",
 };
 
 export const dynamic = "force-dynamic";
@@ -35,9 +34,8 @@ export default async function HomePage() {
   const period = getCurrentPeriod();
   const matchups = period ? getMatchupsForPeriod(period.number) : [];
   const standingsById = new Map(standingsRows.map((s) => [s.teamId, s]));
-  const recentPicks = [...draftResults.draftPicks].sort((a, b) => b.pick - a.pick).slice(0, 8);
   const latestDate = stats.gameDates.at(-1);
-  const topScorers = latestDate ? stats.dailyLeaders(latestDate).slice(0, 8) : [];
+  const topScorers = latestDate ? stats.dailyLeaders(latestDate).slice(0, 10) : [];
 
   return (
     <div className="space-y-8">
@@ -108,7 +106,7 @@ export default async function HomePage() {
                     </td>
                     <td className="text-right tabular-nums">{s.points}</td>
                     <td className="text-right tabular-nums text-slate-400">{s.winPercentage.toFixed(3)}</td>
-                    <td className="text-right tabular-nums font-semibold">{s.totalPointsFor.toFixed(2)}</td>
+                    <td className="text-right tabular-nums font-semibold">{formatFp(s.totalPointsFor)}</td>
                     <td className="text-right tabular-nums text-slate-400">{s.gamesBack}</td>
                   </tr>
                 ))}
@@ -118,11 +116,11 @@ export default async function HomePage() {
         </section>
 
         {/* Matchups */}
-        <section className="card">
+        <section className="card flex h-full flex-col">
           <div className="border-b-2 border-white/15 px-5 py-3">
             <h2 className="card-title">Week {period?.number} Matchups</h2>
           </div>
-          <ul className="divide-y divide-white/5">
+          <ul className="flex flex-1 flex-col divide-y divide-white/5">
             {matchups.map((m, i) => {
               const away = isTeamSide(m.away) ? m.away : null;
               const home = isTeamSide(m.home) ? m.home : null;
@@ -130,18 +128,18 @@ export default async function HomePage() {
               const a = standingsById.get(away.id);
               const h = standingsById.get(home.id);
               return (
-                <li key={i} className="px-5 py-3 text-sm">
+                <li key={i} className="flex flex-1 flex-col justify-center px-5 text-sm">
                   <div className="flex items-center justify-between">
                     <Link href={`/teams/${away.id}`} className="truncate hover:text-gold">
                       {away.name}
                     </Link>
-                    <span className="ml-3 tabular-nums text-slate-300">{a?.totalPointsFor.toFixed(1)}</span>
+                    <span className="ml-3 tabular-nums text-slate-300">{a ? formatFp(a.totalPointsFor) : ""}</span>
                   </div>
                   <div className="mt-1 flex items-center justify-between">
                     <Link href={`/teams/${home.id}`} className="truncate hover:text-gold">
                       {home.name}
                     </Link>
-                    <span className="ml-3 tabular-nums text-slate-300">{h?.totalPointsFor.toFixed(1)}</span>
+                    <span className="ml-3 tabular-nums text-slate-300">{h ? formatFp(h.totalPointsFor) : ""}</span>
                   </div>
                 </li>
               );
@@ -151,26 +149,6 @@ export default async function HomePage() {
       </div>
 
       <div className="grid gap-6 lg:grid-cols-3">
-        {/* Scoring */}
-        <section className="card">
-          <div className="border-b-2 border-white/15 px-5 py-3">
-            <h2 className="card-title">Scoring</h2>
-          </div>
-          <ul className="grid grid-cols-3 gap-px bg-white/5 text-sm sm:grid-cols-3">
-            {leagueInfo.scoring.map((rule) => (
-              <li key={rule.code} className="bg-court-2 px-4 py-3">
-                <div className="text-xs text-slate-400">{rule.shortName}</div>
-                <div
-                  className={`text-lg font-bold tabular-nums ${rule.points < 0 ? "text-rose-400" : "text-white"}`}
-                >
-                  {rule.points > 0 ? "+" : ""}
-                  {rule.points}
-                </div>
-              </li>
-            ))}
-          </ul>
-        </section>
-
         {/* Top scorers */}
         <section className="card lg:col-span-2">
           <div className="flex items-center justify-between border-b-2 border-white/15 px-5 py-3">
@@ -210,7 +188,7 @@ export default async function HomePage() {
                       <td className="whitespace-nowrap text-slate-400">
                         {r.pts} pts · {r.reb} reb · {r.ast} ast{r.stl ? ` · ${r.stl} stl` : ""}{r.blk ? ` · ${r.blk} blk` : ""}
                       </td>
-                      <td className="text-right tabular-nums font-bold text-gold">{r.fp.toFixed(1)}</td>
+                      <td className={`text-right tabular-nums font-bold ${r.fp > 50 ? "text-parse-pink" : "text-gold"}`}>{formatFp(r.fp)}</td>
                       <td>
                         {r.fantasyTeamId ? (
                           <Link href={`/teams/${r.fantasyTeamId}`} className="hover:text-gold">{r.fantasyTeamName}</Link>
@@ -225,50 +203,23 @@ export default async function HomePage() {
             </div>
           )}
         </section>
-      </div>
 
-      <div className="grid gap-6 lg:grid-cols-3">
-        {/* Recent draft picks */}
-        <section className="card lg:col-span-3">
-          <div className="flex items-center justify-between border-b-2 border-white/15 px-5 py-3">
-            <h2 className="card-title">Rookie Draft · {formatDate(draftResults.draftDate)}</h2>
-            <Link href="/analytics" className="text-xs text-gold hover:underline">
-              Draft analytics
-            </Link>
+        {/* Scoring */}
+        <section className="card flex h-full flex-col">
+          <div className="border-b-2 border-white/15 px-5 py-3">
+            <h2 className="card-title">Scoring</h2>
           </div>
-          <div className="overflow-x-auto">
-            <table className="table-base">
-              <thead>
-                <tr>
-                  <th>Pick</th>
-                  <th>Player</th>
-                  <th>NBA</th>
-                  <th>Team</th>
-                </tr>
-              </thead>
-              <tbody>
-                {recentPicks.map((pick) => {
-                  const p = playerMap[pick.playerId];
-                  return (
-                    <tr key={pick.pick}>
-                      <td className="tabular-nums text-slate-400">
-                        {pick.round}.{String(pick.pickInRound).padStart(2, "0")}
-                      </td>
-                      <td className="font-medium text-white">
-                        <PlayerLink id={p?.id}>{p ? formatPlayerName(p.name) : pick.playerId}</PlayerLink>
-                      </td>
-                      <td className="text-slate-400">{p?.nbaTeam}</td>
-                      <td>
-                        <Link href={`/teams/${pick.teamId}`} className="hover:text-gold">
-                          {getTeamName(pick.teamId)}
-                        </Link>
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
+          <ul className="flex flex-1 flex-col divide-y divide-white/5">
+            {leagueInfo.scoring.map((rule) => (
+              <li key={rule.code} className="flex flex-1 items-center justify-between px-5">
+                <span className="text-sm text-slate-400">{rule.name}</span>
+                <span className={`text-sm font-bold tabular-nums ${rule.points < 0 ? "text-rose-400" : "text-white"}`}>
+                  {rule.points > 0 ? "+" : ""}
+                  {rule.points}
+                </span>
+              </li>
+            ))}
+          </ul>
         </section>
       </div>
     </div>

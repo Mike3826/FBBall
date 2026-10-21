@@ -11,6 +11,7 @@ import {
   standingsRows,
 } from "@/lib/data";
 import { LIVE_TTL_MS } from "@/lib/nba";
+import { formatFp } from "@/lib/scoring";
 import { getFantasyTeamTotals, getStats, updatedLabel } from "@/lib/stats";
 
 export const metadata = { title: "Weekly Rankings" };
@@ -26,7 +27,7 @@ export default async function WeeklyRankingsPage({ searchParams }: { searchParam
   const logs = stats.logsInPeriod(period);
   const leaders = stats.periodLeaders(period);
   const computed = getFantasyTeamTotals(logs);
-  const official = new Map(standingsRows.map((s) => [s.teamId, s.totalPointsFor]));
+  const records = new Map(standingsRows.map((s) => [s.teamId, s.points]));
   const max = Math.max(computed[0]?.fp ?? 0, 1);
   const avg = computed.reduce((s, r) => s + r.fp, 0) / (computed.length || 1);
   const anyLive = logs.some((l) => l.live);
@@ -76,7 +77,7 @@ export default async function WeeklyRankingsPage({ searchParams }: { searchParam
           <div className="flex items-center justify-between border-b-2 border-white/15 px-5 py-3">
             <h2 className="card-title">Team Points · Week {period.number}</h2>
             <span className="text-xs text-slate-500">
-              Avg {avg.toFixed(1)}
+              Avg {formatFp(avg)}
               {anyLive && <span className="ml-2 inline-flex items-center gap-1 text-rose-400"><span className="h-1.5 w-1.5 animate-pulse rounded-full bg-rose-400" />live</span>}
             </span>
           </div>
@@ -84,9 +85,7 @@ export default async function WeeklyRankingsPage({ searchParams }: { searchParam
             <p className="px-5 py-10 text-center text-sm text-slate-500">No game logs for this week yet.</p>
           ) : (
             <ol className="divide-y divide-white/5">
-              {computed.map((t, i) => {
-                const off = official.get(t.teamId);
-                return (
+              {computed.map((t, i) => (
                   <li key={t.teamId} className="px-5 py-3">
                     <div className="flex items-center justify-between text-sm">
                       <span className="flex items-center gap-3">
@@ -94,23 +93,17 @@ export default async function WeeklyRankingsPage({ searchParams }: { searchParam
                         <Link href={`/teams/${t.teamId}`} className="font-medium text-white hover:text-gold">
                           {t.teamName}
                         </Link>
-                        <span className="text-xs text-slate-500">{t.playerGames} player-games</span>
-                      </span>
-                      <span className="tabular-nums">
-                        <span className="font-semibold">{t.fp.toFixed(2)}</span>
-                        {isCurrent && off !== undefined && (
-                          <span className="ml-2 text-xs text-slate-500" title="Official Fantrax points for">
-                            Fantrax {off.toFixed(2)}
-                          </span>
+                        {records.get(t.teamId) && (
+                          <span className="text-xs tabular-nums text-slate-500">{records.get(t.teamId)}</span>
                         )}
                       </span>
+                      <span className="tabular-nums font-semibold">{formatFp(t.fp)}</span>
                     </div>
                     <div className="ml-8 mt-2 h-1.5 overflow-hidden rounded-full bg-white/5">
                       <div className="h-full rounded-full bg-raptor" style={{ width: `${(t.fp / max) * 100}%` }} />
                     </div>
                   </li>
-                );
-              })}
+              ))}
             </ol>
           )}
         </section>
@@ -135,15 +128,15 @@ export default async function WeeklyRankingsPage({ searchParams }: { searchParam
                   <li key={i} className="px-5 py-3">
                     <div className="flex justify-between gap-3">
                       <Link href={`/teams/${m.away.id}`} className={`truncate hover:text-gold ${a >= h ? "text-white" : "text-slate-400"}`}>{m.away.name}</Link>
-                      <span className="tabular-nums">{a.toFixed(1)}</span>
+                      <span className="tabular-nums">{formatFp(a)}</span>
                     </div>
                     <div className="flex justify-between gap-3">
                       <Link href={`/teams/${m.home.id}`} className={`truncate hover:text-gold ${h > a ? "text-white" : "text-slate-400"}`}>{m.home.name}</Link>
-                      <span className="tabular-nums">{h.toFixed(1)}</span>
+                      <span className="tabular-nums">{formatFp(h)}</span>
                     </div>
                     {(a || h) > 0 && (
                       <div className="mt-1 text-xs text-slate-500">
-                        {(a >= h ? m.away : m.home).shortName} by {Math.abs(a - h).toFixed(1)}
+                        {(a >= h ? m.away : m.home).shortName} by {formatFp(Math.abs(a - h))}
                       </div>
                     )}
                   </li>

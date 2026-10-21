@@ -4,8 +4,8 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 /**
- * Re-fetches the current server component tree on an interval while the tab is
- * visible, and immediately when the tab regains focus. Client state (filters,
+ * Re-fetches the current server component tree when the countdown hits 0, and
+ * immediately when the tab becomes visible again. Client state (filters,
  * calculator inputs) is preserved across refreshes.
  */
 export default function AutoRefresh({ intervalMs = 60_000, label }: { intervalMs?: number; label?: string }) {
@@ -13,24 +13,31 @@ export default function AutoRefresh({ intervalMs = 60_000, label }: { intervalMs
   const [secondsLeft, setSecondsLeft] = useState(Math.round(intervalMs / 1000));
 
   useEffect(() => {
-    let left = Math.round(intervalMs / 1000);
+    const intervalSec = Math.round(intervalMs / 1000);
+    let deadline = Date.now() + intervalMs;
+
+    const refresh = () => {
+      deadline = Date.now() + intervalMs;
+      setSecondsLeft(intervalSec);
+      router.refresh();
+    };
+
     const tick = () => {
       if (document.visibilityState !== "visible") return;
-      left -= 1;
-      if (left <= 0) {
-        left = Math.round(intervalMs / 1000);
-        router.refresh();
+      const remaining = deadline - Date.now();
+      if (remaining <= 0) {
+        setSecondsLeft(0);
+        refresh();
+        return;
       }
-      setSecondsLeft(left);
+      setSecondsLeft(Math.max(1, Math.ceil(remaining / 1000)));
     };
+
     const onVisible = () => {
-      if (document.visibilityState === "visible") {
-        left = Math.round(intervalMs / 1000);
-        setSecondsLeft(left);
-        router.refresh();
-      }
+      if (document.visibilityState === "visible") refresh();
     };
-    const id = setInterval(tick, 1000);
+
+    const id = setInterval(tick, 250);
     document.addEventListener("visibilitychange", onVisible);
     return () => {
       clearInterval(id);

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import PageHeader from "@/components/PageHeader";
 import PlayerLink from "@/components/PlayerLink";
-import PosPill from "@/components/PosPill";
+import TeamRosterTable from "@/components/TeamRosterTable";
 import {
   draftResults,
   formatPlayerName,
@@ -15,6 +15,10 @@ import {
   standingsRows,
   teams,
 } from "@/lib/data";
+import { bestballWeekCounts } from "@/lib/lineups";
+import { getRotowireProfile } from "@/lib/rotowire";
+import { formatFp } from "@/lib/scoring";
+import { getStats } from "@/lib/stats";
 
 export function generateStaticParams() {
   return teams.map((t) => ({ teamId: t.id }));
@@ -25,6 +29,8 @@ export async function generateMetadata({ params }: { params: Promise<{ teamId: s
   return { title: getTeam(teamId)?.name ?? "Team" };
 }
 
+export const dynamic = "force-dynamic";
+
 export default async function TeamPage({ params }: { params: Promise<{ teamId: string }> }) {
   const { teamId } = await params;
   const team = getTeam(teamId);
@@ -33,6 +39,19 @@ export default async function TeamPage({ params }: { params: Promise<{ teamId: s
   const standing = standingsRows.find((s) => s.teamId === teamId);
   const roster = getRoster(teamId);
   const picks = draftResults.draftPicks.filter((p) => p.teamId === teamId);
+  const stats = await getStats();
+  const weekCounts = bestballWeekCounts(teamId, stats);
+  const season = new Map(stats.seasonLeaders().filter((t) => t.fantraxId).map((t) => [t.fantraxId!, t]));
+  const ages = Object.fromEntries(
+    await Promise.all(
+      roster.map(async (p) => {
+        if (!p.rotowireId) return [p.id, null] as const;
+        const roto = await getRotowireProfile(p.rotowireId);
+        const n = Number.parseInt(roto?.age ?? "", 10);
+        return [p.id, Number.isFinite(n) ? n : null] as const;
+      }),
+    ),
+  );
 
   const schedule = leagueInfo.matchups
     .filter((mp) => mp.period <= leagueInfo.playoffs.lastRegularSeasonPeriod)
@@ -50,7 +69,7 @@ export default async function TeamPage({ params }: { params: Promise<{ teamId: s
 
   return (
     <div className="space-y-6">
-      <PageHeader title={team.name} subtitle={standing ? `#${standing.rank} · ${standing.points} · ${standing.totalPointsFor.toFixed(2)} PF` : undefined}>
+      <PageHeader title={team.name} subtitle={standing ? `#${standing.rank} · ${standing.points} · ${formatFp(standing.totalPointsFor)} PF` : undefined}>
         <Link href="/teams" className="text-sm text-gold hover:underline">
           ← All teams
         </Link>
@@ -62,36 +81,22 @@ export default async function TeamPage({ params }: { params: Promise<{ teamId: s
             <h2 className="card-title">Roster ({roster.length})</h2>
             <span className="text-xs text-slate-500">Max {leagueInfo.rosterInfo.maxTotalPlayers}</span>
           </div>
-          <div className="overflow-x-auto">
-            <table className="table-base">
-              <thead>
-                <tr>
-                  <th>Slot</th>
-                  <th>Player</th>
-                  <th>NBA</th>
-                  <th>Pos</th>
-                  <th>Eligible</th>
-                </tr>
-              </thead>
-              <tbody>
-                {roster.map((p) => (
-                  <tr key={p.id}>
-                    <td>
-                      <span className={`pill pill-${p.rosterPosition}`}>{p.rosterPosition}</span>
-                    </td>
-                    <td className="font-medium text-white">
-                      <PlayerLink id={p.id}>{formatPlayerName(p.name)}</PlayerLink>
-                    </td>
-                    <td className="text-slate-400">{p.nbaTeam}</td>
-                    <td className="text-slate-400">{p.position}</td>
-                    <td>
-                      <PosPill pos={p.eligiblePos} />
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <TeamRosterTable
+            rows={roster.map((p) => {
+              const tot = season.get(p.id);
+              return {
+                id: p.id,
+                name: formatPlayerName(p.name),
+                nbaTeam: p.nbaTeam,
+                rosterPosition: p.rosterPosition,
+                eligiblePos: p.eligiblePos,
+                age: ages[p.id] ?? null,
+                games: tot?.games ?? 0,
+                fppg: tot && tot.games ? tot.avg : null,
+                weeks: weekCounts[p.id] ?? 0,
+              };
+            })}
+          />
         </section>
 
         <div className="space-y-6">

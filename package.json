@@ -11,7 +11,9 @@
     "fetch-data": "node scripts/fetch-fantrax.mjs",
     "fetch-stats": "node scripts/fetch-nba-stats.mjs",
     "fetch-transactions": "node scripts/fetch-fantrax-transactions.mjs",
-    "fetch-all": "npm run fetch-data && npm run fetch-stats && npm run fetch-transactions"
+    "fetch-history": "node scripts/fetch-history.mjs",
+    "fetch-history-league": "node scripts/fetch-history-league.mjs",
+    "fetch-all": "npm run fetch-data && npm run fetch-stats && npm run fetch-transactions && npm run fetch-history && npm run fetch-history-league"
   },
   "dependencies": {
     "next": "^15.3.0",

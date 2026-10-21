@@ -1,11 +1,5 @@
-// Pulls NBA player game logs from stats.nba.com for the current season, adds
-// live box scores for tonight's in-progress games, matches each NBA player to
-// a Fantrax player ID, and writes everything to data/gamelogs.json.
-//
-// NOTE: the running site no longer reads this file for live data — lib/nba.ts
-// does the same fetch in-process and refreshes every 60s. data/gamelogs.json is
-// only the offline fallback used if the NBA endpoints are unreachable, so run
-// this occasionally to keep that fallback reasonably fresh.
+// Optional local dump of NBA player game logs. The running site does not read
+// this file — live pages always fetch ESPN/NBA on request.
 //
 // Run with: npm run fetch-stats
 import { readFile, writeFile } from "node:fs/promises";

@@ -2,11 +2,11 @@ import Link from "next/link";
 import AutoRefresh from "@/components/AutoRefresh";
 import PageHeader from "@/components/PageHeader";
 import PublishToDiscordButton from "@/components/PublishToDiscordButton";
-import ScoringCalculator from "@/components/ScoringCalculator";
 import StatLeaderboard from "@/components/StatLeaderboard";
 import { formatDate, getCurrentPeriod, leagueInfo } from "@/lib/data";
-import { LIVE_TTL_MS } from "@/lib/nba";
-import { datesInPeriod, getFantasyTeamTotals, getStats, publishableDate, toYmd, updatedLabel } from "@/lib/stats";
+import { LIVE_TTL_MS, todayEt } from "@/lib/nba";
+import { formatFp } from "@/lib/scoring";
+import { datesInPeriod, getFantasyTeamTotals, getStats, publishableDate, updatedLabel } from "@/lib/stats";
 
 export const metadata = { title: "Daily Rankings" };
 export const dynamic = "force-dynamic";
@@ -19,7 +19,7 @@ export default async function DailyRankingsPage({ searchParams }: { searchParams
   const [{ date: requested }, stats] = await Promise.all([searchParams, getStats()]);
   const period = getCurrentPeriod();
   const gameDates = stats.gameDates;
-  const today = toYmd(new Date());
+  const today = todayEt();
 
   // Default to the most recent date with data (usually tonight), else today.
   const latestWithData = [...gameDates].reverse().find((d) => d <= today) ?? gameDates[gameDates.length - 1];
@@ -70,33 +70,38 @@ export default async function DailyRankingsPage({ searchParams }: { searchParams
         })}
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-3">
-        <section className="card lg:col-span-2">
-          <div className="flex items-center justify-between border-b-2 border-white/15 px-5 py-3">
-            <h2 className="card-title">Leaderboard · {labelFor(date, { weekday: "long", month: "short", day: "numeric" })}</h2>
-            <span className="text-xs text-slate-500">
-              {leaders.length} players
-              {anyLive && <span className="ml-2 inline-flex items-center gap-1 text-rose-400"><span className="h-1.5 w-1.5 animate-pulse rounded-full bg-rose-400" />live</span>}
-            </span>
+      <section className="card">
+        <div className="flex items-center justify-between border-b-2 border-white/15 px-5 py-3">
+          <h2 className="card-title">Leaderboard · {labelFor(date, { weekday: "long", month: "short", day: "numeric" })}</h2>
+          <span className="text-xs text-slate-500">
+            {leaders.length} players
+            {anyLive && (
+              <span className="ml-2 inline-flex items-center gap-1 text-rose-400">
+                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-rose-400" />
+                live
+              </span>
+            )}
+          </span>
+        </div>
+        {leaders.length === 0 ? (
+          <div className="px-5 py-12 text-center">
+            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-white/5 text-2xl">🏀</div>
+            <p className="mt-4 text-sm font-medium text-white">No box scores for this date</p>
+            <p className="mx-auto mt-1 max-w-md text-sm text-slate-400">
+              {date > today
+                ? "Games haven't been played yet."
+                : date < leagueInfo.startDate
+                  ? `The season tips off ${formatDate(leagueInfo.startDate)}.`
+                  : "No games were played on this date."}
+            </p>
           </div>
-          {leaders.length === 0 ? (
-            <div className="px-5 py-12 text-center">
-              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-white/5 text-2xl">🏀</div>
-              <p className="mt-4 text-sm font-medium text-white">No box scores for this date</p>
-              <p className="mx-auto mt-1 max-w-md text-sm text-slate-400">
-                {date > today
-                  ? "Games haven't been played yet."
-                  : date < leagueInfo.startDate
-                    ? `The season tips off ${formatDate(leagueInfo.startDate)}.`
-                    : "No games were played on this date."}
-              </p>
-            </div>
-          ) : (
-            <StatLeaderboard rows={leaders} mode="daily" />
-          )}
-        </section>
+        ) : (
+          <StatLeaderboard rows={leaders} mode="daily" />
+        )}
+      </section>
 
-        <div className="space-y-6">
+      {(games.length > 0 || teamTotals.length > 0) && (
+        <div className="grid gap-6 lg:grid-cols-2">
           {games.length > 0 && (
             <section className="card">
               <div className="border-b-2 border-white/15 px-5 py-3">
@@ -106,9 +111,13 @@ export default async function DailyRankingsPage({ searchParams }: { searchParams
                 {games.map((g) => (
                   <li key={g.gameId} className="flex items-center justify-between px-5 py-2.5">
                     <span className="tabular-nums">
-                      <span className={g.awayScore > g.homeScore ? "text-white" : "text-slate-400"}>{g.away} {g.awayScore}</span>
+                      <span className={g.awayScore > g.homeScore ? "text-white" : "text-slate-400"}>
+                        {g.away} {g.awayScore}
+                      </span>
                       <span className="mx-2 text-slate-600">@</span>
-                      <span className={g.homeScore > g.awayScore ? "text-white" : "text-slate-400"}>{g.home} {g.homeScore}</span>
+                      <span className={g.homeScore > g.awayScore ? "text-white" : "text-slate-400"}>
+                        {g.home} {g.homeScore}
+                      </span>
                     </span>
                     <span className={`text-xs ${g.status === 2 ? "text-rose-400" : "text-slate-500"}`}>{g.statusText.trim()}</span>
                   </li>
@@ -132,7 +141,7 @@ export default async function DailyRankingsPage({ searchParams }: { searchParams
                       </Link>
                     </span>
                     <span className="ml-3 shrink-0 tabular-nums">
-                      <span className="font-semibold">{t.fp.toFixed(1)}</span>
+                      <span className="font-semibold">{formatFp(t.fp)}</span>
                       <span className="ml-2 text-xs text-slate-500">{t.playerGames} gp</span>
                     </span>
                   </li>
@@ -140,17 +149,8 @@ export default async function DailyRankingsPage({ searchParams }: { searchParams
               </ol>
             </section>
           )}
-
-          <section className="card">
-            <div className="border-b-2 border-white/15 px-5 py-3">
-              <h2 className="card-title">Scoring Calculator</h2>
-            </div>
-            <div className="p-5">
-              <ScoringCalculator rules={leagueInfo.scoring} />
-            </div>
-          </section>
         </div>
-      </div>
+      )}
     </div>
   );
 }

@@ -4,11 +4,16 @@
 // monospace tables and uses native markdown instead: one bold headline per
 // player with a small-text (-#) stat line underneath.
 import { getCurrentPeriod, leagueInfo, playerMap } from "@/lib/data";
+import { formatFp } from "@/lib/scoring";
 import { getStats, publishableDate, type ScoredLog, type Stats } from "@/lib/stats";
 
 const RAPTOR_RED = 0xce1141;
 const GOLD = 0xb4975a;
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : null) ??
+  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null) ??
+  "http://localhost:3000";
 
 const RANK = ["🥇", "🥈", "🥉", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣", "9️⃣", "🔟"];
 
@@ -38,7 +43,7 @@ function ownerLabel(r: ScoredLog): string {
 export function formatPlayerEntry(r: ScoredLog, index: number): string {
   const badges = [r.td ? "🔥 TD" : r.dd ? "DD" : null, r.live ? "🔴 LIVE" : null].filter(Boolean).join(" · ");
   const matchup = `${r.team} ${r.opponent.replace(/^@/, "@ ")}`;
-  const headline = `${RANK[index] ?? `**${index + 1}.**`} **${r.displayName}** · ${matchup} · **${r.fp.toFixed(2)}**${badges ? ` · ${badges}` : ""}`;
+  const headline = `${RANK[index] ?? `**${index + 1}.**`} **${r.displayName}** · ${matchup} · **${formatFp(r.fp)}**${badges ? ` · ${badges}` : ""}`;
   const detail = `-# ${statLine(r)} — ${ownerLabel(r)}`;
   return `${headline}\n${detail}`;
 }

@@ -12,6 +12,8 @@
   --color-gold: #b4975a;
   --color-gold-soft: #cdb67f;
   --color-silver: #a1a1a4;
+  /* Warcraft Logs 99th-percentile / pink parse */
+  --color-parse-pink: #e268a8;
 
   --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
 }
@@ -38,6 +40,9 @@ body {
 .table-base thead th {
   @apply border-b-2 border-white/15 px-3 py-2 text-left text-xs font-bold uppercase tracking-wider text-slate-400;
 }
+.table-base thead th.text-right {
+  text-align: right;
+}
 .table-base tbody td {
   @apply border-b border-white/10 px-3 py-2;
 }
@@ -55,12 +60,19 @@ body {
 .pill {
   @apply inline-flex items-center rounded px-1.5 py-0.5 text-[11px] font-bold leading-none;
 }
-.pill-G {
+.pill-G,
+.pill-PG,
+.pill-SG {
   @apply bg-raptor/15 text-raptor-soft;
 }
-.pill-F {
+.pill-F,
+.pill-SF,
+.pill-PF {
   @apply bg-gold/15 text-gold-soft;
 }
 .pill-C {
   @apply bg-silver/15 text-slate-200;
+}
+.pill-Flx {
+  @apply bg-white/10 text-slate-300;
 }

@@ -1,5 +1,5 @@
 import transactionsJson from "@/data/transactions.json";
-import { formatPlayerName, getTeamName, playerMap } from "@/lib/data";
+import { formatPlayerName, getTeam, playerMap } from "@/lib/data";
 
 export type Move = {
   teamId: string | null;
@@ -22,6 +22,8 @@ export type Transaction = {
   date: string | null;
   dateText: string | null;
   week?: number | string | null;
+  season?: string;
+  leagueId?: string;
   type: string; // TRADE | FA | WAIVER | CLAIM | DROP | MULTI | ...
   teams: string[];
   moves: Move[];
@@ -30,10 +32,17 @@ export type Transaction = {
 export const transactionsFile = transactionsJson as {
   fetchedAt: string | null;
   leagueId: string;
+  seasons?: string[];
   transactions: Transaction[];
 };
 
 export const transactions = transactionsFile.transactions;
+
+export function transactionSeasons(): string[] {
+  const fromFile = transactionsFile.seasons ?? [];
+  const fromRows = transactions.map((t) => t.season).filter((s): s is string => Boolean(s));
+  return [...new Set([...fromFile, ...fromRows])].sort((a, b) => b.localeCompare(a));
+}
 
 export function playerLabel(m: Move): string {
   if (m.playerId && playerMap[m.playerId]) {
@@ -45,7 +54,11 @@ export function playerLabel(m: Move): string {
 }
 
 export function teamLabel(m: Move): string {
-  return (m.teamId && getTeamName(m.teamId)) || m.teamName || "Unknown";
+  return (m.teamId && getTeam(m.teamId)?.name) || m.teamName || "Unknown";
+}
+
+export function currentTeamId(teamId: string | null | undefined): string | null {
+  return teamId && getTeam(teamId) ? teamId : null;
 }
 
 export function transactionTime(t: Transaction): string {

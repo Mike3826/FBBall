@@ -64,6 +64,7 @@ export type Stats = {
   playerLogs(fantraxId: string): ScoredLog[];
   logsInPeriod(period: ScoringPeriod): ScoredLog[];
   periodLeaders(period: ScoringPeriod): PeriodPlayerTotal[];
+  seasonLeaders(): PeriodPlayerTotal[];
 };
 
 // Scored logs are derived once per snapshot, not once per request.
@@ -93,10 +94,11 @@ function buildStats(snapshot: GameLogSnapshot): Stats {
     playerLogs: (id) => [...(byPlayer.get(id) ?? [])].sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0)),
     logsInPeriod,
     periodLeaders: (period) => aggregatePeriod(logsInPeriod(period)),
+    seasonLeaders: () => aggregatePeriod(logs),
   };
 }
 
-/** Live stats (cached in-process, refreshed every 60s — see lib/nba.ts). */
+/** Live stats. Each call waits for a fresh ESPN/NBA fetch (see lib/nba.ts). */
 export async function getStats(): Promise<Stats> {
   const snapshot = await getLiveGameLogs();
   let stats = scoredCache.get(snapshot);

@@ -153,6 +153,15 @@ function groupTransactions(rows, view) {
   return transactions;
 }
 
+function withSeason(transactions, season, leagueId) {
+  return transactions.map((t) => ({
+    ...t,
+    id: `${season}:${t.id}`,
+    season,
+    leagueId,
+  }));
+}
+
 async function fetchView(leagueId, cookie, view) {
   const rows = [];
   let raw = null;
@@ -169,9 +178,16 @@ async function fetchView(leagueId, cookie, view) {
   return { rows, raw };
 }
 
+const LEAGUES = [
+  { season: "2026-27", leagueId: process.env.FANTRAX_LEAGUE_ID ?? "r7yj6bpwmtswkp9p" },
+  { season: "2025-26", leagueId: "gxsj9v2rmasp79bn" },
+  { season: "2024-25", leagueId: "mp1mk7uvm1wpjzzy" },
+  { season: "2023-24", leagueId: "pjk1j1yvlmshtwjz" },
+  { season: "2022-23", leagueId: "j39mgjepl772iy46" },
+];
+
 async function main() {
   await loadDotEnv(path.resolve(process.cwd(), ".env.local"));
-  const leagueId = process.env.FANTRAX_LEAGUE_ID ?? "r7yj6bpwmtswkp9p";
   const cookie = process.env.FANTRAX_COOKIE;
   if (!cookie) {
     console.error("FANTRAX_COOKIE is not set. See the comment at the top of scripts/fetch-fantrax-transactions.mjs.");
@@ -179,23 +195,34 @@ async function main() {
     return;
   }
 
-  console.log(`Fetching transaction history for ${leagueId}...`);
   const raw = {};
   const transactions = [];
-  for (const view of ["TRADE", "CLAIM_DROP"]) {
-    const { rows, raw: viewRaw } = await fetchView(leagueId, cookie, view);
-    raw[view] = viewRaw;
-    const parsed = groupTransactions(rows, view);
-    transactions.push(...parsed);
-    console.log(`  ${view}: ${rows.length} rows -> ${parsed.length} transactions`);
+  for (const { season, leagueId } of LEAGUES) {
+    console.log(`Fetching ${season} (${leagueId})...`);
+    raw[season] = {};
+    let seasonCount = 0;
+    for (const view of ["TRADE", "CLAIM_DROP"]) {
+      const { rows, raw: viewRaw } = await fetchView(leagueId, cookie, view);
+      raw[season][view] = viewRaw;
+      const parsed = withSeason(groupTransactions(rows, view), season, leagueId);
+      transactions.push(...parsed);
+      seasonCount += parsed.length;
+      console.log(`  ${view}: ${rows.length} rows -> ${parsed.length} transactions`);
+    }
+    console.log(`  ${season} total: ${seasonCount}`);
   }
   await writeFile(path.join(DATA_DIR, "fantrax-transactions-raw.json"), JSON.stringify(raw, null, 2) + "\n");
 
   transactions.sort((a, b) => (b.date ?? "").localeCompare(a.date ?? ""));
   const trades = transactions.filter((t) => t.type === "TRADE");
-  console.log(`  total: ${transactions.length} transactions (${trades.length} trades)`);
+  console.log(`\nAll seasons: ${transactions.length} transactions (${trades.length} trades)`);
 
-  const out = { fetchedAt: new Date().toISOString(), leagueId, transactions };
+  const out = {
+    fetchedAt: new Date().toISOString(),
+    leagueId: LEAGUES[0].leagueId,
+    seasons: LEAGUES.map((l) => l.season),
+    transactions,
+  };
   await writeFile(path.join(DATA_DIR, "transactions.json"), JSON.stringify(out, null, 2) + "\n");
   console.log("Wrote data/transactions.json (raw response saved to data/fantrax-transactions-raw.json)");
 }

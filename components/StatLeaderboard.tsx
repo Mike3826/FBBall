@@ -1,5 +1,6 @@
 import Link from "next/link";
 import PlayerLink from "@/components/PlayerLink";
+import { formatFp } from "@/lib/scoring";
 import type { PeriodPlayerTotal, ScoredLog } from "@/lib/stats";
 
 type DailyProps = { mode: "daily"; rows: ScoredLog[]; limit?: number };
@@ -16,7 +17,7 @@ function OwnerCell({
 }) {
   if (id) {
     return (
-      <Link href={`/teams/${id}`} className="block max-w-[11rem] truncate hover:text-gold" title={name ?? undefined}>
+      <Link href={`/teams/${id}`} className="block max-w-[9rem] truncate hover:text-gold" title={name ?? undefined}>
         {name}
       </Link>
     );
@@ -79,7 +80,7 @@ export default function StatLeaderboard(props: DailyProps | WeeklyProps) {
                   <td className={num}>{r.blk}</td>
                   <td className={num}>{r.fg3m}</td>
                   <td className={`${num} text-slate-400`}>{r.tov}</td>
-                  <td className={`${num} font-bold text-gold`}>{r.fp.toFixed(2)}</td>
+                  <td className={`${num} font-bold ${r.fp > 50 ? "text-parse-pink" : "text-gold"}`}>{formatFp(r.fp)}</td>
                   <td>
                     <OwnerCell id={r.fantasyTeamId} name={r.fantasyTeamName} status={r.ownerStatus} />
                   </td>
@@ -102,8 +103,8 @@ export default function StatLeaderboard(props: DailyProps | WeeklyProps) {
                   <td className={num}>{r.blk}</td>
                   <td className={num}>{r.fg3m}</td>
                   <td className={`${num} text-slate-400`}>{r.tov}</td>
-                  <td className={`${num} font-bold text-gold`}>{r.fp.toFixed(2)}</td>
-                  <td className={`${num} text-slate-300`}>{r.avg.toFixed(1)}</td>
+                  <td className={`${num} font-bold text-gold`}>{formatFp(r.fp)}</td>
+                  <td className={`${num} text-slate-300`}>{formatFp(r.avg)}</td>
                   <td>
                     <OwnerCell id={r.fantasyTeamId} name={r.fantasyTeamName} status={r.ownerStatus} />
                   </td>

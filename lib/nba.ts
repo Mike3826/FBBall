@@ -1,11 +1,8 @@
-// Live NBA stats loader. Pulls season game logs from stats.nba.com and live box
-// scores from the NBA CDN, matches players to Fantrax IDs, and keeps the result
-// in an in-process cache that refreshes every LIVE_TTL_MS. Pages call
-// getLiveGameLogs(); the first call does a real fetch, later calls are instant
-// and revalidate in the background. data/gamelogs.json (written by
-// `npm run fetch-stats`) is used as a fallback if the NBA endpoints are down.
-import snapshotJson from "@/data/gamelogs.json";
-import { leagueInfo, playerMap, type Player } from "@/lib/data";
+// Live NBA stats loader. Scoreboard and box scores come from ESPN (NBA's own
+// CDN and stats.nba.com block most cloud IPs, including Vercel). Season logs
+// from stats.nba.com are used when that host responds. Pages always await a
+// live fetch — we do not serve a stale on-disk snapshot.
+import { getCurrentPeriod, leagueInfo, playerMap, type Player } from "@/lib/data";
 import type { StatLine } from "@/lib/scoring";
 
 export type GameLog = StatLine & {
@@ -59,13 +56,30 @@ const NBA_HEADERS = {
 
 const SEASON = `${leagueInfo.seasonYear}-${String(leagueInfo.seasonYear + 1).slice(-2)}`;
 
+const TRICODE_ALIASES: Record<string, string> = {
+  GS: "GSW",
+  NO: "NOP",
+  NY: "NYK",
+  SA: "SAS",
+  PHO: "PHX",
+  WSH: "WAS",
+  UTAH: "UTA",
+  UT: "UTA",
+};
+export const nbaTricode = (code: string) => TRICODE_ALIASES[code] ?? code;
+
+export function nbaTeamInGame(nbaTeam: string, game: Game): boolean {
+  const t = nbaTricode(nbaTeam);
+  return nbaTricode(game.home) === t || nbaTricode(game.away) === t;
+}
+
 // ---------------------------------------------------------------------------
 // NBA endpoints
 
-async function nba<T = unknown>(endpoint: string, params: Record<string, string>): Promise<T> {
+async function nba<T = unknown>(endpoint: string, params: Record<string, string>, timeoutMs = 8_000): Promise<T> {
   const url = new URL(`https://stats.nba.com/stats/${endpoint}`);
   for (const [k, v] of Object.entries(params)) url.searchParams.set(k, v);
-  const res = await fetch(url, { headers: NBA_HEADERS, cache: "no-store", signal: AbortSignal.timeout(30_000) });
+  const res = await fetch(url, { headers: NBA_HEADERS, cache: "no-store", signal: AbortSignal.timeout(timeoutMs) });
   if (!res.ok) throw new Error(`${endpoint} -> HTTP ${res.status}`);
   return res.json() as Promise<T>;
 }
@@ -144,7 +158,7 @@ async function fetchScoreboard(date: string): Promise<Game[]> {
     const res = await fetch("https://cdn.nba.com/static/json/liveData/scoreboard/todaysScoreboard_00.json", {
       headers: CDN_HEADERS,
       cache: "no-store",
-      signal: AbortSignal.timeout(15_000),
+      signal: AbortSignal.timeout(4_000),
     });
     if (res.ok) {
       const json = (await res.json()) as { scoreboard?: { gameDate?: string; games?: ScoreboardGame[] } };
@@ -184,7 +198,7 @@ async function fetchLiveBoxScore(game: Game): Promise<GameLog[]> {
   const res = await fetch(`https://cdn.nba.com/static/json/liveData/boxscore/boxscore_${game.gameId}.json`, {
     headers: CDN_HEADERS,
     cache: "no-store",
-    signal: AbortSignal.timeout(15_000),
+    signal: AbortSignal.timeout(4_000),
   });
   if (!res.ok) throw new Error(`live boxscore -> HTTP ${res.status}`);
   const box = ((await res.json()) as BoxScore).game;
@@ -223,6 +237,215 @@ async function fetchLiveBoxScore(game: Game): Promise<GameLog[]> {
 }
 
 // ---------------------------------------------------------------------------
+// ESPN fallback (works from Vercel; NBA CDN/stats often do not)
+
+const ESPN_HEADERS = {
+  "User-Agent": NBA_HEADERS["User-Agent"],
+  Accept: "application/json",
+};
+
+type EspnCompetitor = {
+  homeAway: "home" | "away";
+  score?: string;
+  team?: { abbreviation?: string };
+};
+type EspnEvent = {
+  id: string;
+  competitions?: {
+    competitors?: EspnCompetitor[];
+  }[];
+  status?: {
+    type?: { state?: string; name?: string; detail?: string; shortDetail?: string };
+  };
+};
+type EspnAthleteRow = {
+  didNotPlay?: boolean;
+  athlete?: { id?: string; displayName?: string };
+  stats?: string[];
+};
+type EspnBoxTeam = {
+  team?: { abbreviation?: string };
+  statistics?: { keys?: string[]; athletes?: EspnAthleteRow[] }[];
+};
+
+async function espnJson<T>(url: string, timeoutMs = 10_000): Promise<T> {
+  const res = await fetch(url, { headers: ESPN_HEADERS, cache: "no-store", signal: AbortSignal.timeout(timeoutMs) });
+  if (!res.ok) throw new Error(`espn ${url} -> HTTP ${res.status}`);
+  return res.json() as Promise<T>;
+}
+
+function ymdToEspn(date: string): string {
+  return date.replaceAll("-", "");
+}
+
+function etYmd(value: string): string {
+  if (/^\d{4}-\d{2}-\d{2}$/.test(value)) return value;
+  return new Intl.DateTimeFormat("en-CA", { timeZone: "America/New_York" }).format(new Date(value));
+}
+
+function eachEtDate(startYmd: string, endYmd: string): string[] {
+  const dates: string[] = [];
+  let cur = startYmd;
+  while (cur <= endYmd) {
+    dates.push(cur);
+    const [y, m, d] = cur.split("-").map(Number);
+    cur = new Date(Date.UTC(y, m - 1, d + 1)).toISOString().slice(0, 10);
+  }
+  return dates;
+}
+
+function espnGameStatus(event: EspnEvent): { status: number; statusText: string } {
+  const type = event.status?.type;
+  const state = type?.state ?? "pre";
+  const status = state === "post" ? 3 : state === "in" ? 2 : 1;
+  return { status, statusText: type?.shortDetail || type?.detail || type?.name || "" };
+}
+
+function espnStat(keys: string[], stats: string[], key: string): number {
+  const i = keys.indexOf(key);
+  if (i < 0) return 0;
+  const raw = stats[i] ?? "0";
+  if (raw.includes("-")) return Number(raw.split("-")[0]) || 0;
+  return Number.parseFloat(raw) || 0;
+}
+
+async function fetchEspnScoreboard(date: string): Promise<Game[]> {
+  const json = await espnJson<{ events?: EspnEvent[] }>(
+    `https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard?dates=${ymdToEspn(date)}&limit=100`,
+  );
+  return (json.events ?? []).map((event) => {
+    const comps = event.competitions?.[0]?.competitors ?? [];
+    const home = comps.find((c) => c.homeAway === "home");
+    const away = comps.find((c) => c.homeAway === "away");
+    const { status, statusText } = espnGameStatus(event);
+    return {
+      gameId: event.id,
+      date,
+      status,
+      statusText,
+      home: nbaTricode(home?.team?.abbreviation ?? ""),
+      away: nbaTricode(away?.team?.abbreviation ?? ""),
+      homeScore: Number(home?.score ?? 0),
+      awayScore: Number(away?.score ?? 0),
+    };
+  });
+}
+
+async function fetchEspnBoxScore(game: Game): Promise<GameLog[]> {
+  const json = await espnJson<{ boxscore?: { players?: EspnBoxTeam[] } }>(
+    `https://site.api.espn.com/apis/site/v2/sports/basketball/nba/summary?event=${game.gameId}`,
+  );
+  const teams = json.boxscore?.players ?? [];
+  const rows: GameLog[] = [];
+  for (const teamBlock of teams) {
+    const team = nbaTricode(teamBlock.team?.abbreviation ?? "");
+    const opp = team === game.home ? game.away : game.home;
+    const isHome = team === game.home;
+    const table = teamBlock.statistics?.[0];
+    const keys = table?.keys ?? [];
+    for (const row of table?.athletes ?? []) {
+      if (row.didNotPlay || !row.stats?.length) continue;
+      const min = espnStat(keys, row.stats, "minutes");
+      const pts = espnStat(keys, row.stats, "points");
+      if (!min && !pts) continue;
+      rows.push({
+        gameId: game.gameId,
+        date: game.date,
+        nbaId: Number(row.athlete?.id ?? 0),
+        name: row.athlete?.displayName ?? "",
+        team,
+        matchup: `${team} ${isHome ? "vs." : "@"} ${opp}`,
+        min: Math.round(min * 10) / 10,
+        pts,
+        reb: espnStat(keys, row.stats, "rebounds"),
+        ast: espnStat(keys, row.stats, "assists"),
+        stl: espnStat(keys, row.stats, "steals"),
+        blk: espnStat(keys, row.stats, "blocks"),
+        tov: espnStat(keys, row.stats, "turnovers"),
+        fg3m: espnStat(keys, row.stats, "threePointFieldGoalsMade-threePointFieldGoalsAttempted"),
+        live: game.status !== 3,
+        fantraxId: null,
+      });
+    }
+  }
+  return rows;
+}
+
+async function mapPool<T, R>(items: T[], limit: number, fn: (item: T) => Promise<R>): Promise<PromiseSettledResult<R>[]> {
+  const out: PromiseSettledResult<R>[] = new Array(items.length);
+  let next = 0;
+  async function worker() {
+    while (next < items.length) {
+      const i = next++;
+      try {
+        out[i] = { status: "fulfilled", value: await fn(items[i]) };
+      } catch (reason) {
+        out[i] = { status: "rejected", reason };
+      }
+    }
+  }
+  await Promise.all(Array.from({ length: Math.min(limit, items.length) || 0 }, () => worker()));
+  return out;
+}
+
+function hasCompleteFinal(logs: GameLog[], game: Game): boolean {
+  const teams = new Set(
+    logs.filter((l) => l.date === game.date && !l.live && (l.team === game.home || l.team === game.away)).map((l) => l.team),
+  );
+  return teams.has(game.home) && teams.has(game.away);
+}
+
+/**
+ * Scoreboard + box scores for the current scoring period (including upcoming
+ * scheduled games). ESPN is the live source that actually responds from Vercel.
+ */
+async function fetchEspnOverlay(
+  seasonLogs: GameLog[],
+  today: string,
+): Promise<{ ok: boolean; games: Game[]; logs: GameLog[]; replacedDates: Set<string> }> {
+  const period = getCurrentPeriod();
+  const start = period ? etYmd(period.startDate) : today;
+  const end = period ? etYmd(period.endDate) : today;
+  const dates = eachEtDate(start, end);
+  const boards = await Promise.allSettled(dates.map(async (date) => ({ date, games: await fetchEspnScoreboard(date) })));
+  const ok = boards.some((b) => b.status === "fulfilled");
+
+  const allGames: Game[] = [];
+  const toBox: Game[] = [];
+  const replacedDates = new Set<string>();
+
+  for (const board of boards) {
+    if (board.status === "rejected") {
+      console.warn(`[nba] espn scoreboard failed: ${(board.reason as Error)?.message ?? board.reason}`);
+      continue;
+    }
+    const { date, games } = board.value;
+    allGames.push(...games);
+    for (const game of games) {
+      if (game.status < 2) continue;
+      // Always refresh in-progress games. Skip completed slates we already have.
+      if (game.status === 3 && hasCompleteFinal(seasonLogs, game)) continue;
+      toBox.push(game);
+      replacedDates.add(`${game.date}|${game.home}`);
+      replacedDates.add(`${game.date}|${game.away}`);
+    }
+  }
+
+  const boxes = await mapPool(toBox, 5, fetchEspnBoxScore);
+  const logs: GameLog[] = [];
+  boxes.forEach((r, i) => {
+    if (r.status === "fulfilled") logs.push(...r.value);
+    else {
+      console.warn(`[nba] espn box failed for ${toBox[i].gameId}: ${(r.reason as Error)?.message ?? r.reason}`);
+      replacedDates.delete(`${toBox[i].date}|${toBox[i].home}`);
+      replacedDates.delete(`${toBox[i].date}|${toBox[i].away}`);
+    }
+  });
+
+  return { ok, games: allGames, logs, replacedDates };
+}
+
+// ---------------------------------------------------------------------------
 // NBA -> Fantrax player matching
 
 function normalizeName(name: string): string {
@@ -241,9 +464,6 @@ function flipName(name: string): string {
   const [last, first] = name.split(",").map((s) => s.trim());
   return first ? `${first} ${last}` : name;
 }
-
-const TRICODE_ALIASES: Record<string, string> = { GS: "GSW", NO: "NOP", NY: "NYK", SA: "SAS", PHO: "PHX" };
-const nbaTricode = (code: string) => TRICODE_ALIASES[code] ?? code;
 
 function buildPlayerMatcher(players: Record<string, Player>) {
   const byName = new Map<string, Player[]>();
@@ -281,8 +501,9 @@ type LiveState = {
   snapshot: GameLogSnapshot | null;
   snapshotAt: number;
   season: { logs: GameLog[]; at: number } | null;
+  /** Completed ESPN/NBA logs kept so later refreshes don't re-download finals. */
+  completed: GameLog[];
   inflight: Promise<GameLogSnapshot> | null;
-  timer: ReturnType<typeof setInterval> | null;
   lastError: string | null;
 };
 
@@ -291,52 +512,82 @@ const state: LiveState = (g.__nbaLive ??= {
   snapshot: null,
   snapshotAt: 0,
   season: null,
+  completed: [],
   inflight: null,
-  timer: null,
   lastError: null,
 });
+state.completed ??= [];
 
-// After a dev HMR re-evaluation, let this (newest) module own the refresh loop.
-if (state.timer) {
-  clearInterval(state.timer);
-  state.timer = null;
+function emptySnapshot(today: string): GameLogSnapshot {
+  return { fetchedAt: null, season: SEASON, today, games: [], logs: [], source: "file" };
 }
 
-const fileSnapshot: GameLogSnapshot = { ...(snapshotJson as unknown as Omit<GameLogSnapshot, "source">), source: "file" };
+function baseCompletedLogs(): GameLog[] {
+  if (state.completed.length) return state.completed;
+  return (state.season?.logs ?? []).filter((l) => !l.live);
+}
+
+function rememberCompleted(logs: GameLog[]) {
+  state.completed = logs.filter((l) => !l.live);
+}
 
 async function refresh(): Promise<GameLogSnapshot> {
   const now = Date.now();
-
-  // Season logs: reuse if fresh enough.
-  let seasonLogs: GameLog[];
-  if (state.season && now - state.season.at < SEASON_TTL_MS) {
-    seasonLogs = state.season.logs;
-  } else {
-    seasonLogs = await fetchSeasonGameLogs();
-    state.season = { logs: seasonLogs, at: now };
-  }
-
-  const logs = [...seasonLogs];
   const today = todayEt();
-  let games: Game[] = [];
-  try {
-    games = await fetchScoreboard(today);
-    const have = new Set(logs.map((l) => l.gameId));
-    const pending = games.filter((g) => g.status >= 2 && !have.has(g.gameId));
-    const boxes = await Promise.allSettled(pending.map((g) => fetchLiveBoxScore(g)));
-    boxes.forEach((r, i) => {
-      if (r.status === "fulfilled") logs.push(...r.value);
-      else console.warn(`[nba] box score failed for ${pending[i].gameId}: ${r.reason?.message ?? r.reason}`);
-    });
-  } catch (err) {
-    console.warn(`[nba] scoreboard failed: ${(err as Error).message}`);
-    games = state.snapshot?.games.filter((g) => g.date === today) ?? [];
+  const seasonLogs = baseCompletedLogs();
+
+  // stats.nba.com often hangs from cloud IPs — never block the live overlay on it.
+  if (!state.season || now - state.season.at >= SEASON_TTL_MS) {
+    void fetchSeasonGameLogs()
+      .then((logs) => {
+        state.season = { logs, at: Date.now() };
+      })
+      .catch((err: Error) => {
+        console.warn(`[nba] season logs failed: ${err.message}`);
+      });
   }
+
+  let games: Game[] = [];
+  let extraLogs: GameLog[] = [];
+  let replacedDates = new Set<string>();
+  let espnOk = false;
+  try {
+    const overlay = await fetchEspnOverlay(seasonLogs, today);
+    games = overlay.games;
+    extraLogs = overlay.logs;
+    replacedDates = overlay.replacedDates;
+    espnOk = overlay.ok;
+  } catch (err) {
+    console.warn(`[nba] espn overlay failed: ${(err as Error).message}`);
+  }
+
+  if (!espnOk) {
+    try {
+      games = await fetchScoreboard(today);
+      const have = new Set(seasonLogs.map((l) => l.gameId));
+      const pending = games.filter((g) => g.status >= 2 && !have.has(g.gameId));
+      const boxes = await Promise.allSettled(pending.map((g) => fetchLiveBoxScore(g)));
+      boxes.forEach((r, i) => {
+        if (r.status === "fulfilled") extraLogs.push(...r.value);
+        else console.warn(`[nba] box score failed for ${pending[i].gameId}: ${r.reason?.message ?? r.reason}`);
+      });
+    } catch (err) {
+      console.warn(`[nba] nba scoreboard failed: ${(err as Error).message}`);
+      games = state.snapshot?.games.filter((g) => g.date === today) ?? [];
+    }
+  }
+
+  const logs = [
+    ...seasonLogs.filter((l) => !replacedDates.has(`${l.date}|${nbaTricode(l.team)}`)),
+    ...extraLogs,
+  ];
 
   for (const l of logs) l.fantraxId = matchPlayer(l.name, l.team);
   logs.sort((a, b) => (a.date < b.date ? -1 : a.date > b.date ? 1 : a.name.localeCompare(b.name)));
+  rememberCompleted(logs);
 
-  return { fetchedAt: new Date().toISOString(), season: SEASON, today, games, logs, source: "live" };
+  const live = espnOk || extraLogs.length > 0;
+  return { fetchedAt: new Date().toISOString(), season: SEASON, today, games, logs, source: live ? "live" : "file" };
 }
 
 function refreshInBackground(): Promise<GameLogSnapshot> {
@@ -351,7 +602,7 @@ function refreshInBackground(): Promise<GameLogSnapshot> {
     .catch((err: Error) => {
       state.lastError = err.message;
       console.warn(`[nba] refresh failed: ${err.message}`);
-      return state.snapshot ?? fileSnapshot;
+      return state.snapshot ?? emptySnapshot(todayEt());
     })
     .finally(() => {
       state.inflight = null;
@@ -359,25 +610,18 @@ function refreshInBackground(): Promise<GameLogSnapshot> {
   return state.inflight;
 }
 
-function ensureKeepWarm() {
-  if (state.timer) return;
-  state.timer = setInterval(() => {
-    refreshInBackground();
-  }, LIVE_TTL_MS);
-  // Don't keep the process alive just for this.
-  (state.timer as { unref?: () => void }).unref?.();
-}
+/** Reuse an in-flight fetch, or a result that is only a couple of seconds old. */
+const COALESCE_MS = 2_000;
 
 /**
- * Current game logs. First call fetches live data (falls back to the on-disk
- * snapshot on failure); afterwards returns the cached snapshot immediately and
- * refreshes in the background whenever it is older than LIVE_TTL_MS.
+ * Current game logs. Always waits for a live fetch when the last result is
+ * older than a couple of seconds, so router.refresh() on the 60s timer never
+ * paints an hours-old snapshot.
  */
 export async function getLiveGameLogs(): Promise<GameLogSnapshot> {
-  ensureKeepWarm();
-  if (!state.snapshot) return refreshInBackground();
-  if (Date.now() - state.snapshotAt > LIVE_TTL_MS) void refreshInBackground();
-  return state.snapshot;
+  if (state.inflight) return state.inflight;
+  if (state.snapshot && Date.now() - state.snapshotAt < COALESCE_MS) return state.snapshot;
+  return refreshInBackground();
 }
 
 export function getLiveStatus() {

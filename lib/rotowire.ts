@@ -82,25 +82,38 @@ function parseNews(html: string): RotowireNews[] {
     .sort((a, b) => (Date.parse(b.date) || 0) - (Date.parse(a.date) || 0));
 }
 
+export const ROTOWIRE_TTL_MS = 10 * 60_000;
+
+const profileCache = new Map<number, { at: number; profile: RotowireProfile | null }>();
+
+export function invalidateRotowire() {
+  profileCache.clear();
+}
+
 /**
  * Fetches a player's Rotowire profile page and extracts bio + latest news.
- * Cached by Next's fetch cache for 30 minutes; returns null on any failure so the page still renders.
+ * Cached in memory for 10 minutes; returns null on any failure so the page still renders.
  */
 export async function getRotowireProfile(rotowireId: number): Promise<RotowireProfile | null> {
+  const hit = profileCache.get(rotowireId);
+  if (hit && Date.now() - hit.at < ROTOWIRE_TTL_MS) return hit.profile;
   try {
     const res = await fetch(`https://www.rotowire.com/basketball/player.php?id=${rotowireId}`, {
       headers: { "User-Agent": UA, Accept: "text/html" },
       redirect: "follow",
-      next: { revalidate: 1800 },
+      cache: "no-store",
     });
-    if (!res.ok) return null;
+    if (!res.ok) {
+      profileCache.set(rotowireId, { at: Date.now(), profile: hit?.profile ?? null });
+      return hit?.profile ?? null;
+    }
     const html = await res.text();
 
     // Only the hero card + news feed matter; trim to keep regexes cheap.
     const heroStart = html.indexOf('class="pp2-hero');
     const hero = heroStart >= 0 ? html.slice(heroStart, heroStart + 6000) : "";
 
-    return {
+    const profile: RotowireProfile = {
       url: res.url || `https://www.rotowire.com/basketball/player.php?id=${rotowireId}`,
       headshot: `https://assets.rotowire.com/images/player/nba/${rotowireId}.png`,
       team: pick(hero, /class="pp2-sub-team">([\s\S]*?)<\/span>/),
@@ -112,7 +125,11 @@ export async function getRotowireProfile(rotowireId: number): Promise<RotowirePr
       draft: pick(hero, /class="pp2-info-draft">[\s\S]*?<b>([\s\S]*?)<\/b>/),
       news: parseNews(html),
     };
+    profileCache.set(rotowireId, { at: Date.now(), profile });
+    return profile;
   } catch {
-    return null;
+    const fallback = hit?.profile ?? null;
+    profileCache.set(rotowireId, { at: Date.now(), profile: fallback });
+    return fallback;
   }
 }

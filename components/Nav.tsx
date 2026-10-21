@@ -22,7 +22,7 @@ export default function Nav({ leagueName }: { leagueName: string }) {
   return (
     <header className="sticky top-0 z-40 border-b-2 border-raptor bg-court">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6">
-        <Link href="/" className="flex items-center gap-2.5" onClick={() => setOpen(false)}>
+        <Link href="/" prefetch={false} className="flex items-center gap-2.5" onClick={() => setOpen(false)}>
           <span className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-gold bg-raptor text-base font-black text-white">
             II
           </span>
@@ -31,7 +31,7 @@ export default function Nav({ leagueName }: { leagueName: string }) {
 
         <nav className="hidden items-center gap-1 md:flex">
           {NAV_ITEMS.map((item) => (
-            <Link key={item.href} href={item.href} className={linkClass(item.href)}>
+            <Link key={item.href} href={item.href} prefetch={false} className={linkClass(item.href)}>
               {item.label}
             </Link>
           ))}
@@ -61,6 +61,7 @@ export default function Nav({ leagueName }: { leagueName: string }) {
               <Link
                 key={item.href}
                 href={item.href}
+                prefetch={false}
                 className={linkClass(item.href)}
                 onClick={() => setOpen(false)}
               >

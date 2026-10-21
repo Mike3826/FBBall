@@ -79,3 +79,8 @@ export function scoreBreakdown(s: StatLine, rules: ScoringRule[]): { rows: Score
 export function fantasyPoints(s: StatLine, rules: ScoringRule[]): number {
   return scoreBreakdown(s, rules).total;
 }
+
+/** Two decimal places so 1.25 rebound scoring is visible. */
+export function formatFp(n: number): string {
+  return n.toFixed(2);
+}

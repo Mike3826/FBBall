@@ -6,19 +6,20 @@ import {
   formatDate,
   formatPlayerName,
   formatShortDate,
-  getDraftPick,
   getTeamName,
-  leagueInfo,
   playerMap,
   playerTeamMap,
 } from "@/lib/data";
+import { dynastyDraftPick, getHistoryLogs, resolveSeason, seasonOptions } from "@/lib/history";
 import { LIVE_TTL_MS } from "@/lib/nba";
 import { getRotowireProfile } from "@/lib/rotowire";
-import { getStats } from "@/lib/stats";
+import { formatFp } from "@/lib/scoring";
+import { getStats, type ScoredLog } from "@/lib/stats";
 import AutoRefresh from "@/components/AutoRefresh";
 import {
   ACTION_STYLE,
   actionLabel,
+  currentTeamId,
   getPlayerTransactions,
   teamLabel,
   transactionTime,
@@ -26,6 +27,7 @@ import {
 } from "@/lib/transactions";
 
 type Params = Promise<{ playerId: string }>;
+type Search = Promise<{ season?: string }>;
 
 export const dynamic = "force-dynamic";
 
@@ -41,20 +43,30 @@ function avg(total: number, games: number): string {
   return games ? (total / games).toFixed(1) : "—";
 }
 
-export default async function PlayerPage({ params }: { params: Params }) {
+export default async function PlayerPage({ params, searchParams }: { params: Params; searchParams: Search }) {
   const { playerId } = await params;
   const player = playerMap[playerId];
   if (!player) notFound();
 
+  const { season: requestedSeason } = await searchParams;
+  const selected = resolveSeason(requestedSeason);
+  const seasons = seasonOptions();
+
   const name = formatPlayerName(player.name);
   const fantasyTeamId = playerTeamMap[player.id] ?? null;
   const [stats, roto] = await Promise.all([
-    getStats(),
+    selected.current ? getStats() : Promise.resolve(null),
     player.rotowireId ? getRotowireProfile(player.rotowireId) : Promise.resolve(null),
   ]);
-  const logs = stats.playerLogs(player.id);
+  const logs: ScoredLog[] = selected.current && stats ? stats.playerLogs(player.id) : getHistoryLogs(player.id, selected.key);
   const history = getPlayerTransactions(player.id);
-  const draftPick = getDraftPick(player.id);
+  const draftPick = dynastyDraftPick(player.id);
+  const draftSlot = draftPick ? `${draftPick.round}.${String(draftPick.pickInRound).padStart(2, "0")}` : null;
+  const draftWhen = draftPick?.time
+    ? formatDate(new Date(draftPick.time).toISOString())
+    : draftPick?.date
+      ? formatDate(draftPick.date)
+      : draftPick?.season;
 
   const finished = logs.filter((l) => !l.live);
   const gp = logs.length;
@@ -79,8 +91,8 @@ export default async function PlayerPage({ params }: { params: Params }) {
 
   const summary = [
     { label: "GP", value: String(gp) },
-    { label: "FPts", value: totals.fp.toFixed(1) },
-    { label: "FP/G", value: avg(totals.fp, gp) },
+    { label: "FPts", value: formatFp(totals.fp) },
+    { label: "FP/G", value: gp ? formatFp(totals.fp / gp) : "—" },
     { label: "MIN", value: avg(totals.min, gp) },
     { label: "PTS", value: avg(totals.pts, gp) },
     { label: "REB", value: avg(totals.reb, gp) },
@@ -150,17 +162,15 @@ export default async function PlayerPage({ params }: { params: Params }) {
             )}
             {draftPick && (
               <span className="text-xs text-slate-500">
-                Drafted {draftPick.round}.{String(draftPick.pickInRound).padStart(2, "0")} by{" "}
-                <Link href={`/teams/${draftPick.teamId}`} className="text-slate-300 hover:text-gold">
-                  {getTeamName(draftPick.teamId)}
-                </Link>
+                Drafted {draftSlot} · {draftPick.season} {draftPick.type} by{" "}
+                <TeamRef id={draftPick.teamId} name={draftPick.teamName} />
               </span>
             )}
           </div>
         </div>
         <div className="flex shrink-0 flex-col gap-1 text-xs">
           <a
-            href={`https://www.fantrax.com/fantasy/league/${leagueInfo.leagueId}/players;view=STATS;searchName=${encodeURIComponent(name)}`}
+            href={`https://www.fantrax.com/fantasy/league/${selected.leagueId}/players;view=STATS;searchName=${encodeURIComponent(name)}`}
             target="_blank"
             rel="noreferrer"
             className="text-slate-400 hover:text-gold"
@@ -175,18 +185,45 @@ export default async function PlayerPage({ params }: { params: Params }) {
         </div>
       </section>
 
+      <div className="flex flex-wrap gap-2">
+        {seasons.map((s) => {
+          const active = s.key === selected.key;
+          const href = s.current ? `/players/${player.id}` : `/players/${player.id}?season=${s.key}`;
+          return (
+            <Link
+              key={s.key}
+              href={href}
+              className={`rounded-md border px-3 py-1.5 text-xs font-medium tabular-nums ${
+                active
+                  ? "border-raptor/50 bg-raptor/15 text-gold"
+                  : "border-white/10 text-slate-300 hover:border-white/30 hover:text-white"
+              }`}
+            >
+              {s.label}
+              {s.current && <span className="ml-1 text-[10px] uppercase opacity-70">now</span>}
+            </Link>
+          );
+        })}
+      </div>
+
       {/* Season summary */}
       <section className="card p-5">
         <div className="flex items-center justify-between">
-          <h2 className="card-title">{stats.meta.season} Season</h2>
+          <h2 className="card-title">{selected.label} Season</h2>
           <span className="flex items-center gap-3">
-            <AutoRefresh intervalMs={LIVE_TTL_MS} label={logs.some((l) => l.live) ? "Live" : undefined} />
+            {selected.current && (
+              <AutoRefresh intervalMs={LIVE_TTL_MS} label={logs.some((l) => l.live) ? "Live" : undefined} />
+            )}
             {best && (
               <span className="text-xs text-slate-500">
-                Best game: <span className="font-semibold text-gold">{best.fp.toFixed(1)}</span> on{" "}
-                <Link href={`/daily-rankings?date=${best.date}`} className="text-slate-300 hover:text-gold">
-                  {formatShortDate(best.date)}
-                </Link>
+                Best game: <span className="font-semibold text-gold">{formatFp(best.fp)}</span> on{" "}
+                {selected.current ? (
+                  <Link href={`/daily-rankings?date=${best.date}`} className="text-slate-300 hover:text-gold">
+                    {formatShortDate(best.date)}
+                  </Link>
+                ) : (
+                  <span className="text-slate-300">{formatShortDate(best.date)}</span>
+                )}
               </span>
             )}
           </span>
@@ -212,7 +249,9 @@ export default async function PlayerPage({ params }: { params: Params }) {
             <span className="text-xs text-slate-500">{gp} game{gp === 1 ? "" : "s"}</span>
           </div>
           {gp === 0 ? (
-            <p className="px-5 py-10 text-center text-sm text-slate-500">No games logged yet this season.</p>
+            <p className="px-5 py-10 text-center text-sm text-slate-500">
+              {selected.current ? "No games logged yet this season." : `No games matched for ${selected.label}.`}
+            </p>
           ) : (
             <div className="overflow-x-auto">
               <table className="table-base table-dense whitespace-nowrap">
@@ -235,9 +274,13 @@ export default async function PlayerPage({ params }: { params: Params }) {
                   {logs.map((l) => (
                     <tr key={l.gameId}>
                       <td>
-                        <Link href={`/daily-rankings?date=${l.date}`} className="text-slate-300 hover:text-gold">
-                          {formatShortDate(l.date)}
-                        </Link>
+                        {selected.current ? (
+                          <Link href={`/daily-rankings?date=${l.date}`} className="text-slate-300 hover:text-gold">
+                            {formatShortDate(l.date)}
+                          </Link>
+                        ) : (
+                          <span className="text-slate-300">{formatShortDate(l.date)}</span>
+                        )}
                         {l.live && (
                           <span className="ml-1.5 inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-rose-400 align-middle" title="In progress" />
                         )}
@@ -252,7 +295,7 @@ export default async function PlayerPage({ params }: { params: Params }) {
                       <td className={num}>{l.fg3m}</td>
                       <td className={`${num} text-slate-400`}>{l.tov}</td>
                       <td className={`${num} font-bold text-gold`}>
-                        {l.fp.toFixed(2)}
+                        {formatFp(l.fp)}
                         {l.td ? (
                           <span className="pill ml-1.5 bg-raptor/20 text-gold">TD</span>
                         ) : l.dd ? (
@@ -300,8 +343,8 @@ export default async function PlayerPage({ params }: { params: Params }) {
           <section className="card">
             <div className="flex items-center justify-between border-b-2 border-white/15 px-5 py-3">
               <h2 className="card-title">League History</h2>
-              <Link href="/trade-log" className="text-xs text-gold hover:underline">
-                Trade log
+              <Link href="/transactions" className="text-xs text-gold hover:underline">
+                Transactions
               </Link>
             </div>
             {history.length === 0 && !draftPick ? (
@@ -317,7 +360,10 @@ export default async function PlayerPage({ params }: { params: Params }) {
                     <li key={`${t.id}-${i}`} className="px-5 py-3">
                       <div className="flex items-center justify-between gap-3">
                         <span className={`pill ${style}`}>{isTrade ? "Trade" : actionLabel(m)}</span>
-                        <span className="text-xs text-slate-500">{transactionTime(t)}</span>
+                        <span className="text-xs text-slate-500">
+                          {t.season && <span className="mr-1.5 text-slate-600">{t.season}</span>}
+                          {transactionTime(t)}
+                        </span>
                       </div>
                       <p className="mt-1.5 text-slate-300">
                         {isTrade ? (
@@ -343,12 +389,17 @@ export default async function PlayerPage({ params }: { params: Params }) {
                 {draftPick && (
                   <li className="px-5 py-3">
                     <div className="flex items-center justify-between gap-3">
-                      <span className="pill bg-raptor/15 text-raptor-soft">Drafted</span>
-                      <span className="text-xs text-slate-500">{formatDate(new Date(draftPick.time).toISOString())}</span>
+                      <span className="pill bg-raptor/15 text-raptor-soft">
+                        {draftPick.type === "startup" ? "Startup Draft" : "Rookie Draft"}
+                      </span>
+                      <span className="text-xs text-slate-500">
+                        <span className="mr-1.5 text-slate-600">{draftPick.season}</span>
+                        {draftWhen}
+                      </span>
                     </div>
                     <p className="mt-1.5 text-slate-300">
                       Round {draftPick.round}, Pick {draftPick.pickInRound} (#{draftPick.pick} overall) by{" "}
-                      <TeamRef id={draftPick.teamId} name={getTeamName(draftPick.teamId)} />
+                      <TeamRef id={draftPick.teamId} name={draftPick.teamName} />
                     </p>
                   </li>
                 )}
@@ -362,9 +413,10 @@ export default async function PlayerPage({ params }: { params: Params }) {
 }
 
 function TeamRef({ id, name }: { id: string | null | undefined; name: string | null | undefined }) {
-  const label = (id && getTeamName(id)) || name || "Unknown";
-  return id ? (
-    <Link href={`/teams/${id}`} className="font-medium text-white hover:text-gold">
+  const currentId = currentTeamId(id);
+  const label = (currentId && getTeamName(currentId)) || name || "Unknown";
+  return currentId ? (
+    <Link href={`/teams/${currentId}`} className="font-medium text-white hover:text-gold">
       {label}
     </Link>
   ) : (

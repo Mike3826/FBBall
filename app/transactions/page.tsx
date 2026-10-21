@@ -4,34 +4,74 @@ import PlayerLink from "@/components/PlayerLink";
 import {
   ACTION_STYLE,
   actionLabel,
+  currentTeamId,
   playerLabel,
   teamLabel,
+  transactionSeasons,
   transactionTime as when,
   transactionsFile as file,
   type Move,
 } from "@/lib/transactions";
 
-export const metadata = { title: "Trade Log" };
+export const metadata = { title: "Transactions" };
+
+type Search = Promise<{ season?: string }>;
 
 function MovePlayer({ m }: { m: Move }) {
   return <PlayerLink id={m.playerId}>{playerLabel(m)}</PlayerLink>;
 }
 
-export default function TradeLogPage() {
-  const all = file.transactions;
+function TeamName({ m }: { m: Move }) {
+  const id = currentTeamId(m.teamId);
+  const label = teamLabel(m);
+  return id ? (
+    <Link href={`/teams/${id}`} className="hover:text-gold">
+      {label}
+    </Link>
+  ) : (
+    <>{label}</>
+  );
+}
+
+export default async function TransactionsPage({ searchParams }: { searchParams: Search }) {
+  const { season: requested } = await searchParams;
+  const seasons = transactionSeasons();
+  const selected = requested && seasons.includes(requested) ? requested : seasons[0];
+  const all = selected ? file.transactions.filter((t) => (t.season ?? selected) === selected) : file.transactions;
   const trades = all.filter((t) => t.type === "TRADE");
   const others = all.filter((t) => t.type !== "TRADE");
 
   return (
     <div className="space-y-8">
       <PageHeader
-        title="Trade Log"
+        title="Transactions"
         subtitle={
           file.fetchedAt
-            ? `${trades.length} trade${trades.length === 1 ? "" : "s"} · ${others.length} other transaction${others.length === 1 ? "" : "s"} · updated ${new Date(file.fetchedAt).toLocaleString("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" })}`
+            ? `${file.transactions.length} total · ${trades.length} trade${trades.length === 1 ? "" : "s"} · ${others.length} other${others.length === 1 ? "" : "s"} in ${selected ?? "this season"} · updated ${new Date(file.fetchedAt).toLocaleString("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" })}`
             : "Transaction history not synced yet"
         }
       />
+
+      {seasons.length > 1 && (
+        <div className="flex flex-wrap gap-2">
+          {seasons.map((s) => {
+            const active = s === selected;
+            return (
+              <Link
+                key={s}
+                href={`/transactions?season=${s}`}
+                className={`rounded-md border px-3 py-1.5 text-xs font-medium tabular-nums ${
+                  active
+                    ? "border-raptor/50 bg-raptor/15 text-gold"
+                    : "border-white/10 text-slate-300 hover:border-white/30 hover:text-white"
+                }`}
+              >
+                {s}
+              </Link>
+            );
+          })}
+        </div>
+      )}
 
       {!file.fetchedAt && (
         <section className="card px-5 py-12 text-center">
@@ -51,7 +91,7 @@ export default function TradeLogPage() {
         <section className="space-y-4">
           <h2 className="card-title">Trades</h2>
           {trades.length === 0 ? (
-            <div className="card px-5 py-10 text-center text-sm text-slate-500">No trades have been completed this season.</div>
+            <div className="card px-5 py-10 text-center text-sm text-slate-500">No trades in this season.</div>
           ) : (
             <ul className="space-y-4">
               {trades.map((t) => {
@@ -73,13 +113,9 @@ export default function TradeLogPage() {
                     <div className="grid gap-4 sm:grid-cols-2">
                       {[...byTeam.entries()].map(([key, moves]) => (
                         <div key={key} className="rounded-lg border-2 border-white/15 bg-court p-4">
-                          {moves[0].teamId ? (
-                            <Link href={`/teams/${moves[0].teamId}`} className="text-sm font-semibold text-white hover:text-gold">
-                              {teamLabel(moves[0])}
-                            </Link>
-                          ) : (
-                            <span className="text-sm font-semibold text-white">{teamLabel(moves[0])}</span>
-                          )}
+                          <span className="text-sm font-semibold text-white">
+                            <TeamName m={moves[0]} />
+                          </span>
                           <div className="mt-1 text-xs uppercase tracking-wider text-slate-500">Receives</div>
                           <ul className="mt-1 space-y-1 text-sm text-slate-300">
                             {moves.map((m, i) => (
@@ -104,7 +140,7 @@ export default function TradeLogPage() {
         <section className="space-y-4">
           <h2 className="card-title">Waiver &amp; Free-Agent Moves</h2>
           {others.length === 0 ? (
-            <div className="card px-5 py-10 text-center text-sm text-slate-500">No adds, drops, or claims yet.</div>
+            <div className="card px-5 py-10 text-center text-sm text-slate-500">No adds, drops, or claims in this season.</div>
           ) : (
             <div className="card overflow-x-auto">
               <table className="table-base">
@@ -122,13 +158,7 @@ export default function TradeLogPage() {
                       <tr key={`${t.id}-${i}`}>
                         <td className="whitespace-nowrap text-slate-400">{i === 0 ? when(t) : ""}</td>
                         <td>
-                          {m.teamId ? (
-                            <Link href={`/teams/${m.teamId}`} className="hover:text-gold">
-                              {teamLabel(m)}
-                            </Link>
-                          ) : (
-                            teamLabel(m)
-                          )}
+                          <TeamName m={m} />
                         </td>
                         <td>
                           <span className={`pill ${ACTION_STYLE[m.action] ?? "bg-white/5 text-slate-300"}`}>
