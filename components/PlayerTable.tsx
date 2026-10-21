@@ -58,7 +58,7 @@ export default function PlayerTable({ players, teams }: { players: PlayerRow[]; 
       <div className="card flex flex-col gap-3 p-4 sm:flex-row sm:flex-wrap sm:items-center">
         <input
           type="search"
-          placeholder="Search player or NBA team…"
+          placeholder="Search player or team…"
           value={query}
           onChange={(e) => reset(setQuery)(e.target.value)}
           className="w-full rounded-md border-2 border-white/15 bg-court px-3 py-2 text-sm text-white placeholder:text-slate-500 focus:border-raptor/50 focus:outline-none sm:w-64"
@@ -109,7 +109,7 @@ export default function PlayerTable({ players, teams }: { players: PlayerRow[]; 
           <thead>
             <tr>
               <th>Player</th>
-              <th>NBA</th>
+              <th>Team</th>
               <th>Pos</th>
               <th>Eligible</th>
               <th>Status</th>

@@ -70,7 +70,7 @@ export default function TeamRosterTable({ rows }: { rows: RosterTableRow[] }) {
           <tr>
             <th>Slot</th>
             <th>Player</th>
-            <th>NBA</th>
+            <th>Team</th>
             <th>Eligible</th>
             {COLS.map((col) => {
               const active = sort?.key === col.key;

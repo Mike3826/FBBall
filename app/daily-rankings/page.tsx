@@ -5,8 +5,7 @@ import PublishToDiscordButton from "@/components/PublishToDiscordButton";
 import StatLeaderboard from "@/components/StatLeaderboard";
 import { formatDate, getCurrentPeriod, leagueInfo } from "@/lib/data";
 import { LIVE_TTL_MS, todayEt } from "@/lib/nba";
-import { formatFp } from "@/lib/scoring";
-import { datesInPeriod, getFantasyTeamTotals, getStats, publishableDate, updatedLabel } from "@/lib/stats";
+import { datesInPeriod, getStats, publishableDate, updatedLabel } from "@/lib/stats";
 
 export const metadata = { title: "Daily Rankings" };
 export const dynamic = "force-dynamic";
@@ -29,8 +28,6 @@ export default async function DailyRankingsPage({ searchParams }: { searchParams
   const hasData = new Set(gameDates);
 
   const leaders = stats.dailyLeaders(date);
-  const teamTotals = getFantasyTeamTotals(leaders).filter((t) => t.playerGames > 0);
-  const games = stats.games.filter((g) => g.date === date);
   const anyLive = leaders.some((l) => l.live);
 
   return (
@@ -99,58 +96,6 @@ export default async function DailyRankingsPage({ searchParams }: { searchParams
           <StatLeaderboard rows={leaders} mode="daily" />
         )}
       </section>
-
-      {(games.length > 0 || teamTotals.length > 0) && (
-        <div className="grid gap-6 lg:grid-cols-2">
-          {games.length > 0 && (
-            <section className="card">
-              <div className="border-b-2 border-white/15 px-5 py-3">
-                <h2 className="card-title">Games</h2>
-              </div>
-              <ul className="divide-y divide-white/5 text-sm">
-                {games.map((g) => (
-                  <li key={g.gameId} className="flex items-center justify-between px-5 py-2.5">
-                    <span className="tabular-nums">
-                      <span className={g.awayScore > g.homeScore ? "text-white" : "text-slate-400"}>
-                        {g.away} {g.awayScore}
-                      </span>
-                      <span className="mx-2 text-slate-600">@</span>
-                      <span className={g.homeScore > g.awayScore ? "text-white" : "text-slate-400"}>
-                        {g.home} {g.homeScore}
-                      </span>
-                    </span>
-                    <span className={`text-xs ${g.status === 2 ? "text-rose-400" : "text-slate-500"}`}>{g.statusText.trim()}</span>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          )}
-
-          {teamTotals.length > 0 && (
-            <section className="card">
-              <div className="border-b-2 border-white/15 px-5 py-3">
-                <h2 className="card-title">Fantasy Team Totals</h2>
-              </div>
-              <ol className="divide-y divide-white/5 text-sm">
-                {teamTotals.map((t, i) => (
-                  <li key={t.teamId} className="flex items-center justify-between px-5 py-2">
-                    <span className="flex min-w-0 items-center gap-3">
-                      <span className="w-4 text-right tabular-nums text-slate-500">{i + 1}</span>
-                      <Link href={`/teams/${t.teamId}`} className="truncate text-white hover:text-gold">
-                        {t.teamName}
-                      </Link>
-                    </span>
-                    <span className="ml-3 shrink-0 tabular-nums">
-                      <span className="font-semibold">{formatFp(t.fp)}</span>
-                      <span className="ml-2 text-xs text-slate-500">{t.playerGames} gp</span>
-                    </span>
-                  </li>
-                ))}
-              </ol>
-            </section>
-          )}
-        </div>
-      )}
     </div>
   );
 }

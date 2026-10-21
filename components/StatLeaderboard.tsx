@@ -10,14 +10,20 @@ function OwnerCell({
   id,
   name,
   status,
+  truncate,
 }: {
   id: string | null;
   name: string | null;
   status: ScoredLog["ownerStatus"];
+  truncate?: boolean;
 }) {
   if (id) {
     return (
-      <Link href={`/teams/${id}`} className="block max-w-[9rem] truncate hover:text-gold" title={name ?? undefined}>
+      <Link
+        href={`/teams/${id}`}
+        className={`hover:text-gold ${truncate ? "block max-w-[9rem] truncate" : "whitespace-nowrap"}`}
+        title={name ?? undefined}
+      >
         {name}
       </Link>
     );
@@ -41,7 +47,7 @@ export default function StatLeaderboard(props: DailyProps | WeeklyProps) {
           <tr>
             <th className="w-8">#</th>
             <th>Player</th>
-            <th>NBA</th>
+            <th>Team</th>
             {props.mode === "daily" ? <th>Opp</th> : <th className={num}>GP</th>}
             <th className={num}>MIN</th>
             <th className={num}>PTS</th>
@@ -82,7 +88,7 @@ export default function StatLeaderboard(props: DailyProps | WeeklyProps) {
                   <td className={`${num} text-slate-400`}>{r.tov}</td>
                   <td className={`${num} font-bold ${r.fp > 50 ? "text-parse-pink" : "text-gold"}`}>{formatFp(r.fp)}</td>
                   <td>
-                    <OwnerCell id={r.fantasyTeamId} name={r.fantasyTeamName} status={r.ownerStatus} />
+                    <OwnerCell id={r.fantasyTeamId} name={r.fantasyTeamName} status={r.ownerStatus} truncate={false} />
                   </td>
                 </tr>
               ))
@@ -106,7 +112,7 @@ export default function StatLeaderboard(props: DailyProps | WeeklyProps) {
                   <td className={`${num} font-bold text-gold`}>{formatFp(r.fp)}</td>
                   <td className={`${num} text-slate-300`}>{formatFp(r.avg)}</td>
                   <td>
-                    <OwnerCell id={r.fantasyTeamId} name={r.fantasyTeamName} status={r.ownerStatus} />
+                    <OwnerCell id={r.fantasyTeamId} name={r.fantasyTeamName} status={r.ownerStatus} truncate />
                   </td>
                 </tr>
               ))}
