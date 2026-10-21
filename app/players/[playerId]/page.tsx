@@ -233,9 +233,9 @@ export default async function PlayerPage({ params, searchParams }: { params: Par
             )}
           </span>
         </div>
-        <div className={`mt-4 ${fpRank ? "flex flex-col gap-5 sm:flex-row sm:items-stretch" : ""}`}>
+        <div className={`mt-4 ${fpRank ? "flex flex-col gap-6 sm:flex-row sm:items-stretch sm:gap-10 lg:gap-14" : ""}`}>
           {fpRank && <SeasonRankMark rank={fpRank} href={selected.current ? "/season" : undefined} />}
-          <dl className={`grid grid-cols-4 gap-x-4 gap-y-4 sm:grid-cols-6 ${fpRank ? "min-w-0 flex-1" : "lg:grid-cols-12"}`}>
+          <dl className={`grid grid-cols-4 gap-x-4 gap-y-4 sm:grid-cols-6 ${fpRank ? "min-w-0 flex-1 sm:gap-x-8 lg:gap-x-10" : "lg:grid-cols-12"}`}>
             {summary.map((s) => (
               <div key={s.label}>
                 <dt className="text-[11px] font-semibold uppercase tracking-wider text-slate-500">{s.label}</dt>
