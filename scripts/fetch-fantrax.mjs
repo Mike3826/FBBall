@@ -2,6 +2,7 @@
 // Run with: npm run fetch-data
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
+import { toMondaySundayPeriods } from "../lib/scoring-weeks.mjs";
 
 const LEAGUE_ID = process.env.FANTRAX_LEAGUE_ID ?? "r7yj6bpwmtswkp9p";
 const BASE = "https://www.fantrax.com/fxea/general";
@@ -63,7 +64,7 @@ async function main() {
       rosterInfo: league.rosterInfo,
       playoffs: league.playoffs,
       teams: Object.values(league.teamInfo ?? {}),
-      scoringPeriods: league.scoringPeriods,
+      scoringPeriods: toMondaySundayPeriods(league.scoringPeriods),
       matchups: league.matchups,
     }),
     write("standings.json", standings),

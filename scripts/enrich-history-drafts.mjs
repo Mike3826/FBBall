@@ -3,6 +3,7 @@
 // recap so retired players still get names.
 import { readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
+import { applyKnown, fillLeagueUnknowns, loadExtraNames } from "./history-player-names.mjs";
 
 const FANTRAX = "https://www.fantrax.com/fxea/general";
 const OUT = path.resolve(process.cwd(), "data/history/league.json");
@@ -110,6 +111,7 @@ async function main() {
 
   const league = JSON.parse(await readFile(OUT, "utf8"));
   const allPlayers = await getJson(`${FANTRAX}/getPlayerIds?sport=NBA`);
+  const extraNames = await loadExtraNames();
 
   for (const season of league.seasons) {
     const [info, draft, loggedDraft] = await Promise.all([
@@ -129,11 +131,19 @@ async function main() {
       picks: (draft.draftPicks ?? []).map((p) => {
         const player = allPlayers[p.playerId];
         const scorer = named[p.playerId];
+        const filled = applyKnown(
+          {
+            name: player?.name ?? scorer?.name ?? "Unknown",
+            nbaTeam: player?.team ?? scorer?.nbaTeam ?? "",
+            position: player?.position ?? scorer?.position ?? "",
+          },
+          extraNames.get(p.playerId),
+        );
         return {
           playerId: p.playerId,
-          name: player?.name ?? scorer?.name ?? "Unknown",
-          nbaTeam: player?.team ?? scorer?.nbaTeam ?? "",
-          position: player?.position ?? scorer?.position ?? "",
+          name: filled.name,
+          nbaTeam: filled.nbaTeam,
+          position: filled.position,
           teamId: p.teamId,
           teamName: teamsById[p.teamId] ?? p.teamId,
           round: p.round,
@@ -147,11 +157,8 @@ async function main() {
         if (p.name && p.name !== "Unknown") continue;
         const player = allPlayers[p.id];
         const scorer = named[p.id];
-        if (player || scorer) {
-          p.name = player?.name ?? scorer.name;
-          p.nbaTeam = player?.team ?? scorer.nbaTeam ?? p.nbaTeam;
-          p.position = player?.position ?? scorer.position ?? p.position;
-        }
+        applyKnown(p, player ? { name: player.name, nbaTeam: player.team, position: player.position } : scorer);
+        applyKnown(p, extraNames.get(p.id));
       }
     }
     const unknown = season.draft.picks.filter((p) => p.name === "Unknown").length;
@@ -160,6 +167,7 @@ async function main() {
     );
   }
 
+  fillLeagueUnknowns(league, extraNames);
   league.fetchedAt = new Date().toISOString();
   await writeFile(OUT, JSON.stringify(league, null, 2) + "\n");
   console.log(`\nUpdated ${OUT}`);

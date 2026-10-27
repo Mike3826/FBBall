@@ -12,6 +12,8 @@
   --color-gold: #b4975a;
   --color-gold-soft: #cdb67f;
   --color-silver: #a1a1a4;
+  /* Projection beat — darker than parse green so it sits with gold/raptor. */
+  --color-proj-green: #3d9d68;
   /* Warcraft Logs parse colors */
   --color-parse-pink: #e268a8;
   --color-parse-orange: #ff8000;

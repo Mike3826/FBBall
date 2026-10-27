@@ -1,8 +1,8 @@
 import {
+  etYmd,
   formatPlayerName,
   getTeamName,
   leagueInfo,
-  parseDate,
   playerMap,
   playerTeamMap,
   type ScoringPeriod,
@@ -25,13 +25,77 @@ export type ScoredLog = GameLog & {
   opponent: string;
 };
 
+/** "BOS @ DET" -> away BOS, home DET; "BOS vs. DET" -> home BOS, away DET. */
+export function parseMatchupTeams(matchup: string): { away: string; home: string } | null {
+  const m = matchup.match(/^(\w+)\s*(@|vs\.?)\s*(\w+)$/i);
+  if (!m) return null;
+  const a = m[1].toUpperCase();
+  const b = m[3].toUpperCase();
+  return m[2] === "@" ? { away: a, home: b } : { away: b, home: a };
+}
+
+export function gameFilterKey(away: string, home: string): string {
+  return `${away.toUpperCase()}@${home.toUpperCase()}`;
+}
+
+export function logGameKey(log: Pick<GameLog, "gameId" | "matchup">): string {
+  const parsed = parseMatchupTeams(log.matchup);
+  return parsed ? gameFilterKey(parsed.away, parsed.home) : log.gameId;
+}
+
+export type DayGame = {
+  key: string;
+  gameId: string;
+  away: string;
+  home: string;
+  live: boolean;
+  status: number;
+};
+
+/** Slate of NBA games for a date: scoreboard entries plus any log-only matchups. */
+export function gamesOnDate(stats: Stats, date: string): DayGame[] {
+  const byKey = new Map<string, DayGame>();
+  for (const g of stats.games.filter((row) => row.date === date)) {
+    const key = gameFilterKey(g.away, g.home);
+    byKey.set(key, {
+      key,
+      gameId: g.gameId,
+      away: g.away,
+      home: g.home,
+      live: g.status === 2,
+      status: g.status,
+    });
+  }
+  for (const l of stats.dailyLeaders(date)) {
+    const parsed = parseMatchupTeams(l.matchup);
+    const key = parsed ? gameFilterKey(parsed.away, parsed.home) : l.gameId;
+    const prev = byKey.get(key);
+    if (prev) {
+      if (l.live) {
+        prev.live = true;
+        prev.status = 2;
+      }
+      continue;
+    }
+    byKey.set(key, {
+      key,
+      gameId: l.gameId,
+      away: parsed?.away ?? l.team,
+      home: parsed?.home ?? l.opponent.replace(/^@|^vs\s+/i, "").trim(),
+      live: l.live,
+      status: l.live ? 2 : 3,
+    });
+  }
+  return [...byKey.values()];
+}
+
 /** "BOS @ DET" -> "@DET"; "BOS vs. DET" -> "vs DET". */
 export function shortMatchup(matchup: string, team: string): string {
-  const m = matchup.match(/^(\w+)\s*(@|vs\.?)\s*(\w+)$/i);
-  if (!m) return matchup;
-  const [, a, sep, b] = m;
-  const opp = a.toUpperCase() === team.toUpperCase() ? b : a;
-  return sep === "@" ? `@${opp}` : `vs ${opp}`;
+  const parsed = parseMatchupTeams(matchup);
+  if (!parsed) return matchup;
+  const opp = team.toUpperCase() === parsed.away ? parsed.home : parsed.away;
+  const atHome = team.toUpperCase() === parsed.home;
+  return atHome ? `vs ${opp}` : `@${opp}`;
 }
 
 function score(log: GameLog): ScoredLog {
@@ -112,12 +176,12 @@ export async function getStats(): Promise<Stats> {
 /** Dates (YYYY-MM-DD, ET) covered by a scoring period. */
 export function datesInPeriod(period: ScoringPeriod): string[] {
   const dates: string[] = [];
-  const d = parseDate(period.startDate);
-  d.setHours(0, 0, 0, 0);
-  const end = parseDate(period.endDate);
-  while (d <= end) {
-    dates.push(toYmd(d));
-    d.setDate(d.getDate() + 1);
+  let cur = etYmd(period.startDate);
+  const end = etYmd(period.endDate);
+  while (cur <= end) {
+    dates.push(cur);
+    const [y, m, d] = cur.split("-").map(Number);
+    cur = new Date(Date.UTC(y, m - 1, d + 1)).toISOString().slice(0, 10);
   }
   return dates;
 }

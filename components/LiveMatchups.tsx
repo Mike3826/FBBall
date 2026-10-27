@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { LineupCard, LiveDot, fmt } from "@/components/LineupCard";
+import { LineupCard, LiveDot, ScoreStack, WinPctBar, fmtWinPct, winPctClass } from "@/components/LineupCard";
 import { LINEUP_SLOTS, type LiveMatchup, type TeamLineup } from "@/lib/lineups";
 
 const ANIM_MS = 480;
@@ -115,7 +115,7 @@ export default function LiveMatchups({
       <div className="flex items-center justify-between">
         <h2 className="card-title">Matchups · Week {periodNumber}</h2>
         <span className="text-xs text-slate-500">
-          Scores count the top {LINEUP_SLOTS.G} G · {LINEUP_SLOTS.F} F · {LINEUP_SLOTS.C} C on each roster
+          Top {LINEUP_SLOTS.G} G · {LINEUP_SLOTS.F} F · {LINEUP_SLOTS.C} C · win% updates with live games
         </span>
       </div>
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
@@ -130,9 +130,8 @@ export default function LiveMatchups({
               </div>
             );
           }
-          const total = a.score + h.score || 1;
-          const aLead = a.score > h.score;
-          const hLead = h.score > a.score;
+          const aLead = (a.winPct ?? 0) > (h.winPct ?? 0);
+          const hLead = (h.winPct ?? 0) > (a.winPct ?? 0);
           const liveHere = a.liveCount + h.liveCount > 0;
           const isSelected = active === i;
           return (
@@ -154,24 +153,26 @@ export default function LiveMatchups({
                 const lead = side === 0 ? aLead : hLead;
                 return (
                   <div key={t.team.id} className={side === 0 ? "mt-3" : "mt-2"}>
-                    <div className="grid grid-cols-[1.25rem_minmax(0,1fr)_5.5rem] items-center gap-x-2">
+                    <div className="grid grid-cols-[1.25rem_minmax(0,1fr)_3.1rem_5.5rem] items-center gap-x-2">
                       <span className="text-xs tabular-nums text-slate-500">#{ranks[t.team.id]}</span>
                       <div className="flex min-w-0 items-center gap-1.5">
                         <span className={`truncate text-sm font-bold ${lead ? "text-white" : "text-slate-300"}`}>{t.team.name}</span>
-                        <span className="shrink-0 text-xs font-medium tabular-nums text-slate-500">
-                          ({t.countingGames}/{t.gamesRemaining})
-                        </span>
                         {t.liveCount > 0 && <LiveDot />}
                       </div>
-                      <span className={`text-right text-xl font-extrabold tabular-nums ${lead ? "text-gold" : "text-slate-300"}`}>
-                        {fmt(t.score)}
+                      <span
+                        className={`text-right text-sm font-extrabold tabular-nums ${winPctClass(t.winPct)}`}
+                        title="Chance to win the week"
+                      >
+                        {t.winPct == null ? "—" : fmtWinPct(t.winPct)}
                       </span>
-                      <div className="col-span-3 mt-1.5 h-1.5 overflow-hidden rounded-full bg-white/5">
-                        <div
-                          className={`h-full rounded-full ${lead ? "bg-raptor" : "bg-silver/60"}`}
-                          style={{ width: `${(t.score / total) * 100}%` }}
-                        />
-                      </div>
+                      <ScoreStack
+                        actual={t.score}
+                        projected={t.projScore}
+                        baseline={t.origScore}
+                        actualClass={lead ? "text-gold" : "text-slate-300"}
+                        size="xl"
+                      />
+                      <WinPctBar winPct={t.winPct} className="col-span-4 mt-1.5" />
                     </div>
                   </div>
                 );
@@ -180,7 +181,7 @@ export default function LiveMatchups({
                 type="button"
                 aria-expanded={isSelected}
                 onClick={() => (isSelected ? hide() : show(i))}
-                className={`mt-3 flex w-full items-center justify-center rounded-md border-2 px-3 py-2.5 text-sm font-bold transition-colors ${
+                className={`mt-6 flex w-full items-center justify-center rounded-md border-2 px-3 py-2.5 text-sm font-bold transition-colors ${
                   isSelected
                     ? "border-gold bg-gold text-court hover:bg-gold-soft"
                     : "border-gold/50 bg-gold/10 text-gold hover:border-gold hover:bg-gold/20"

@@ -1,9 +1,10 @@
-// Live NBA stats loader. Scoreboard and box scores come from ESPN (NBA's own
-// CDN and stats.nba.com block most cloud IPs, including Vercel). Season logs
-// from stats.nba.com are used when that host responds. Pages always await a
-// live fetch — we do not serve a stale on-disk snapshot.
+// Live NBA stats loader. Finished games are seeded from data/season-logs.json
+// (refreshed by `npm run fetch-stats`). ESPN overlays today's scoreboard and
+// any in-progress / missing box scores. stats.nba.com season logs are used
+// when that host responds (it often does not from Vercel).
 import { getCurrentPeriod, leagueInfo, playerMap, type Player } from "@/lib/data";
 import type { StatLine } from "@/lib/scoring";
+import seasonLogsFile from "@/data/season-logs.json";
 
 export type GameLog = StatLine & {
   gameId: string;
@@ -76,6 +77,41 @@ export const nbaTricode = (code: string) => TRICODE_ALIASES[code] ?? code;
 export function nbaTeamInGame(nbaTeam: string, game: Game): boolean {
   const t = nbaTricode(nbaTeam);
   return nbaTricode(game.home) === t || nbaTricode(game.away) === t;
+}
+
+const QUARTER_MIN = 12;
+const REGULATION_MIN = 48;
+const OT_MIN = 5;
+
+/** Fraction of an NBA game that has been played (0 scheduled, 1 final). Used to lock live stats. */
+export function gamePlayedFrac(game: Pick<Game, "status" | "statusText">): number {
+  if (game.status <= 1) return 0;
+  if (game.status >= 3) return 1;
+  const text = game.statusText.replace(/\s+/g, " ").trim();
+  if (/half/i.test(text)) return 24 / REGULATION_MIN;
+
+  const clock = text.match(/(\d+):(\d{2})/);
+  const clockMin = clock ? Number(clock[1]) + Number(clock[2]) / 60 : null;
+  const ot = text.match(/(\d+)?\s*OT/i);
+  const qMatch = text.match(/(?:Q\s*)?([1-4])(?:st|nd|rd|th)?/i);
+
+  if (ot) {
+    const n = ot[1] ? Number(ot[1]) : 1;
+    const elapsedOt = (n - 1) * OT_MIN + (clockMin == null ? OT_MIN / 2 : Math.max(0, OT_MIN - clockMin));
+    const rem = clockMin ?? OT_MIN / 2;
+    return Math.min(0.995, (REGULATION_MIN + elapsedOt) / (REGULATION_MIN + elapsedOt + rem));
+  }
+  if (/end of\s*4/i.test(text)) return 1;
+  if (/end of\s*3/i.test(text)) return 36 / REGULATION_MIN;
+  if (/end of\s*2/i.test(text)) return 24 / REGULATION_MIN;
+  if (/end of\s*1/i.test(text)) return 12 / REGULATION_MIN;
+
+  if (qMatch) {
+    const q = Number(qMatch[1]);
+    const playedInQ = clockMin == null ? QUARTER_MIN / 2 : Math.max(0, QUARTER_MIN - clockMin);
+    return Math.min(0.99, ((q - 1) * QUARTER_MIN + playedInQ) / REGULATION_MIN);
+  }
+  return 0.5;
 }
 
 // ---------------------------------------------------------------------------
@@ -523,13 +559,46 @@ const state: LiveState = (g.__nbaLive ??= {
 });
 state.completed ??= [];
 
+type CachedSeasonLog = Omit<GameLog, "live" | "fantraxId"> & { fantraxId?: string | null };
+type CachedSeasonFile = { fetchedAt: string | null; season: string; logs?: CachedSeasonLog[] };
+
+function hydrateFileLogs(): GameLog[] {
+  const raw = (seasonLogsFile as CachedSeasonFile).logs ?? [];
+  return raw.map((l) => ({
+    ...l,
+    team: nbaTricode(l.team),
+    live: false,
+    fantraxId: l.fantraxId ?? matchPlayer(l.name, nbaTricode(l.team)),
+  }));
+}
+
+let fileLogs: GameLog[] | null = null;
+function fileSeasonLogs(): GameLog[] {
+  return (fileLogs ??= hydrateFileLogs());
+}
+
+function logKey(l: GameLog): string {
+  return `${l.date}|${normalizeName(l.name)}|${nbaTricode(l.team)}`;
+}
+
+function mergeLogs(...parts: GameLog[][]): GameLog[] {
+  const map = new Map<string, GameLog>();
+  for (const part of parts) {
+    for (const l of part) map.set(logKey(l), l);
+  }
+  return [...map.values()];
+}
+
 function emptySnapshot(today: string): GameLogSnapshot {
   return { fetchedAt: null, season: SEASON, today, games: [], logs: [], source: "file" };
 }
 
 function baseCompletedLogs(): GameLog[] {
-  if (state.completed.length) return state.completed;
-  return (state.season?.logs ?? []).filter((l) => !l.live);
+  return mergeLogs(
+    fileSeasonLogs(),
+    (state.season?.logs ?? []).filter((l) => !l.live),
+    state.completed,
+  );
 }
 
 function rememberCompleted(logs: GameLog[]) {
@@ -546,6 +615,13 @@ async function refresh(): Promise<GameLogSnapshot> {
     void fetchSeasonGameLogs()
       .then((logs) => {
         state.season = { logs, at: Date.now() };
+        if (logs.length) {
+          state.completed = mergeLogs(
+            fileSeasonLogs(),
+            logs.filter((l) => !l.live),
+            state.completed,
+          );
+        }
       })
       .catch((err: Error) => {
         console.warn(`[nba] season logs failed: ${err.message}`);

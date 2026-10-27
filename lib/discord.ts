@@ -52,6 +52,7 @@ export type TopTenPayload = {
   date: string;
   complete: boolean;
   count: number;
+  headline: string;
   body: Record<string, unknown>;
 };
 
@@ -73,6 +74,7 @@ export function buildTopTenPayload(stats: Stats, date: string, limit = 10): TopT
   lines.push(top.map(formatPlayerEntry).join("\n\n"));
 
   const leader = top[0];
+  const headline = longDate(date);
   const headshot = leader?.fantraxId ? playerMap[leader.fantraxId]?.rotowireId : null;
   const period = getCurrentPeriod(new Date(`${date}T12:00:00`));
   const dd = leaders.filter((l) => l.dd).length;
@@ -88,12 +90,13 @@ export function buildTopTenPayload(stats: Stats, date: string, limit = 10): TopT
     date,
     complete,
     count: top.length,
+    headline,
     body: {
       username: leagueInfo.leagueName,
       embeds: [
         {
-          author: { name: `${leagueInfo.leagueName} · Daily Top ${top.length}`, url: `${SITE_URL}/daily-rankings` },
-          title: `🏀 ${longDate(date)}`,
+          author: { name: `${leagueInfo.leagueName} · ${longDate(date)}`, url: `${SITE_URL}/daily-rankings` },
+          title: complete ? headline : `Live: ${headline}`,
           url: `${SITE_URL}/daily-rankings?date=${date}`,
           description: lines.join("\n"),
           color: complete ? RAPTOR_RED : GOLD,
@@ -110,6 +113,21 @@ export type PublishResult =
   | { ok: true; date: string; count: number; complete: boolean }
   | { ok: false; error: string; status?: number };
 
+async function postWebhook(webhook: string, body: Record<string, unknown>): Promise<{ ok: true } | { ok: false; error: string; status: number }> {
+  const res = await fetch(webhook, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+    cache: "no-store",
+    signal: AbortSignal.timeout(15_000),
+  });
+  if (!res.ok) {
+    const text = await res.text().catch(() => "");
+    return { ok: false, error: `Discord responded ${res.status}${text ? `: ${text.slice(0, 200)}` : ""}`, status: res.status };
+  }
+  return { ok: true };
+}
+
 /**
  * Posts the top-10 table to the configured webhook: the latest completed slate,
  * or today's in-progress slate if nothing has finished yet.
@@ -125,16 +143,7 @@ export async function publishTopTen(): Promise<PublishResult> {
   const payload = buildTopTenPayload(stats, target.date);
   if (payload.count === 0) return { ok: false, error: `No player stats for ${target.date}` };
 
-  const res = await fetch(webhook, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload.body),
-    cache: "no-store",
-    signal: AbortSignal.timeout(15_000),
-  });
-  if (!res.ok) {
-    const text = await res.text().catch(() => "");
-    return { ok: false, error: `Discord responded ${res.status}${text ? `: ${text.slice(0, 200)}` : ""}`, status: res.status };
-  }
+  const posted = await postWebhook(webhook, payload.body);
+  if (!posted.ok) return posted;
   return { ok: true, date: target.date, count: payload.count, complete: payload.complete };
 }

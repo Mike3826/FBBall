@@ -5,7 +5,7 @@ import PublishToDiscordButton from "@/components/PublishToDiscordButton";
 import StatLeaderboard from "@/components/StatLeaderboard";
 import { formatDate, getCurrentPeriod, leagueInfo } from "@/lib/data";
 import { LIVE_TTL_MS, todayEt } from "@/lib/nba";
-import { datesInPeriod, getStats, publishableDate, updatedLabel } from "@/lib/stats";
+import { datesInPeriod, gamesOnDate, getStats, logGameKey, publishableDate, updatedLabel } from "@/lib/stats";
 
 export const metadata = { title: "Daily Rankings" };
 export const dynamic = "force-dynamic";
@@ -14,8 +14,12 @@ function labelFor(ymd: string, opts: Intl.DateTimeFormatOptions) {
   return new Date(`${ymd}T00:00:00`).toLocaleDateString("en-US", opts);
 }
 
-export default async function DailyRankingsPage({ searchParams }: { searchParams: Promise<{ date?: string }> }) {
-  const [{ date: requested }, stats] = await Promise.all([searchParams, getStats()]);
+export default async function DailyRankingsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ date?: string; game?: string }>;
+}) {
+  const [{ date: requested, game: requestedGame }, stats] = await Promise.all([searchParams, getStats()]);
   const period = getCurrentPeriod();
   const gameDates = stats.gameDates;
   const today = todayEt();
@@ -27,7 +31,10 @@ export default async function DailyRankingsPage({ searchParams }: { searchParams
   const chipDates = [...new Set([...(period ? datesInPeriod(period) : []), ...gameDates, date])].sort();
   const hasData = new Set(gameDates);
 
-  const leaders = stats.dailyLeaders(date);
+  const dayGames = gamesOnDate(stats, date);
+  const selectedGame = requestedGame && dayGames.some((g) => g.key === requestedGame) ? requestedGame : null;
+  const allLeaders = stats.dailyLeaders(date);
+  const leaders = selectedGame ? allLeaders.filter((l) => logGameKey(l) === selectedGame) : allLeaders;
   const anyLive = leaders.some((l) => l.live);
 
   return (
@@ -67,9 +74,44 @@ export default async function DailyRankingsPage({ searchParams }: { searchParams
         })}
       </div>
 
+      {dayGames.length > 0 && (
+        <div className="flex flex-wrap gap-2">
+          <Link
+            href={`/daily-rankings?date=${date}`}
+            className={`rounded-md border px-3 py-1.5 text-xs font-medium ${
+              !selectedGame
+                ? "border-raptor/50 bg-raptor/15 text-gold"
+                : "border-white/10 text-slate-300 hover:border-white/30 hover:text-white"
+            }`}
+          >
+            All games
+          </Link>
+          {dayGames.map((g) => {
+            const active = selectedGame === g.key;
+            return (
+              <Link
+                key={g.key}
+                href={active ? `/daily-rankings?date=${date}` : `/daily-rankings?date=${date}&game=${encodeURIComponent(g.key)}`}
+                className={`inline-flex items-center gap-1.5 rounded-md border px-3 py-1.5 text-xs font-medium tabular-nums ${
+                  active
+                    ? "border-raptor/50 bg-raptor/15 text-gold"
+                    : "border-white/10 text-slate-300 hover:border-white/30 hover:text-white"
+                }`}
+              >
+                {g.away} @ {g.home}
+                {g.live && <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-rose-400" title="In progress" />}
+              </Link>
+            );
+          })}
+        </div>
+      )}
+
       <section className="card">
         <div className="flex items-center justify-between border-b-2 border-white/15 px-5 py-3">
-          <h2 className="card-title">Leaderboard · {labelFor(date, { weekday: "long", month: "short", day: "numeric" })}</h2>
+          <h2 className="card-title">
+            Leaderboard · {labelFor(date, { weekday: "long", month: "short", day: "numeric" })}
+            {selectedGame && <span className="ml-2 font-medium normal-case tracking-normal text-slate-400">{selectedGame.replace("@", " @ ")}</span>}
+          </h2>
           <span className="text-xs text-slate-500">
             {leaders.length} players
             {anyLive && (
@@ -83,13 +125,17 @@ export default async function DailyRankingsPage({ searchParams }: { searchParams
         {leaders.length === 0 ? (
           <div className="px-5 py-12 text-center">
             <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-white/5 text-2xl">🏀</div>
-            <p className="mt-4 text-sm font-medium text-white">No box scores for this date</p>
+            <p className="mt-4 text-sm font-medium text-white">
+              {selectedGame ? "No box scores for this game" : "No box scores for this date"}
+            </p>
             <p className="mx-auto mt-1 max-w-md text-sm text-slate-400">
-              {date > today
-                ? "Games haven't been played yet."
-                : date < leagueInfo.startDate
-                  ? `The season tips off ${formatDate(leagueInfo.startDate)}.`
-                  : "No games were played on this date."}
+              {selectedGame
+                ? "This game hasn't started or stats haven't landed yet."
+                : date > today
+                  ? "Games haven't been played yet."
+                  : date < leagueInfo.startDate
+                    ? `The season tips off ${formatDate(leagueInfo.startDate)}.`
+                    : "No games were played on this date."}
             </p>
           </div>
         ) : (

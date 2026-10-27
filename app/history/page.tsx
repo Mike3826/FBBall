@@ -1,11 +1,13 @@
 import Link from "next/link";
 import PageHeader from "@/components/PageHeader";
 import PlayerLink from "@/components/PlayerLink";
-import { formatDate, formatPlayerName, playerMap } from "@/lib/data";
+import { formatDate, formatPlayerName } from "@/lib/data";
 import { formatFp } from "@/lib/scoring";
 import {
+  historyPlayerName,
   leagueHistorySeason,
   leagueHistorySeasons,
+  resolvePlayer,
   type HistoryLeagueSeason,
   type HistoryMatchup,
   type HistoryRosterPlayer,
@@ -57,8 +59,8 @@ function TeamLine({
 }
 
 function NamedPlayer({ id, name, className = "" }: { id: string; name: string; className?: string }) {
-  const label = formatPlayerName(name);
-  if (playerMap[id]) {
+  const label = formatPlayerName(historyPlayerName(id, name));
+  if (resolvePlayer(id)) {
     return (
       <PlayerLink id={id} className={className}>
         {label}
@@ -123,6 +125,7 @@ export default async function HistoryPage({ searchParams }: { searchParams: Sear
     .map(([teamId, roster]) => ({
       teamId,
       ...roster,
+      players: roster.players.map((p) => ({ ...p, name: historyPlayerName(p.id, p.name) })),
       standing: standingsById.get(teamId),
     }))
     .sort((a, b) => (a.standing?.rank ?? 99) - (b.standing?.rank ?? 99) || a.teamName.localeCompare(b.teamName));

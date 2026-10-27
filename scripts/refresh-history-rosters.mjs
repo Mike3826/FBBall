@@ -2,6 +2,7 @@
 // period for old leagues is an offseason leftover (e.g. 153) with emptied lineups.
 import { readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
+import { applyKnown, fillLeagueUnknowns, loadExtraNames } from "./history-player-names.mjs";
 
 const FANTRAX = "https://www.fantrax.com/fxea/general";
 const OUT = path.resolve(process.cwd(), "data/history/league.json");
@@ -15,6 +16,7 @@ async function getJson(url) {
 async function main() {
   const league = JSON.parse(await readFile(OUT, "utf8"));
   const allPlayers = await getJson(`${FANTRAX}/getPlayerIds?sport=NBA`);
+  const extraNames = await loadExtraNames();
 
   for (const season of league.seasons) {
     const info = await getJson(`${FANTRAX}/getLeagueInfo?leagueId=${season.leagueId}`);
@@ -33,15 +35,18 @@ async function main() {
         players: (roster.rosterItems ?? []).map((item) => {
           const p = allPlayers[item.id];
           const prev = nameById[item.id];
-          return {
-            id: item.id,
-            name: p?.name ?? prev?.name ?? "Unknown",
-            nbaTeam: p?.team ?? prev?.nbaTeam ?? "",
-            position: p?.position ?? prev?.position ?? "",
-            eligiblePos: p?.position ?? prev?.eligiblePos ?? "",
-            rosterPosition: item.position,
-            status: item.status,
-          };
+          return applyKnown(
+            {
+              id: item.id,
+              name: p?.name ?? prev?.name ?? "Unknown",
+              nbaTeam: p?.team ?? prev?.nbaTeam ?? "",
+              position: p?.position ?? prev?.position ?? "",
+              eligiblePos: p?.position ?? prev?.eligiblePos ?? "",
+              rosterPosition: item.position,
+              status: item.status,
+            },
+            extraNames.get(item.id),
+          );
         }),
       };
     }
@@ -54,6 +59,7 @@ async function main() {
     console.log(`${season.season} period ${season.rosterPeriod} · ${Object.keys(next).length} teams ·`, byStatus);
   }
 
+  fillLeagueUnknowns(league, extraNames);
   league.fetchedAt = new Date().toISOString();
   await writeFile(OUT, JSON.stringify(league, null, 2) + "\n");
   console.log(`\nUpdated ${OUT}`);

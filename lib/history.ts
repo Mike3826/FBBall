@@ -11,6 +11,7 @@ import {
   getTeamName,
   leagueInfo,
   playerMap,
+  type Player,
   type ScoringRule,
 } from "@/lib/data";
 import { isNbaPostseasonGame, type GameLog } from "@/lib/nba";
@@ -148,7 +149,7 @@ function rowToLog(playerId: string, row: (string | number)[]): GameLog {
     tov: Number(row[10]) || 0,
     fg3m: Number(row[11]) || 0,
     nbaId: 0,
-    name: formatPlayerName(playerMap[playerId]?.name ?? ""),
+    name: formatPlayerName(historyPlayerName(playerId)),
     live: false,
     fantraxId: playerId,
   };
@@ -191,7 +192,7 @@ export function getHistoryLogs(playerId: string, season: string): ScoredLog[] {
   const file = FILES[season];
   const rules = scoringForSeason(season);
   const rows = (file?.players[playerId] ?? []).filter((row) => !isNbaPostseasonGame(String(row[1])));
-  const fx = playerMap[playerId];
+  const fx = resolvePlayer(playerId);
   return rows.map((row) => {
     const log = rowToLog(playerId, row);
     return {
@@ -312,6 +313,99 @@ function withFormat(season: HistoryLeagueSeason): HistoryLeagueSeason {
 }
 
 const LEAGUE_HISTORY = leagueHistoryJson as unknown as { fetchedAt: string; seasons: HistoryLeagueSeason[] };
+
+type HistoryName = { name: string; nbaTeam: string; position: string };
+
+function usableHistoryTeam(team: string | undefined) {
+  return Boolean(team && team !== "(N/A)");
+}
+
+function usableHistoryPos(pos: string | undefined) {
+  return Boolean(pos && pos !== "Flx");
+}
+
+function rememberHistoryName(index: Map<string, HistoryName>, id: string, name: string, nbaTeam: string, position: string) {
+  if (!id || !name || name === "Unknown") return;
+  const prev = index.get(id);
+  if (!prev) {
+    index.set(id, { name, nbaTeam: nbaTeam ?? "", position: position ?? "" });
+    return;
+  }
+  if (!usableHistoryTeam(prev.nbaTeam) && usableHistoryTeam(nbaTeam)) prev.nbaTeam = nbaTeam;
+  if (!usableHistoryPos(prev.position) && usableHistoryPos(position)) prev.position = position;
+}
+
+let historyNames: Map<string, HistoryName> | null = null;
+
+function historyNameIndex(): Map<string, HistoryName> {
+  if (historyNames) return historyNames;
+  const index = new Map<string, HistoryName>();
+  for (const [id, p] of Object.entries(playerMap)) {
+    rememberHistoryName(index, id, p.name, p.nbaTeam, p.position);
+  }
+  for (const season of LEAGUE_HISTORY.seasons) {
+    for (const p of season.draft?.picks ?? []) {
+      rememberHistoryName(index, p.playerId, p.name, p.nbaTeam, p.position);
+    }
+    for (const roster of Object.values(season.rosters ?? {})) {
+      for (const p of roster.players ?? []) {
+        rememberHistoryName(index, p.id, p.name, p.nbaTeam, p.position);
+      }
+    }
+  }
+  historyNames = index;
+  return index;
+}
+
+/** Name for a historical player, including retirees Fantrax no longer lists. */
+export function historyPlayerName(id: string, fallback = ""): string {
+  if (fallback && fallback !== "Unknown") return fallback;
+  return playerMap[id]?.name ?? historyNameIndex().get(id)?.name ?? (fallback || "Unknown");
+}
+
+export type ResolvedPlayer = Player & { historical?: boolean };
+
+/** Current pool player, or a retired/historical player from past rosters and drafts. */
+export function resolvePlayer(id: string): ResolvedPlayer | undefined {
+  const current = playerMap[id];
+  if (current) return current;
+  const hist = historyNameIndex().get(id);
+  if (!hist) return undefined;
+  return {
+    id,
+    name: hist.name,
+    nbaTeam: hist.nbaTeam || "(N/A)",
+    position: hist.position || "",
+    eligiblePos: hist.position || "",
+    status: "FA",
+    rotowireId: null,
+    historical: true,
+  };
+}
+
+export function playerAppearedInSeason(id: string, season: string): boolean {
+  if (FILES[season]?.players[id]?.length) return true;
+  const s = LEAGUE_HISTORY.seasons.find((row) => row.season === season);
+  if (!s) return false;
+  if (s.draft?.picks.some((p) => p.playerId === id)) return true;
+  return Object.values(s.rosters ?? {}).some((roster) => roster.players.some((p) => p.id === id));
+}
+
+/** Current season for pool players; otherwise the most recent historical season they appeared in. */
+export function preferredSeasonForPlayer(id: string): SeasonOption {
+  const options = seasonOptions();
+  if (playerMap[id]) return options[0];
+  return options.find((s) => !s.current && playerAppearedInSeason(id, s.key)) ?? options[0];
+}
+
+export function historyRosterTeam(playerId: string, season: string): { teamId: string; teamName: string } | null {
+  const s = LEAGUE_HISTORY.seasons.find((row) => row.season === season);
+  if (!s) return null;
+  for (const [teamId, roster] of Object.entries(s.rosters ?? {})) {
+    if (roster.players.some((p) => p.id === playerId)) return { teamId, teamName: roster.teamName };
+  }
+  return null;
+}
 
 export function leagueHistorySeasons(): HistoryLeagueSeason[] {
   return LEAGUE_HISTORY.seasons.map(withFormat);

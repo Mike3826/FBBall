@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-21T05:10:20.714Z",
+  "fetchedAt": "2026-10-27T03:06:42.588Z",
   "leagueId": "r7yj6bpwmtswkp9p",
   "seasons": [
     "2026-27",
@@ -9,6 +9,519 @@
     "2022-23"
   ],
   "transactions": [
+    {
+      "id": "2026-27:3ackg5cjmvq0wm8w",
+      "date": "2026-10-27T01:45:00.000Z",
+      "dateText": "Mon Oct 26, 2026, 9:45PM",
+      "week": 2,
+      "type": "MULTI",
+      "teams": [
+        "7f7redubmtswkpax"
+      ],
+      "moves": [
+        {
+          "teamId": "7f7redubmtswkpax",
+          "teamName": "Mike Lee Double Team",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "FA",
+          "actionLabel": "Claim",
+          "playerId": "0623m",
+          "playerName": "Keon Ellis",
+          "nbaTeam": "BKN",
+          "pos": "G",
+          "bid": null,
+          "note": null,
+          "executed": true
+        },
+        {
+          "teamId": "7f7redubmtswkpax",
+          "teamName": "Mike Lee Double Team",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "DROP",
+          "actionLabel": "Drop",
+          "playerId": "05uio",
+          "playerName": "Moses Moody",
+          "nbaTeam": "GS",
+          "pos": "G,F",
+          "bid": null,
+          "note": null,
+          "executed": true
+        }
+      ],
+      "season": "2026-27",
+      "leagueId": "r7yj6bpwmtswkp9p"
+    },
+    {
+      "id": "2026-27:wf51pa3wmvq0p6v1",
+      "date": "2026-10-27T01:39:00.000Z",
+      "dateText": "Mon Oct 26, 2026, 9:39PM",
+      "week": 2,
+      "type": "MULTI",
+      "teams": [
+        "7f7redubmtswkpax"
+      ],
+      "moves": [
+        {
+          "teamId": "7f7redubmtswkpax",
+          "teamName": "Mike Lee Double Team",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "FA",
+          "actionLabel": "Claim",
+          "playerId": "05y9y",
+          "playerName": "Brandon Williams",
+          "nbaTeam": "GS",
+          "pos": "G",
+          "bid": null,
+          "note": null,
+          "executed": true
+        },
+        {
+          "teamId": "7f7redubmtswkpax",
+          "teamName": "Mike Lee Double Team",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "DROP",
+          "actionLabel": "Drop",
+          "playerId": "06v5q",
+          "playerName": "Danny Wolf",
+          "nbaTeam": "BKN",
+          "pos": "F,C",
+          "bid": null,
+          "note": null,
+          "executed": true
+        }
+      ],
+      "season": "2026-27",
+      "leagueId": "r7yj6bpwmtswkp9p"
+    },
+    {
+      "id": "2026-27:0to109fpmvop8696",
+      "date": "2026-10-26T20:55:00.000Z",
+      "dateText": "Mon Oct 26, 2026, 4:55PM",
+      "week": 2,
+      "type": "MULTI",
+      "teams": [
+        "k2ki420pmtswkpax"
+      ],
+      "moves": [
+        {
+          "teamId": "k2ki420pmtswkpax",
+          "teamName": "Tony and the Gabagools",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "WW",
+          "actionLabel": "Claim",
+          "playerId": "051p0",
+          "playerName": "Matisse Thybulle",
+          "nbaTeam": "LAL",
+          "pos": "G,F",
+          "bid": "1.00",
+          "note": null,
+          "executed": true
+        },
+        {
+          "teamId": "k2ki420pmtswkpax",
+          "teamName": "Tony and the Gabagools",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "DROP",
+          "actionLabel": "Drop",
+          "playerId": "05qt4",
+          "playerName": "Aaron Nesmith",
+          "nbaTeam": "IND",
+          "pos": "F",
+          "bid": null,
+          "note": null,
+          "executed": true
+        }
+      ],
+      "season": "2026-27",
+      "leagueId": "r7yj6bpwmtswkp9p"
+    },
+    {
+      "id": "2026-27:w5xskargmvp9075u",
+      "date": "2026-10-26T12:44:00.000Z",
+      "dateText": "Mon Oct 26, 2026, 8:44AM",
+      "week": 2,
+      "type": "MULTI",
+      "teams": [
+        "qqq57v0gmtswkpax"
+      ],
+      "moves": [
+        {
+          "teamId": "qqq57v0gmtswkpax",
+          "teamName": "achen88",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "FA",
+          "actionLabel": "Claim",
+          "playerId": "04qsm",
+          "playerName": "De'Anthony Melton",
+          "nbaTeam": "GS",
+          "pos": "G",
+          "bid": null,
+          "note": null,
+          "executed": true
+        },
+        {
+          "teamId": "qqq57v0gmtswkpax",
+          "teamName": "achen88",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "DROP",
+          "actionLabel": "Drop",
+          "playerId": "076sv",
+          "playerName": "Bennett Stirtz",
+          "nbaTeam": "OKC",
+          "pos": "G",
+          "bid": null,
+          "note": null,
+          "executed": true
+        }
+      ],
+      "season": "2026-27",
+      "leagueId": "r7yj6bpwmtswkp9p"
+    },
+    {
+      "id": "2026-27:tfd880lymvnvgp7s",
+      "date": "2026-10-26T00:55:00.000Z",
+      "dateText": "Sun Oct 25, 2026, 8:55PM",
+      "week": 2,
+      "type": "MULTI",
+      "teams": [
+        "rowc20kzmtswkpax"
+      ],
+      "moves": [
+        {
+          "teamId": "rowc20kzmtswkpax",
+          "teamName": "Notorious BI3",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "WW",
+          "actionLabel": "Claim",
+          "playerId": "005l3",
+          "playerName": "DeAndre Jordan",
+          "nbaTeam": "NO",
+          "pos": "C",
+          "bid": "0.00",
+          "note": null,
+          "executed": true
+        },
+        {
+          "teamId": "rowc20kzmtswkpax",
+          "teamName": "Notorious BI3",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "DROP",
+          "actionLabel": "Drop",
+          "playerId": "0779m",
+          "playerName": "Alpha Diallo",
+          "nbaTeam": "DEN",
+          "pos": "F",
+          "bid": null,
+          "note": null,
+          "executed": true
+        }
+      ],
+      "season": "2026-27",
+      "leagueId": "r7yj6bpwmtswkp9p"
+    },
+    {
+      "id": "2026-27:sjsksgstmvlt2d9q",
+      "date": "2026-10-25T01:55:00.000Z",
+      "dateText": "Sat Oct 24, 2026, 9:55PM",
+      "week": 2,
+      "type": "MULTI",
+      "teams": [
+        "7f7redubmtswkpax"
+      ],
+      "moves": [
+        {
+          "teamId": "7f7redubmtswkpax",
+          "teamName": "Mike Lee Double Team",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "WW",
+          "actionLabel": "Claim",
+          "playerId": "07ag3",
+          "playerName": "Graham Ike",
+          "nbaTeam": "GS",
+          "pos": "F",
+          "bid": "2.00",
+          "note": null,
+          "executed": true
+        },
+        {
+          "teamId": "7f7redubmtswkpax",
+          "teamName": "Mike Lee Double Team",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "DROP",
+          "actionLabel": "Drop",
+          "playerId": "06v7z",
+          "playerName": "Sion James",
+          "nbaTeam": "CHA",
+          "pos": "G,F",
+          "bid": null,
+          "note": null,
+          "executed": true
+        }
+      ],
+      "season": "2026-27",
+      "leagueId": "r7yj6bpwmtswkp9p"
+    },
+    {
+      "id": "2026-27:hanm77ixmvlo823m",
+      "date": "2026-10-24T19:55:00.000Z",
+      "dateText": "Sat Oct 24, 2026, 3:55PM",
+      "week": 2,
+      "type": "MULTI",
+      "teams": [
+        "7f7redubmtswkpax"
+      ],
+      "moves": [
+        {
+          "teamId": "7f7redubmtswkpax",
+          "teamName": "Mike Lee Double Team",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "WW",
+          "actionLabel": "Claim",
+          "playerId": "06cei",
+          "playerName": "Leonard Miller",
+          "nbaTeam": "CHI",
+          "pos": "F",
+          "bid": "22.00",
+          "note": null,
+          "executed": true
+        },
+        {
+          "teamId": "7f7redubmtswkpax",
+          "teamName": "Mike Lee Double Team",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "DROP",
+          "actionLabel": "Drop",
+          "playerId": "05uj9",
+          "playerName": "Herbert Jones",
+          "nbaTeam": "NO",
+          "pos": "G,F",
+          "bid": null,
+          "note": null,
+          "executed": true
+        }
+      ],
+      "season": "2026-27",
+      "leagueId": "r7yj6bpwmtswkp9p"
+    },
+    {
+      "id": "2026-27:9r84bf56mvlsythl",
+      "date": "2026-10-24T02:51:00.000Z",
+      "dateText": "Fri Oct 23, 2026, 10:51PM",
+      "week": 2,
+      "type": "MULTI",
+      "teams": [
+        "7f7redubmtswkpax"
+      ],
+      "moves": [
+        {
+          "teamId": "7f7redubmtswkpax",
+          "teamName": "Mike Lee Double Team",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "FA",
+          "actionLabel": "Claim",
+          "playerId": "076tz",
+          "playerName": "Trevon Brazile",
+          "nbaTeam": "DEN",
+          "pos": "F",
+          "bid": null,
+          "note": null,
+          "executed": true
+        },
+        {
+          "teamId": "7f7redubmtswkpax",
+          "teamName": "Mike Lee Double Team",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "DROP",
+          "actionLabel": "Drop",
+          "playerId": "06mlz",
+          "playerName": "Cam Spencer",
+          "nbaTeam": "MEM",
+          "pos": "G",
+          "bid": null,
+          "note": null,
+          "executed": true
+        }
+      ],
+      "season": "2026-27",
+      "leagueId": "r7yj6bpwmtswkp9p"
+    },
+    {
+      "id": "2026-27:kvpuw7xxmvlsvpu5",
+      "date": "2026-10-24T02:49:00.000Z",
+      "dateText": "Fri Oct 23, 2026, 10:49PM",
+      "week": 2,
+      "type": "DROP",
+      "teams": [
+        "pyisau22mtswkpax"
+      ],
+      "moves": [
+        {
+          "teamId": "pyisau22mtswkpax",
+          "teamName": "Ja Ja Binks",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "DROP",
+          "actionLabel": "Drop",
+          "playerId": "06v5p",
+          "playerName": "Nolan Traore",
+          "nbaTeam": "BKN",
+          "pos": "G",
+          "bid": null,
+          "note": null,
+          "executed": true
+        }
+      ],
+      "season": "2026-27",
+      "leagueId": "r7yj6bpwmtswkp9p"
+    },
+    {
+      "id": "2026-27:i3er2ozamvkg1g7a",
+      "date": "2026-10-23T04:02:00.000Z",
+      "dateText": "Fri Oct 23, 2026, 12:02AM",
+      "week": 2,
+      "type": "MULTI",
+      "teams": [
+        "7f7redubmtswkpax"
+      ],
+      "moves": [
+        {
+          "teamId": "7f7redubmtswkpax",
+          "teamName": "Mike Lee Double Team",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "FA",
+          "actionLabel": "Claim",
+          "playerId": "06v7z",
+          "playerName": "Sion James",
+          "nbaTeam": "CHA",
+          "pos": "G,F",
+          "bid": null,
+          "note": null,
+          "executed": true
+        },
+        {
+          "teamId": "7f7redubmtswkpax",
+          "teamName": "Mike Lee Double Team",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "DROP",
+          "actionLabel": "Drop",
+          "playerId": "06mk2",
+          "playerName": "Cody Williams",
+          "nbaTeam": "MIN",
+          "pos": "G",
+          "bid": null,
+          "note": null,
+          "executed": true
+        }
+      ],
+      "season": "2026-27",
+      "leagueId": "r7yj6bpwmtswkp9p"
+    },
+    {
+      "id": "2026-27:jm0ydgtqmvjlgwfz",
+      "date": "2026-10-22T22:55:00.000Z",
+      "dateText": "Thu Oct 22, 2026, 6:55PM",
+      "week": 2,
+      "type": "MULTI",
+      "teams": [
+        "qqq57v0gmtswkpax"
+      ],
+      "moves": [
+        {
+          "teamId": "qqq57v0gmtswkpax",
+          "teamName": "achen88",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "WW",
+          "actionLabel": "Claim",
+          "playerId": "05ujt",
+          "playerName": "Aaron Wiggins",
+          "nbaTeam": "ATL",
+          "pos": "G,F",
+          "bid": "3.00",
+          "note": null,
+          "executed": true
+        },
+        {
+          "teamId": "qqq57v0gmtswkpax",
+          "teamName": "achen88",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "DROP",
+          "actionLabel": "Drop",
+          "playerId": "04qsm",
+          "playerName": "De'Anthony Melton",
+          "nbaTeam": "GS",
+          "pos": "G",
+          "bid": null,
+          "note": null,
+          "executed": true
+        }
+      ],
+      "season": "2026-27",
+      "leagueId": "r7yj6bpwmtswkp9p"
+    },
+    {
+      "id": "2026-27:iwgy2x4bmvjkrww0",
+      "date": "2026-10-22T13:26:00.000Z",
+      "dateText": "Thu Oct 22, 2026, 9:26AM",
+      "week": 2,
+      "type": "MULTI",
+      "teams": [
+        "pyisau22mtswkpax"
+      ],
+      "moves": [
+        {
+          "teamId": "pyisau22mtswkpax",
+          "teamName": "Ja Ja Binks",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "FA",
+          "actionLabel": "Claim",
+          "playerId": "031lv",
+          "playerName": "Kentavious Caldwell-Pope",
+          "nbaTeam": "PHI",
+          "pos": "G,F",
+          "bid": null,
+          "note": null,
+          "executed": true
+        },
+        {
+          "teamId": "pyisau22mtswkpax",
+          "teamName": "Ja Ja Binks",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "DROP",
+          "actionLabel": "Drop",
+          "playerId": "03byk",
+          "playerName": "Jordan Clarkson",
+          "nbaTeam": "NY",
+          "pos": "G,F",
+          "bid": null,
+          "note": null,
+          "executed": true
+        }
+      ],
+      "season": "2026-27",
+      "leagueId": "r7yj6bpwmtswkp9p"
+    },
     {
       "id": "2026-27:3xf7bj1wmvgnszch",
       "date": "2026-10-21T02:34:00.000Z",
@@ -145,7 +658,7 @@
           "actionLabel": "Drop",
           "playerId": "06v86",
           "playerName": "Micah Peavy",
-          "nbaTeam": "(N/A)",
+          "nbaTeam": "OKC",
           "pos": "G,F",
           "bid": null,
           "note": null,

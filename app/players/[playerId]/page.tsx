@@ -7,10 +7,18 @@ import {
   formatPlayerName,
   formatShortDate,
   getTeamName,
-  playerMap,
   playerTeamMap,
 } from "@/lib/data";
-import { dynastyDraftPick, getHistoryLogs, historySeasonFpRank, resolveSeason, seasonOptions } from "@/lib/history";
+import {
+  dynastyDraftPick,
+  getHistoryLogs,
+  historyRosterTeam,
+  historySeasonFpRank,
+  preferredSeasonForPlayer,
+  resolvePlayer,
+  resolveSeason,
+  seasonOptions,
+} from "@/lib/history";
 import { isNbaPostseasonGame, LIVE_TTL_MS } from "@/lib/nba";
 import { getRotowireProfile } from "@/lib/rotowire";
 import { formatFp } from "@/lib/scoring";
@@ -22,6 +30,7 @@ import {
   currentTeamId,
   getPlayerTransactions,
   teamLabel,
+  transactionPlayer,
   transactionTime,
   transactionsFile,
 } from "@/lib/transactions";
@@ -31,9 +40,26 @@ type Search = Promise<{ season?: string }>;
 
 export const dynamic = "force-dynamic";
 
+function playerRecord(id: string) {
+  const resolved = resolvePlayer(id);
+  if (resolved) return resolved;
+  const tx = transactionPlayer(id);
+  if (!tx) return undefined;
+  return {
+    id,
+    name: tx.name,
+    nbaTeam: tx.nbaTeam || "(N/A)",
+    position: tx.pos || "",
+    eligiblePos: tx.pos || "",
+    status: "FA",
+    rotowireId: null,
+    historical: true as const,
+  };
+}
+
 export async function generateMetadata({ params }: { params: Params }) {
   const { playerId } = await params;
-  const p = playerMap[playerId];
+  const p = playerRecord(playerId);
   return { title: p ? formatPlayerName(p.name) : "Player" };
 }
 
@@ -52,15 +78,16 @@ function avg(total: number, games: number): string {
 
 export default async function PlayerPage({ params, searchParams }: { params: Params; searchParams: Search }) {
   const { playerId } = await params;
-  const player = playerMap[playerId];
+  const player = playerRecord(playerId);
   if (!player) notFound();
 
   const { season: requestedSeason } = await searchParams;
-  const selected = resolveSeason(requestedSeason);
+  const selected = requestedSeason ? resolveSeason(requestedSeason) : preferredSeasonForPlayer(playerId);
   const seasons = seasonOptions();
 
   const name = formatPlayerName(player.name);
-  const fantasyTeamId = playerTeamMap[player.id] ?? null;
+  const fantasyTeamId = player.historical ? null : (playerTeamMap[player.id] ?? null);
+  const pastRoster = !selected.current ? historyRosterTeam(player.id, selected.key) : null;
   const [stats, roto] = await Promise.all([
     selected.current ? getStats() : Promise.resolve(null),
     player.rotowireId ? getRotowireProfile(player.rotowireId) : Promise.resolve(null),
@@ -169,10 +196,17 @@ export default async function PlayerPage({ params, searchParams }: { params: Par
               >
                 {getTeamName(fantasyTeamId)}
               </Link>
+            ) : player.historical ? (
+              <span className="pill bg-white/10 px-2.5 py-1 text-xs text-slate-300">Retired</span>
             ) : player.status === "WW" ? (
               <span className="pill bg-amber-500/15 px-2.5 py-1 text-xs text-amber-300">On Waivers</span>
             ) : (
               <span className="pill bg-emerald-500/15 px-2.5 py-1 text-xs text-emerald-300">Free Agent</span>
+            )}
+            {pastRoster && (
+              <span className="text-xs text-slate-500">
+                {selected.label} roster: <span className="text-slate-300">{pastRoster.teamName}</span>
+              </span>
             )}
             {draftPick && (
               <span className="text-xs text-slate-500">

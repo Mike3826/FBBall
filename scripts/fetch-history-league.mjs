@@ -5,6 +5,7 @@
 // Run with: npm run fetch-history-league
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
+import { applyKnown, fillLeagueUnknowns, loadExtraNames } from "./history-player-names.mjs";
 
 const OUT = path.resolve(process.cwd(), "data/history/league.json");
 const FANTRAX = "https://www.fantrax.com/fxea/general";
@@ -119,7 +120,7 @@ function scorerLookup(scorers = []) {
   );
 }
 
-function parseDraft(draft, allPlayers, teamsById, seasonYear, scorers = []) {
+function parseDraft(draft, allPlayers, teamsById, seasonYear, scorers = [], extraNames = new Map()) {
   const named = scorerLookup(scorers);
   return {
     type: seasonYear === 2022 ? "startup" : "rookie",
@@ -127,11 +128,19 @@ function parseDraft(draft, allPlayers, teamsById, seasonYear, scorers = []) {
     picks: (draft?.draftPicks ?? []).map((p) => {
       const player = allPlayers[p.playerId];
       const scorer = named[p.playerId];
+      const filled = applyKnown(
+        {
+          name: player?.name ?? scorer?.name ?? "Unknown",
+          nbaTeam: player?.team ?? scorer?.nbaTeam ?? "",
+          position: player?.position ?? scorer?.position ?? "",
+        },
+        extraNames.get(p.playerId),
+      );
       return {
         playerId: p.playerId,
-        name: player?.name ?? scorer?.name ?? "Unknown",
-        nbaTeam: player?.team ?? scorer?.nbaTeam ?? "",
-        position: player?.position ?? scorer?.position ?? "",
+        name: filled.name,
+        nbaTeam: filled.nbaTeam,
+        position: filled.position,
         teamId: p.teamId,
         teamName: teamsById[p.teamId] ?? p.teamId,
         round: p.round,
@@ -167,6 +176,7 @@ async function main() {
   if (!cookie) throw new Error("FANTRAX_COOKIE is required to fetch playoff brackets.");
 
   const allPlayers = await getJson(`${FANTRAX}/getPlayerIds?sport=NBA`);
+  const extraNames = await loadExtraNames();
   const seasons = [];
 
   for (const { seasonYear, leagueId } of HISTORY_LEAGUES) {
@@ -198,15 +208,18 @@ async function main() {
         players: (roster.rosterItems ?? []).map((item) => {
           const p = allPlayers[item.id];
           const scorer = named[item.id];
-          return {
-            id: item.id,
-            name: p?.name ?? scorer?.name ?? "Unknown",
-            nbaTeam: p?.team ?? scorer?.nbaTeam ?? "",
-            position: p?.position ?? scorer?.position ?? "",
-            eligiblePos: p?.position ?? scorer?.position ?? "",
-            rosterPosition: item.position,
-            status: item.status,
-          };
+          return applyKnown(
+            {
+              id: item.id,
+              name: p?.name ?? scorer?.name ?? "Unknown",
+              nbaTeam: p?.team ?? scorer?.nbaTeam ?? "",
+              position: p?.position ?? scorer?.position ?? "",
+              eligiblePos: p?.position ?? scorer?.position ?? "",
+              rosterPosition: item.position,
+              status: item.status,
+            },
+            extraNames.get(item.id),
+          );
         }),
       };
     }
@@ -235,7 +248,7 @@ async function main() {
         gamesBack: row.gamesBack,
       })),
       rounds,
-      draft: parseDraft(draft, allPlayers, teamsById, seasonYear, loggedDraft.scorers ?? []),
+      draft: parseDraft(draft, allPlayers, teamsById, seasonYear, loggedDraft.scorers ?? [], extraNames),
       rosters: rosterOut,
     };
     console.log(
@@ -244,9 +257,10 @@ async function main() {
     seasons.push(payload);
   }
 
+  const filled = fillLeagueUnknowns({ seasons }, extraNames);
   await mkdir(path.dirname(OUT), { recursive: true });
   await writeFile(OUT, JSON.stringify({ fetchedAt: new Date().toISOString(), seasons }, null, 2) + "\n");
-  console.log(`\nWrote ${seasons.length} seasons to ${OUT}`);
+  console.log(`\nWrote ${seasons.length} seasons to ${OUT} · filled ${filled} retired-player names`);
 }
 
 main().catch((err) => {

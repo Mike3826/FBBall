@@ -96,6 +96,17 @@ export function actionLabel(m: Move): string {
   return ACTION_LABEL[m.action] ?? m.actionLabel ?? m.action;
 }
 
+/** Name/team/pos from the transaction log for players no longer in the Fantrax pool. */
+export function transactionPlayer(id: string): { name: string; nbaTeam: string; pos: string } | undefined {
+  for (const t of transactions) {
+    for (const m of t.moves) {
+      if (m.playerId === id && m.playerName) {
+        return { name: m.playerName, nbaTeam: m.nbaTeam ?? "", pos: m.pos ?? "" };
+      }
+    }
+  }
+}
+
 /** Every transaction involving a player, newest first, with the moves that reference that player. */
 export function getPlayerTransactions(playerId: string): { transaction: Transaction; move: Move }[] {
   const out: { transaction: Transaction; move: Move }[] = [];

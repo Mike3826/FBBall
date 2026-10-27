@@ -1,12 +1,15 @@
 import Link from "next/link";
 import AutoRefresh from "@/components/AutoRefresh";
-import { LineupCard, LiveDot, fmt } from "@/components/LineupCard";
+import { LineupCard, LiveDot, ScoreStack, fmt, fmtWinPct, winPctClass } from "@/components/LineupCard";
 import LiveMatchups from "@/components/LiveMatchups";
 import PageHeader from "@/components/PageHeader";
 import { formatShortDate, getCurrentPeriod, leagueInfo } from "@/lib/data";
-import { LINEUP_SLOTS, buildLiveMatchups, buildTeamLineups, type TeamLineup } from "@/lib/lineups";
+import { LINEUP_SLOTS, buildLiveMatchups, type TeamLineup } from "@/lib/lineups";
+import { buildTeamLineups } from "@/lib/lineups-build";
 import { LIVE_TTL_MS } from "@/lib/nba";
+import { getWeekProjections } from "@/lib/projections";
 import { getStats, updatedLabel } from "@/lib/stats";
+import { attachWinProbabilities } from "@/lib/winprob";
 
 export const metadata = { title: "Live" };
 export const dynamic = "force-dynamic";
@@ -22,11 +25,11 @@ function TeamName({ t, className = "" }: { t: TeamLineup; className?: string }) 
 }
 
 export default async function LivePage({ searchParams }: { searchParams: Search }) {
-  const stats = await getStats();
   const period = getCurrentPeriod() ?? leagueInfo.scoringPeriods[0];
-  const lineups = buildTeamLineups(stats, period).sort((a, b) => b.score - a.score || b.rosterTotal - a.rosterTotal);
+  const [stats, projs] = await Promise.all([getStats(), getWeekProjections(period)]);
+  const lineups = buildTeamLineups(stats, period, projs).sort((a, b) => b.score - a.score || b.rosterTotal - a.rosterTotal);
   const ranks = Object.fromEntries(lineups.map((l, i) => [l.team.id, i + 1])) as Record<string, number>;
-  const matchups = buildLiveMatchups(lineups, period);
+  const matchups = attachWinProbabilities(buildLiveMatchups(lineups, period));
   const { m } = await searchParams;
   const selectedIndex = m && Number.isInteger(Number(m)) ? Number(m) : null;
   const todaysGames = stats.games.filter((g) => g.date === stats.meta.today);
@@ -58,6 +61,9 @@ export default async function LivePage({ searchParams }: { searchParams: Search 
                 <tr>
                   <th className="w-8">#</th>
                   <th>Team</th>
+                  <th className="text-right" title="Monte Carlo win probability vs this week's opponent">
+                    Win%
+                  </th>
                   <th className="text-right">Score</th>
                   <th className="text-right">Roster Total</th>
                   <th className="text-right">Bench</th>
@@ -76,8 +82,15 @@ export default async function LivePage({ searchParams }: { searchParams: Search 
                       <TeamName t={t} />
                       {t.liveCount > 0 && <LiveDot className="ml-1.5" />}
                     </td>
-                    <td className="text-right text-base font-extrabold tabular-nums text-gold">{fmt(t.score)}</td>
-                    <td className="text-right tabular-nums text-slate-300">{fmt(t.rosterTotal)}</td>
+                    <td className={`text-right tabular-nums font-bold ${winPctClass(t.winPct)}`}>
+                      {t.winPct == null ? "—" : fmtWinPct(t.winPct)}
+                    </td>
+                    <td className="text-right">
+                      <ScoreStack actual={t.score} projected={t.projScore} baseline={t.origScore} actualClass="text-gold" />
+                    </td>
+                    <td className="text-right">
+                      <ScoreStack actual={t.rosterTotal} projected={t.projRosterTotal} baseline={t.origRosterTotal} actualClass="text-slate-300" />
+                    </td>
                     <td className="text-right tabular-nums text-slate-500">{fmt(t.rosterTotal - t.score)}</td>
                     <td className="text-right tabular-nums text-slate-400">{t.countingGames}</td>
                     <td className="text-right tabular-nums text-slate-400">{t.gamesRemaining}</td>

@@ -3,6 +3,7 @@ import standings from "@/data/standings.json";
 import rosters from "@/data/rosters.json";
 import draft from "@/data/draft.json";
 import players from "@/data/players.json";
+import { toMondaySundayPeriods } from "@/lib/scoring-weeks.mjs";
 
 export type ScoringRule = {
   code: string;
@@ -83,7 +84,11 @@ export type LeagueInfo = {
   matchups: MatchupPeriod[];
 };
 
-export const leagueInfo = league as unknown as LeagueInfo;
+const rawLeague = league as unknown as LeagueInfo;
+export const leagueInfo: LeagueInfo = {
+  ...rawLeague,
+  scoringPeriods: toMondaySundayPeriods(rawLeague.scoringPeriods),
+};
 
 export const playerMap = players as Record<string, Player>;
 export const allPlayers: Player[] = Object.values(playerMap);
@@ -171,16 +176,39 @@ export function parseDate(iso: string): Date {
   return new Date(/^\d{4}-\d{2}-\d{2}$/.test(iso) ? `${iso}T00:00:00` : iso);
 }
 
+const ET = "America/New_York";
+
+/** Calendar date in Eastern Time. */
+export function etYmd(value: string | Date): string {
+  if (typeof value === "string" && /^\d{4}-\d{2}-\d{2}$/.test(value)) return value;
+  return new Intl.DateTimeFormat("en-CA", { timeZone: ET }).format(
+    typeof value === "string" ? parseDate(value) : value,
+  );
+}
+
 export function formatDate(iso: string): string {
+  if (/^\d{4}-\d{2}-\d{2}$/.test(iso)) {
+    const [y, m, d] = iso.split("-").map(Number);
+    return new Date(y, m - 1, d).toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    });
+  }
   return parseDate(iso).toLocaleDateString("en-US", {
     month: "short",
     day: "numeric",
     year: "numeric",
+    timeZone: ET,
   });
 }
 
 export function formatShortDate(iso: string): string {
-  return parseDate(iso).toLocaleDateString("en-US", { month: "short", day: "numeric" });
+  if (/^\d{4}-\d{2}-\d{2}$/.test(iso)) {
+    const [y, m, d] = iso.split("-").map(Number);
+    return new Date(y, m - 1, d).toLocaleDateString("en-US", { month: "short", day: "numeric" });
+  }
+  return parseDate(iso).toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: ET });
 }
 
 export const statusLabel: Record<string, string> = {
