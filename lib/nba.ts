@@ -2,6 +2,8 @@
 // (refreshed by `npm run fetch-stats`). ESPN overlays today's scoreboard and
 // any in-progress / missing box scores. stats.nba.com season logs are used
 // when that host responds (it often does not from Vercel).
+import { readFileSync } from "node:fs";
+import path from "node:path";
 import { getCurrentPeriod, leagueInfo, playerMap, type Player } from "@/lib/data";
 import type { StatLine } from "@/lib/scoring";
 import seasonLogsFile from "@/data/season-logs.json";
@@ -438,16 +440,28 @@ function hasCompleteFinal(logs: GameLog[], game: Game): boolean {
 
 /**
  * Scoreboard + box scores for the current scoring period (including upcoming
- * scheduled games). ESPN is the live source that actually responds from Vercel.
+ * scheduled games), plus any earlier season dates that have no completed logs.
+ * ESPN is the live source that actually responds from Vercel; stats.nba.com
+ * often lags or is blocked there, so week-1 finals have to come from ESPN too.
  */
+function overlayDates(seasonLogs: GameLog[], today: string): string[] {
+  const period = getCurrentPeriod();
+  const periodStart = period ? etYmd(period.startDate) : today;
+  const periodEnd = period ? etYmd(period.endDate) : today;
+  const dates = new Set(eachEtDate(periodStart, periodEnd));
+  const seasonStart = etYmd(leagueInfo.startDate);
+  const completed = new Set(seasonLogs.filter((l) => !l.live).map((l) => l.date));
+  for (const date of eachEtDate(seasonStart, today)) {
+    if (!completed.has(date)) dates.add(date);
+  }
+  return [...dates].sort();
+}
+
 async function fetchEspnOverlay(
   seasonLogs: GameLog[],
   today: string,
 ): Promise<{ ok: boolean; games: Game[]; logs: GameLog[]; replacedDates: Set<string> }> {
-  const period = getCurrentPeriod();
-  const start = period ? etYmd(period.startDate) : today;
-  const end = period ? etYmd(period.endDate) : today;
-  const dates = eachEtDate(start, end);
+  const dates = overlayDates(seasonLogs, today);
   const boards = await Promise.allSettled(dates.map(async (date) => ({ date, games: await fetchEspnScoreboard(date) })));
   const ok = boards.some((b) => b.status === "fulfilled");
 
@@ -562,8 +576,22 @@ state.completed ??= [];
 type CachedSeasonLog = Omit<GameLog, "live" | "fantraxId"> & { fantraxId?: string | null };
 type CachedSeasonFile = { fetchedAt: string | null; season: string; logs?: CachedSeasonLog[] };
 
+function importedSeasonLogs(): CachedSeasonLog[] {
+  const mod = seasonLogsFile as CachedSeasonFile & { default?: CachedSeasonFile };
+  const file = Array.isArray(mod.logs) ? mod : mod.default;
+  return file?.logs ?? [];
+}
+
 function hydrateFileLogs(): GameLog[] {
-  const raw = (seasonLogsFile as CachedSeasonFile).logs ?? [];
+  let raw = importedSeasonLogs();
+  if (!raw.length) {
+    try {
+      const text = readFileSync(path.join(process.cwd(), "data", "season-logs.json"), "utf8");
+      raw = (JSON.parse(text) as CachedSeasonFile).logs ?? [];
+    } catch {
+      raw = [];
+    }
+  }
   return raw.map((l) => ({
     ...l,
     team: nbaTricode(l.team),

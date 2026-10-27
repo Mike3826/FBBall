@@ -2,6 +2,9 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  outputFileTracingIncludes: {
+    "/*": ["./data/season-logs.json"],
+  },
   experimental: {
     staleTimes: { dynamic: 0, static: 0 },
   },
