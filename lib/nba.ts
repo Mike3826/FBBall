@@ -2,8 +2,6 @@
 // (refreshed by `npm run fetch-stats`). ESPN overlays today's scoreboard and
 // any in-progress / missing box scores. stats.nba.com season logs are used
 // when that host responds (it often does not from Vercel).
-import { readFileSync } from "node:fs";
-import path from "node:path";
 import { getCurrentPeriod, leagueInfo, playerMap, type Player } from "@/lib/data";
 import type { StatLine } from "@/lib/scoring";
 import seasonLogsFile from "@/data/season-logs.json";
@@ -323,6 +321,9 @@ function ymdToEspn(date: string): string {
 
 function etYmd(value: string): string {
   if (/^\d{4}-\d{2}-\d{2}$/.test(value)) return value;
+  // Fantrax stamps ("2026-10-26T00:00:00.0-0400") are already Eastern calendar dates.
+  const day = /^(\d{4}-\d{2}-\d{2})/.exec(value);
+  if (day) return day[1];
   return new Intl.DateTimeFormat("en-CA", { timeZone: "America/New_York" }).format(new Date(value));
 }
 
@@ -444,17 +445,12 @@ function hasCompleteFinal(logs: GameLog[], game: Game): boolean {
  * ESPN is the live source that actually responds from Vercel; stats.nba.com
  * often lags or is blocked there, so week-1 finals have to come from ESPN too.
  */
-function overlayDates(seasonLogs: GameLog[], today: string): string[] {
+function overlayDates(_seasonLogs: GameLog[], today: string): string[] {
   const period = getCurrentPeriod();
-  const periodStart = period ? etYmd(period.startDate) : today;
-  const periodEnd = period ? etYmd(period.endDate) : today;
-  const dates = new Set(eachEtDate(periodStart, periodEnd));
   const seasonStart = etYmd(leagueInfo.startDate);
-  const completed = new Set(seasonLogs.filter((l) => !l.live).map((l) => l.date));
-  for (const date of eachEtDate(seasonStart, today)) {
-    if (!completed.has(date)) dates.add(date);
-  }
-  return [...dates].sort();
+  const periodEnd = period ? etYmd(period.endDate) : today;
+  const end = periodEnd > today ? periodEnd : today;
+  return eachEtDate(seasonStart, end);
 }
 
 async function fetchEspnOverlay(
@@ -583,16 +579,7 @@ function importedSeasonLogs(): CachedSeasonLog[] {
 }
 
 function hydrateFileLogs(): GameLog[] {
-  let raw = importedSeasonLogs();
-  if (!raw.length) {
-    try {
-      const text = readFileSync(path.join(process.cwd(), "data", "season-logs.json"), "utf8");
-      raw = (JSON.parse(text) as CachedSeasonFile).logs ?? [];
-    } catch {
-      raw = [];
-    }
-  }
-  return raw.map((l) => ({
+  return importedSeasonLogs().map((l) => ({
     ...l,
     team: nbaTricode(l.team),
     live: false,

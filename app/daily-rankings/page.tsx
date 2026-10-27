@@ -28,7 +28,12 @@ export default async function DailyRankingsPage({
   const latestWithData = [...gameDates].reverse().find((d) => d <= today) ?? gameDates[gameDates.length - 1];
   const date = requested && /^\d{4}-\d{2}-\d{2}$/.test(requested) ? requested : (latestWithData ?? today);
 
-  const chipDates = [...new Set([...(period ? datesInPeriod(period) : []), ...gameDates, date])].sort();
+  const seasonDays = datesInPeriod({
+    number: 0,
+    startDate: leagueInfo.startDate,
+    endDate: today,
+  });
+  const chipDates = [...new Set([...(period ? datesInPeriod(period) : []), ...seasonDays, ...gameDates, date])].sort();
   const hasData = new Set(gameDates);
 
   const dayGames = gamesOnDate(stats, date);
