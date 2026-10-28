@@ -113,7 +113,7 @@ export type PublishResult =
   | { ok: true; date: string; count: number; complete: boolean }
   | { ok: false; error: string; status?: number };
 
-async function postWebhook(webhook: string, body: Record<string, unknown>): Promise<{ ok: true } | { ok: false; error: string; status: number }> {
+export async function postWebhook(webhook: string, body: Record<string, unknown>): Promise<{ ok: true } | { ok: false; error: string; status: number }> {
   const res = await fetch(webhook, {
     method: "POST",
     headers: { "Content-Type": "application/json" },

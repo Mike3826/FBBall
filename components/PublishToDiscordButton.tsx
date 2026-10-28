@@ -8,11 +8,27 @@ function shortDate(ymd: string) {
   return new Date(`${ymd}T00:00:00`).toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" });
 }
 
+type PublishJson = { ok: boolean; date?: string; count?: number; complete?: boolean; week?: number; error?: string };
+
 /**
- * Posts a top-10 table to Discord via /api/discord/publish — the latest completed
- * slate, or today's in-progress slate when nothing has finished yet.
+ * Posts to Discord via a password-gated API route. Daily Top 10 is the default;
+ * weekly report passes a different endpoint and labels.
  */
-export default function PublishToDiscordButton({ target }: { target: { date: string; complete: boolean } | null }) {
+export default function PublishToDiscordButton({
+  target,
+  endpoint = "/api/discord/publish",
+  extraBody,
+  label: labelOverride,
+  title: titleOverride,
+  mode = "daily",
+}: {
+  target: { date: string; complete: boolean } | null;
+  endpoint?: string;
+  extraBody?: Record<string, unknown>;
+  label?: string;
+  title?: string;
+  mode?: "daily" | "weekly";
+}) {
   const [state, setState] = useState<State>({ kind: "idle" });
   const [password, setPassword] = useState("");
   const busy = state.kind === "busy";
@@ -21,15 +37,21 @@ export default function PublishToDiscordButton({ target }: { target: { date: str
     if (busy || !target) return;
     setState({ kind: "busy" });
     try {
-      const res = await fetch("/api/discord/publish", {
+      const res = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ password: pw }),
+        body: JSON.stringify({ password: pw, ...extraBody }),
       });
-      const json = (await res.json()) as { ok: boolean; date?: string; count?: number; complete?: boolean; error?: string };
-      if (json.ok && json.date) {
+      const json = (await res.json()) as PublishJson;
+      if (json.ok && (json.date || json.week != null)) {
         setPassword("");
-        setState({ kind: "done", text: `Posted ${json.complete ? "" : "live "}top ${json.count} for ${shortDate(json.date)}` });
+        setState({
+          kind: "done",
+          text:
+            mode === "weekly"
+              ? `Posted ${json.complete ? "" : "live "}week ${json.week ?? extraBody?.period ?? ""} report`
+              : `Posted ${json.complete ? "" : "live "}top ${json.count} for ${shortDate(json.date ?? target.date)}`,
+        });
       } else {
         setState({ kind: "auth", error: json.error ?? `Failed (${res.status})` });
       }
@@ -38,17 +60,21 @@ export default function PublishToDiscordButton({ target }: { target: { date: str
     }
   }
 
-  const label = !target
-    ? "Publish Top 10"
-    : target.complete
-      ? `Publish ${shortDate(target.date)} Top 10`
-      : `Publish ${shortDate(target.date)} Top 10 (live)`;
+  const label =
+    labelOverride ??
+    (!target
+      ? "Publish Top 10"
+      : target.complete
+        ? `Publish ${shortDate(target.date)} Top 10`
+        : `Publish ${shortDate(target.date)} Top 10 (live)`);
 
-  const title = !target
-    ? "No games have been played yet"
-    : target.complete
-      ? `Publishes the final top 10 from ${shortDate(target.date)}`
-      : `No slate has finished yet — publishes a live snapshot of today's top 10`;
+  const title =
+    titleOverride ??
+    (!target
+      ? "No games have been played yet"
+      : target.complete
+        ? `Publishes the final top 10 from ${shortDate(target.date)}`
+        : `No slate has finished yet — publishes a live snapshot of today's top 10`);
 
   return (
     <div className="flex items-center gap-3">

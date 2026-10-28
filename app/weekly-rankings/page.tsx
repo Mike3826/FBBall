@@ -1,6 +1,7 @@
 import Link from "next/link";
 import AutoRefresh from "@/components/AutoRefresh";
 import PageHeader from "@/components/PageHeader";
+import PublishToDiscordButton from "@/components/PublishToDiscordButton";
 import StatLeaderboard from "@/components/StatLeaderboard";
 import {
   formatShortDate,
@@ -10,6 +11,7 @@ import {
   leagueInfo,
   standingsRows,
 } from "@/lib/data";
+import { latestCompletedPeriod } from "@/lib/discord-weekly";
 import { LIVE_TTL_MS } from "@/lib/nba";
 import { formatFp } from "@/lib/scoring";
 import { getFantasyTeamTotals, getStats, updatedLabel } from "@/lib/stats";
@@ -34,6 +36,7 @@ export default async function WeeklyRankingsPage({ searchParams }: { searchParam
 
   const matchups = getMatchupsForPeriod(period.number);
   const computedById = new Map(computed.map((c) => [c.teamId, c.fp]));
+  const publishWeek = latestCompletedPeriod(stats);
 
   // Prev/next navigation among regular-season + playoff periods.
   const idx = leagueInfo.scoringPeriods.findIndex((p) => p.number === period.number);
@@ -49,6 +52,18 @@ export default async function WeeklyRankingsPage({ searchParams }: { searchParam
         }`}
       >
         <div className="flex items-center gap-3 text-sm">
+          <PublishToDiscordButton
+            target={publishWeek ? { date: publishWeek.startDate.slice(0, 10), complete: true } : null}
+            endpoint="/api/discord/publish-weekly"
+            extraBody={publishWeek ? { period: publishWeek.number } : undefined}
+            label={publishWeek ? `Publish Week ${publishWeek.number} Report` : "Publish Weekly Report"}
+            title={
+              publishWeek
+                ? `Publishes the completed Week ${publishWeek.number} bestball report to Discord`
+                : "No completed week is ready to publish"
+            }
+            mode="weekly"
+          />
           <AutoRefresh intervalMs={LIVE_TTL_MS} label="Live" />
           {prev ? (
             <Link href={`/weekly-rankings?period=${prev.number}`} className="rounded-md border-2 border-white/15 px-3 py-1.5 text-slate-300 hover:text-white">
