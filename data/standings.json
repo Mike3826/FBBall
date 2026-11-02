@@ -1,92 +1,92 @@
 [
   {
     "teamName": "Masai & Bobby",
-    "totalPointsFor": 1849.5,
+    "totalPointsFor": 2957.25,
     "teamId": "exf8aagxmtswkpax",
     "gamesBack": 0,
     "rank": 1,
-    "points": "1-0-0",
-    "winPercentage": 1
-  },
-  {
-    "teamName": "onaisani",
-    "totalPointsFor": 1793.75,
-    "teamId": "f62m1qj2mtswkpax",
-    "gamesBack": 0,
-    "rank": 2,
-    "points": "1-0-0",
-    "winPercentage": 1
-  },
-  {
-    "teamName": "Tony and the Gabagools",
-    "totalPointsFor": 1744,
-    "teamId": "k2ki420pmtswkpax",
-    "gamesBack": 0,
-    "rank": 3,
-    "points": "1-0-0",
-    "winPercentage": 1
-  },
-  {
-    "teamName": "LENGTH > GIRTH",
-    "totalPointsFor": 1696,
-    "teamId": "sj9cohbumtswkpax",
-    "gamesBack": 0,
-    "rank": 4,
-    "points": "1-0-0",
+    "points": "2-0-0",
     "winPercentage": 1
   },
   {
     "teamName": "Ja Ja Binks",
-    "totalPointsFor": 1676.25,
+    "totalPointsFor": 2730.25,
     "teamId": "pyisau22mtswkpax",
-    "gamesBack": 0,
-    "rank": 5,
-    "points": "1-0-0",
-    "winPercentage": 1
+    "gamesBack": 1,
+    "rank": 2,
+    "points": "1-1-0",
+    "winPercentage": 0.5
   },
   {
-    "teamName": "achen88",
-    "totalPointsFor": 1807,
-    "teamId": "qqq57v0gmtswkpax",
+    "teamName": "LENGTH > GIRTH",
+    "totalPointsFor": 2984.75,
+    "teamId": "sj9cohbumtswkpax",
     "gamesBack": 1,
-    "rank": 6,
-    "points": "0-1-0",
-    "winPercentage": 0
+    "rank": 3,
+    "points": "1-1-0",
+    "winPercentage": 0.5
+  },
+  {
+    "teamName": "onaisani",
+    "totalPointsFor": 2965.25,
+    "teamId": "f62m1qj2mtswkpax",
+    "gamesBack": 1,
+    "rank": 4,
+    "points": "1-1-0",
+    "winPercentage": 0.5
   },
   {
     "teamName": "Team Şengün and Friends",
-    "totalPointsFor": 1702.25,
+    "totalPointsFor": 2912,
     "teamId": "htjic831mtswkpax",
     "gamesBack": 1,
-    "rank": 7,
-    "points": "0-1-0",
-    "winPercentage": 0
+    "rank": 5,
+    "points": "1-1-0",
+    "winPercentage": 0.5
+  },
+  {
+    "teamName": "Tony and the Gabagools",
+    "totalPointsFor": 2873,
+    "teamId": "k2ki420pmtswkpax",
+    "gamesBack": 1,
+    "rank": 6,
+    "points": "1-1-0",
+    "winPercentage": 0.5
   },
   {
     "teamName": "Mike Lee Double Team",
-    "totalPointsFor": 1648.5,
+    "totalPointsFor": 2850,
     "teamId": "7f7redubmtswkpax",
     "gamesBack": 1,
-    "rank": 8,
-    "points": "0-1-0",
-    "winPercentage": 0
+    "rank": 7,
+    "points": "1-1-0",
+    "winPercentage": 0.5
   },
   {
     "teamName": "mc911",
-    "totalPointsFor": 1484,
+    "totalPointsFor": 2780,
     "teamId": "l9db00t1mtswkpax",
     "gamesBack": 1,
+    "rank": 8,
+    "points": "1-1-0",
+    "winPercentage": 0.5
+  },
+  {
+    "teamName": "achen88",
+    "totalPointsFor": 3102,
+    "teamId": "qqq57v0gmtswkpax",
+    "gamesBack": 1,
     "rank": 9,
-    "points": "0-1-0",
-    "winPercentage": 0
+    "points": "1-1-0",
+    "winPercentage": 0.5
   },
   {
     "teamName": "Notorious BI3",
-    "totalPointsFor": 1443.5,
+    "totalPointsFor": 2625.5,
     "teamId": "rowc20kzmtswkpax",
-    "gamesBack": 1,
+    "gamesBack": 2,
     "rank": 10,
-    "points": "0-1-0",
+    "points": "0-2-0",
     "winPercentage": 0
   }
 ]

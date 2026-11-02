@@ -1,5 +1,5 @@
 {
-  "period": 2,
+  "period": 3,
   "rosters": {
     "htjic831mtswkpax": {
       "teamName": "Team Şengün and Friends",
@@ -45,11 +45,6 @@
           "status": "ACTIVE"
         },
         {
-          "id": "076u3",
-          "position": "G",
-          "status": "ACTIVE"
-        },
-        {
           "id": "06v5k",
           "position": "G",
           "status": "ACTIVE"
@@ -66,6 +61,11 @@
         },
         {
           "id": "051pi",
+          "position": "C",
+          "status": "ACTIVE"
+        },
+        {
+          "id": "0621x",
           "position": "C",
           "status": "ACTIVE"
         },
@@ -330,11 +330,6 @@
           "status": "ACTIVE"
         },
         {
-          "id": "05uic",
-          "position": "G",
-          "status": "ACTIVE"
-        },
-        {
           "id": "051pb",
           "position": "C",
           "status": "ACTIVE"
@@ -352,11 +347,6 @@
         {
           "id": "0623e",
           "position": "G",
-          "status": "ACTIVE"
-        },
-        {
-          "id": "06v5s",
-          "position": "F",
           "status": "ACTIVE"
         },
         {
@@ -407,6 +397,11 @@
         {
           "id": "076uj",
           "position": "G",
+          "status": "ACTIVE"
+        },
+        {
+          "id": "049kf",
+          "position": "C",
           "status": "ACTIVE"
         },
         {
@@ -466,6 +461,11 @@
         },
         {
           "id": "005l3",
+          "position": "C",
+          "status": "ACTIVE"
+        },
+        {
+          "id": "06226",
           "position": "C",
           "status": "ACTIVE"
         },
@@ -650,11 +650,6 @@
           "status": "ACTIVE"
         },
         {
-          "id": "0623a",
-          "position": "G",
-          "status": "ACTIVE"
-        },
-        {
           "id": "027pe",
           "position": "F",
           "status": "ACTIVE"
@@ -760,6 +755,11 @@
           "status": "ACTIVE"
         },
         {
+          "id": "06mlz",
+          "position": "G",
+          "status": "ACTIVE"
+        },
+        {
           "id": "001aw",
           "position": "F",
           "status": "ACTIVE"
@@ -817,6 +817,11 @@
         {
           "id": "04qsd",
           "position": "C",
+          "status": "ACTIVE"
+        },
+        {
+          "id": "05uic",
+          "position": "G",
           "status": "ACTIVE"
         },
         {
@@ -926,11 +931,6 @@
         },
         {
           "id": "05uup",
-          "position": "C",
-          "status": "ACTIVE"
-        },
-        {
-          "id": "06226",
           "position": "C",
           "status": "ACTIVE"
         },
@@ -1170,17 +1170,7 @@
           "status": "ACTIVE"
         },
         {
-          "id": "076tg",
-          "position": "F",
-          "status": "ACTIVE"
-        },
-        {
           "id": "03xmv",
-          "position": "F",
-          "status": "ACTIVE"
-        },
-        {
-          "id": "06mkk",
           "position": "F",
           "status": "ACTIVE"
         },
@@ -1207,6 +1197,11 @@
         {
           "id": "05uug",
           "position": "F",
+          "status": "ACTIVE"
+        },
+        {
+          "id": "04qs4",
+          "position": "C",
           "status": "ACTIVE"
         },
         {
@@ -1270,6 +1265,11 @@
           "status": "ACTIVE"
         },
         {
+          "id": "06mkj",
+          "position": "G",
+          "status": "ACTIVE"
+        },
+        {
           "id": "031m4",
           "position": "G",
           "status": "ACTIVE"
@@ -1281,7 +1281,7 @@
       "rosterItems": [
         {
           "id": "06cd4",
-          "position": "F",
+          "position": "C",
           "status": "ACTIVE"
         },
         {
@@ -1307,11 +1307,6 @@
         {
           "id": "06mk1",
           "position": "C",
-          "status": "ACTIVE"
-        },
-        {
-          "id": "07ag3",
-          "position": "F",
           "status": "ACTIVE"
         },
         {
@@ -1345,13 +1340,18 @@
           "status": "ACTIVE"
         },
         {
+          "id": "076sv",
+          "position": "G",
+          "status": "ACTIVE"
+        },
+        {
           "id": "076t8",
           "position": "F",
           "status": "ACTIVE"
         },
         {
           "id": "06cc7",
-          "position": "G",
+          "position": "F",
           "status": "ACTIVE"
         },
         {

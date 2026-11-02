@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-27T03:06:42.588Z",
+  "fetchedAt": "2026-11-02T05:18:04.683Z",
   "leagueId": "r7yj6bpwmtswkp9p",
   "seasons": [
     "2026-27",
@@ -9,6 +9,329 @@
     "2022-23"
   ],
   "transactions": [
+    {
+      "id": "2026-27:kqymb443mvwp072g",
+      "date": "2026-10-31T17:46:00.000Z",
+      "dateText": "Sat Oct 31, 2026, 1:46PM",
+      "week": 3,
+      "type": "MULTI",
+      "teams": [
+        "qqq57v0gmtswkpax"
+      ],
+      "moves": [
+        {
+          "teamId": "qqq57v0gmtswkpax",
+          "teamName": "achen88",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "FA",
+          "actionLabel": "Claim",
+          "playerId": "06mlz",
+          "playerName": "Cam Spencer",
+          "nbaTeam": "MEM",
+          "pos": "G",
+          "bid": null,
+          "note": null,
+          "executed": true
+        },
+        {
+          "teamId": "qqq57v0gmtswkpax",
+          "teamName": "achen88",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "DROP",
+          "actionLabel": "Drop",
+          "playerId": "0623a",
+          "playerName": "Scotty Pippen",
+          "nbaTeam": "MEM",
+          "pos": "G",
+          "bid": null,
+          "note": null,
+          "executed": true
+        }
+      ],
+      "season": "2026-27",
+      "leagueId": "r7yj6bpwmtswkp9p"
+    },
+    {
+      "id": "2026-27:2muxq5rimvvwy1fp",
+      "date": "2026-10-31T04:40:00.000Z",
+      "dateText": "Sat Oct 31, 2026, 12:40AM",
+      "week": 3,
+      "type": "MULTI",
+      "teams": [
+        "7f7redubmtswkpax"
+      ],
+      "moves": [
+        {
+          "teamId": "7f7redubmtswkpax",
+          "teamName": "Mike Lee Double Team",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "FA",
+          "actionLabel": "Claim",
+          "playerId": "076sv",
+          "playerName": "Bennett Stirtz",
+          "nbaTeam": "OKC",
+          "pos": "G",
+          "bid": null,
+          "note": null,
+          "executed": true
+        },
+        {
+          "teamId": "7f7redubmtswkpax",
+          "teamName": "Mike Lee Double Team",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "DROP",
+          "actionLabel": "Drop",
+          "playerId": "07ag3",
+          "playerName": "Graham Ike",
+          "nbaTeam": "GS",
+          "pos": "F",
+          "bid": null,
+          "note": null,
+          "executed": true
+        }
+      ],
+      "season": "2026-27",
+      "leagueId": "r7yj6bpwmtswkp9p"
+    },
+    {
+      "id": "2026-27:3sgpn99mmvs676ye",
+      "date": "2026-10-29T02:55:00.000Z",
+      "dateText": "Wed Oct 28, 2026, 10:55PM",
+      "week": 3,
+      "type": "WW",
+      "teams": [
+        "pyisau22mtswkpax"
+      ],
+      "moves": [
+        {
+          "teamId": "pyisau22mtswkpax",
+          "teamName": "Ja Ja Binks",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "WW",
+          "actionLabel": "Claim",
+          "playerId": "04qs4",
+          "playerName": "Robert Williams",
+          "nbaTeam": "POR",
+          "pos": "C",
+          "bid": "5.00",
+          "note": null,
+          "executed": true
+        }
+      ],
+      "season": "2026-27",
+      "leagueId": "r7yj6bpwmtswkp9p"
+    },
+    {
+      "id": "2026-27:zkntyx20mvskfbjs",
+      "date": "2026-10-28T20:50:00.000Z",
+      "dateText": "Wed Oct 28, 2026, 4:50PM",
+      "week": 3,
+      "type": "TRADE",
+      "teams": [
+        "rowc20kzmtswkpax",
+        "sj9cohbumtswkpax"
+      ],
+      "moves": [
+        {
+          "teamId": "rowc20kzmtswkpax",
+          "teamName": "Notorious BI3",
+          "fromTeamId": "sj9cohbumtswkpax",
+          "fromTeamName": "LENGTH > GIRTH",
+          "action": "TRADE",
+          "actionLabel": "Trade",
+          "playerId": "06226",
+          "playerName": "Moussa Diabate",
+          "nbaTeam": "CHA",
+          "pos": "C",
+          "bid": null,
+          "note": null,
+          "executed": true
+        },
+        {
+          "teamId": "sj9cohbumtswkpax",
+          "teamName": "LENGTH > GIRTH",
+          "fromTeamId": "rowc20kzmtswkpax",
+          "fromTeamName": "Notorious BI3",
+          "action": "TRADE",
+          "actionLabel": "Trade",
+          "playerId": "05uic",
+          "playerName": "Jalen Green",
+          "nbaTeam": "PHO",
+          "pos": "G",
+          "bid": null,
+          "note": null,
+          "executed": true
+        }
+      ],
+      "season": "2026-27",
+      "leagueId": "r7yj6bpwmtswkp9p"
+    },
+    {
+      "id": "2026-27:62ai52r9mvs67ljg",
+      "date": "2026-10-28T13:49:00.000Z",
+      "dateText": "Wed Oct 28, 2026, 9:49AM",
+      "week": 3,
+      "type": "DROP",
+      "teams": [
+        "pyisau22mtswkpax"
+      ],
+      "moves": [
+        {
+          "teamId": "pyisau22mtswkpax",
+          "teamName": "Ja Ja Binks",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "DROP",
+          "actionLabel": "Drop",
+          "playerId": "06mkk",
+          "playerName": "Ryan Dunn",
+          "nbaTeam": "PHO",
+          "pos": "F",
+          "bid": null,
+          "note": null,
+          "executed": true
+        }
+      ],
+      "season": "2026-27",
+      "leagueId": "r7yj6bpwmtswkp9p"
+    },
+    {
+      "id": "2026-27:gbml23nfmvqlxu40",
+      "date": "2026-10-28T00:55:00.000Z",
+      "dateText": "Tue Oct 27, 2026, 8:55PM",
+      "week": 3,
+      "type": "MULTI",
+      "teams": [
+        "rowc20kzmtswkpax"
+      ],
+      "moves": [
+        {
+          "teamId": "rowc20kzmtswkpax",
+          "teamName": "Notorious BI3",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "WW",
+          "actionLabel": "Claim",
+          "playerId": "049kf",
+          "playerName": "Mo Bamba",
+          "nbaTeam": "UTA",
+          "pos": "C",
+          "bid": "1.00",
+          "note": null,
+          "executed": true
+        },
+        {
+          "teamId": "rowc20kzmtswkpax",
+          "teamName": "Notorious BI3",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "DROP",
+          "actionLabel": "Drop",
+          "playerId": "06v5s",
+          "playerName": "Drake Powell",
+          "nbaTeam": "BKN",
+          "pos": "G,F",
+          "bid": null,
+          "note": null,
+          "executed": true
+        }
+      ],
+      "season": "2026-27",
+      "leagueId": "r7yj6bpwmtswkp9p"
+    },
+    {
+      "id": "2026-27:58vwmvhymvq6pw7l",
+      "date": "2026-10-27T23:55:00.000Z",
+      "dateText": "Tue Oct 27, 2026, 7:55PM",
+      "week": 3,
+      "type": "MULTI",
+      "teams": [
+        "htjic831mtswkpax"
+      ],
+      "moves": [
+        {
+          "teamId": "htjic831mtswkpax",
+          "teamName": "Team Şengün and Friends",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "WW",
+          "actionLabel": "Claim",
+          "playerId": "0621x",
+          "playerName": "Jaylin Williams",
+          "nbaTeam": "OKC",
+          "pos": "F,C",
+          "bid": "21.00",
+          "note": null,
+          "executed": true
+        },
+        {
+          "teamId": "htjic831mtswkpax",
+          "teamName": "Team Şengün and Friends",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "DROP",
+          "actionLabel": "Drop",
+          "playerId": "076u3",
+          "playerName": "Bruce Thornton",
+          "nbaTeam": "HOU",
+          "pos": "G",
+          "bid": null,
+          "note": null,
+          "executed": true
+        }
+      ],
+      "season": "2026-27",
+      "leagueId": "r7yj6bpwmtswkp9p"
+    },
+    {
+      "id": "2026-27:3sbqfajemvpzilmo",
+      "date": "2026-10-27T22:55:00.000Z",
+      "dateText": "Tue Oct 27, 2026, 6:55PM",
+      "week": 3,
+      "type": "MULTI",
+      "teams": [
+        "pyisau22mtswkpax"
+      ],
+      "moves": [
+        {
+          "teamId": "pyisau22mtswkpax",
+          "teamName": "Ja Ja Binks",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "WW",
+          "actionLabel": "Claim",
+          "playerId": "06mkj",
+          "playerName": "Terrence Shannon",
+          "nbaTeam": "MIN",
+          "pos": "G,F",
+          "bid": "10.00",
+          "note": null,
+          "executed": true
+        },
+        {
+          "teamId": "pyisau22mtswkpax",
+          "teamName": "Ja Ja Binks",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "DROP",
+          "actionLabel": "Drop",
+          "playerId": "076tg",
+          "playerName": "Koa Peat",
+          "nbaTeam": "PHO",
+          "pos": "F",
+          "bid": null,
+          "note": null,
+          "executed": true
+        }
+      ],
+      "season": "2026-27",
+      "leagueId": "r7yj6bpwmtswkp9p"
+    },
     {
       "id": "2026-27:3ackg5cjmvq0wm8w",
       "date": "2026-10-27T01:45:00.000Z",
