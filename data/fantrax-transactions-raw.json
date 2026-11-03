@@ -635,7 +635,7 @@
         "totalNumPages": 1,
         "pageNumber": 1,
         "maxResultsPerPage": 500,
-        "totalNumResults": 64
+        "totalNumResults": 67
       },
       "filterSettings": {
         "positionOrGroup": "ALL",
@@ -872,6 +872,377 @@
         "rows": [
           {
             "scorer": {
+              "teamName": "Indiana Pacers",
+              "urlName": "aaron-nesmith",
+              "headshotUrl": "https://fantraximg.com/si/headshots/NBA/hs05qt4_96_7.png",
+              "scorerId": "05qt4",
+              "posIdsNoFlex": [
+                "306"
+              ],
+              "defaultPosId": "303",
+              "posShortNames": "F",
+              "team": false,
+              "icons": [
+                {
+                  "tooltip": "Rest - Out Indefinitely - Expected return Nov 4",
+                  "typeId": "30"
+                },
+                {
+                  "tooltip": "Nov 2, 1:13 PM: Nesmith (rest) is sitting out Monday...",
+                  "typeId": "14"
+                }
+              ],
+              "rookie": false,
+              "minorsEligible": false,
+              "posIds": [
+                "306"
+              ],
+              "teamId": "40080",
+              "name": "Aaron Nesmith",
+              "teamShortName": "IND",
+              "shortName": "A. Nesmith"
+            },
+            "resultCode": "EXECUTED",
+            "executed": true,
+            "result": {
+              "content": "Executed"
+            },
+            "claimType": "WW",
+            "numInGroup": 2,
+            "txSetId": "ewh2u4sfmvytnrhm",
+            "feesUsed": false,
+            "transactionCode": "CLAIM",
+            "transactionType": "Claim",
+            "deleted": false,
+            "cells": [
+              {
+                "align": "LEFT",
+                "content": "Mike Lee Double Team",
+                "leagueId": "r7yj6bpwmtswkp9p",
+                "rowspan": 2,
+                "key": "team",
+                "teamId": "7f7redubmtswkpax"
+              },
+              {
+                "align": "LEFT",
+                "content": "1.00",
+                "key": "bid"
+              },
+              {
+                "align": "LEFT",
+                "content": "Mon Nov 2, 2026, 4:55PM",
+                "rowspan": 2,
+                "key": "date"
+              },
+              {
+                "content": "3",
+                "key": "week"
+              }
+            ],
+            "undoButton": true
+          },
+          {
+            "scorer": {
+              "teamName": "Brooklyn Nets",
+              "urlName": "keon-ellis",
+              "headshotUrl": "https://fantraximg.com/si/headshots/NBA/hs0623m_96_5.png",
+              "scorerId": "0623m",
+              "posIdsNoFlex": [
+                "302"
+              ],
+              "defaultPosId": "301",
+              "posShortNames": "G",
+              "team": false,
+              "icons": [
+                {
+                  "tooltip": "Oct 27, 7:13 PM: Ellis will come off the bench in...",
+                  "typeId": "9"
+                }
+              ],
+              "rookie": false,
+              "minorsEligible": false,
+              "posIds": [
+                "302"
+              ],
+              "teamId": "40011",
+              "name": "Keon Ellis",
+              "teamShortName": "BKN",
+              "shortName": "K. Ellis"
+            },
+            "resultCode": "EXECUTED",
+            "executed": true,
+            "result": {
+              "content": "Executed"
+            },
+            "claimType": "",
+            "txSetId": "ewh2u4sfmvytnrhm",
+            "feesUsed": false,
+            "transactionCode": "DROP",
+            "transactionType": "Drop",
+            "deleted": false,
+            "cells": [
+              {
+                "align": "LEFT",
+                "content": "",
+                "key": "bid"
+              },
+              {
+                "content": "3",
+                "key": "week"
+              }
+            ],
+            "undoButton": true
+          },
+          {
+            "scorer": {
+              "teamName": "Brooklyn Nets",
+              "urlName": "nolan-traore",
+              "headshotUrl": "https://fantraximg.com/si/headshots/NBA/hs06v5p_96_2.png",
+              "scorerId": "06v5p",
+              "posIdsNoFlex": [
+                "302"
+              ],
+              "defaultPosId": "300",
+              "posShortNames": "G",
+              "team": false,
+              "icons": [
+                {
+                  "tooltip": "Nov 2, 11:25 AM: Traore tallied 16 points (6-14 FG, 4-8...",
+                  "typeId": "14"
+                }
+              ],
+              "rookie": false,
+              "minorsEligible": false,
+              "posIds": [
+                "302"
+              ],
+              "teamId": "40011",
+              "name": "Nolan Traore",
+              "teamShortName": "BKN",
+              "shortName": "N. Traore"
+            },
+            "resultCode": "EXECUTED",
+            "executed": true,
+            "result": {
+              "content": "Executed"
+            },
+            "claimType": "WW",
+            "disabled": true,
+            "numInGroup": 2,
+            "txSetId": "oioeb88emvytmy68",
+            "feesUsed": false,
+            "transactionCode": "CLAIM",
+            "transactionType": "Claim",
+            "deleted": false,
+            "cells": [
+              {
+                "align": "LEFT",
+                "content": "Mike Lee Double Team",
+                "leagueId": "r7yj6bpwmtswkp9p",
+                "rowspan": 2,
+                "key": "team",
+                "teamId": "7f7redubmtswkpax"
+              },
+              {
+                "align": "LEFT",
+                "content": "6.00",
+                "key": "bid"
+              },
+              {
+                "align": "LEFT",
+                "content": "Mon Nov 2, 2026, 4:55PM",
+                "rowspan": 2,
+                "key": "date"
+              },
+              {
+                "content": "3",
+                "key": "week"
+              }
+            ],
+            "undoButton": true
+          },
+          {
+            "scorer": {
+              "teamName": "Golden State Warriors",
+              "urlName": "brandon-williams",
+              "headshotUrl": "https://fantraximg.com/si/headshots/NBA/hs05y9y_96_5.png",
+              "scorerId": "05y9y",
+              "posIdsNoFlex": [
+                "302"
+              ],
+              "defaultPosId": "300",
+              "posShortNames": "G",
+              "team": false,
+              "icons": [
+                {
+                  "tooltip": "Quadriceps - Out Indefinitely - Expected return Nov 5",
+                  "typeId": "30"
+                },
+                {
+                  "tooltip": "Nov 2, 8:33 PM: Williams (quadriceps) has been ruled...",
+                  "typeId": "14"
+                }
+              ],
+              "rookie": false,
+              "minorsEligible": false,
+              "posIds": [
+                "302"
+              ],
+              "teamId": "40250",
+              "name": "Brandon Williams",
+              "teamShortName": "GS",
+              "shortName": "B. Williams"
+            },
+            "resultCode": "EXECUTED",
+            "executed": true,
+            "result": {
+              "content": "Executed"
+            },
+            "claimType": "",
+            "disabled": true,
+            "txSetId": "oioeb88emvytmy68",
+            "feesUsed": false,
+            "transactionCode": "DROP",
+            "transactionType": "Drop",
+            "deleted": false,
+            "cells": [
+              {
+                "align": "LEFT",
+                "content": "",
+                "key": "bid"
+              },
+              {
+                "content": "3",
+                "key": "week"
+              }
+            ],
+            "undoButton": true
+          },
+          {
+            "scorer": {
+              "teamName": "Brooklyn Nets",
+              "urlName": "noah-clowney",
+              "headshotUrl": "https://fantraximg.com/si/headshots/NBA/hs06ccd_96_4.png",
+              "scorerId": "06ccd",
+              "posIdsNoFlex": [
+                "306",
+                "305"
+              ],
+              "defaultPosId": "304",
+              "posShortNames": "F,C",
+              "team": false,
+              "icons": [
+                {
+                  "tooltip": "Oct 30, 5:57 PM: Clowney (illness) is available for...",
+                  "typeId": "9"
+                }
+              ],
+              "rookie": false,
+              "minorsEligible": false,
+              "posIds": [
+                "306",
+                "305"
+              ],
+              "teamId": "40011",
+              "name": "Noah Clowney",
+              "teamShortName": "BKN",
+              "shortName": "N. Clowney"
+            },
+            "resultCode": "EXECUTED",
+            "executed": true,
+            "result": {
+              "content": "Executed"
+            },
+            "claimType": "WW",
+            "numInGroup": 2,
+            "txSetId": "rse0e9k5mvytlg59",
+            "feesUsed": false,
+            "transactionCode": "CLAIM",
+            "transactionType": "Claim",
+            "deleted": false,
+            "cells": [
+              {
+                "align": "LEFT",
+                "content": "Mike Lee Double Team",
+                "leagueId": "r7yj6bpwmtswkp9p",
+                "rowspan": 2,
+                "key": "team",
+                "teamId": "7f7redubmtswkpax"
+              },
+              {
+                "align": "LEFT",
+                "content": "1.00",
+                "key": "bid"
+              },
+              {
+                "align": "LEFT",
+                "content": "Mon Nov 2, 2026, 4:55PM",
+                "rowspan": 2,
+                "key": "date"
+              },
+              {
+                "content": "3",
+                "key": "week"
+              }
+            ],
+            "undoButton": true
+          },
+          {
+            "scorer": {
+              "teamName": "Miami Heat",
+              "urlName": "nikola-jovic",
+              "headshotUrl": "https://fantraximg.com/si/headshots/NBA/hs0621q_96_5.png",
+              "scorerId": "0621q",
+              "posIdsNoFlex": [
+                "306",
+                "305"
+              ],
+              "defaultPosId": "304",
+              "posShortNames": "F,C",
+              "team": false,
+              "icons": [
+                {
+                  "tooltip": "Oct 21, 7:06 PM: Jovic will come off the bench in...",
+                  "typeId": "8"
+                }
+              ],
+              "rookie": false,
+              "minorsEligible": false,
+              "posIds": [
+                "306",
+                "305"
+              ],
+              "teamId": "40120",
+              "name": "Nikola Jovic",
+              "teamShortName": "MIA",
+              "shortName": "N. Jovic"
+            },
+            "resultCode": "EXECUTED",
+            "executed": true,
+            "result": {
+              "content": "Executed"
+            },
+            "claimType": "",
+            "txSetId": "rse0e9k5mvytlg59",
+            "feesUsed": false,
+            "transactionCode": "DROP",
+            "transactionType": "Drop",
+            "deleted": false,
+            "cells": [
+              {
+                "align": "LEFT",
+                "content": "",
+                "key": "bid"
+              },
+              {
+                "content": "3",
+                "key": "week"
+              }
+            ],
+            "undoButton": true
+          },
+          {
+            "scorer": {
               "teamName": "Memphis Grizzlies",
               "urlName": "cam-spencer",
               "headshotUrl": "https://fantraximg.com/si/headshots/NBA/hs06mlz_96_3.png",
@@ -884,7 +1255,7 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Nov 1, 11:09 AM: Spencer closed Saturday's 136-105...",
+                  "tooltip": "Nov 2, 7:42 PM: Spencer won't start Monday's game...",
                   "typeId": "14"
                 }
               ],
@@ -904,6 +1275,7 @@
               "content": "Executed"
             },
             "claimType": "FA",
+            "disabled": true,
             "numInGroup": 2,
             "txSetId": "kqymb443mvwp072g",
             "feesUsed": false,
@@ -951,11 +1323,11 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Back - Game-time decision - Expected return Nov 2",
-                  "typeId": "1"
+                  "tooltip": "Back - Out Indefinitely - Expected return Nov 4",
+                  "typeId": "30"
                 },
                 {
-                  "tooltip": "Nov 1, 6:15 PM: Pippen (back) is listed as doubtful for...",
+                  "tooltip": "Nov 2, 7:14 PM: Pippen (back) has been ruled out for...",
                   "typeId": "14"
                 }
               ],
@@ -975,6 +1347,7 @@
               "content": "Executed"
             },
             "claimType": "",
+            "disabled": true,
             "txSetId": "kqymb443mvwp072g",
             "feesUsed": false,
             "transactionCode": "DROP",
@@ -1008,7 +1381,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 10:47 AM: Stirtz racked up 11 points (4-8 FG, 3-6...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": true,
@@ -1027,7 +1400,6 @@
               "content": "Executed"
             },
             "claimType": "FA",
-            "disabled": true,
             "numInGroup": 2,
             "txSetId": "2muxq5rimvvwy1fp",
             "feesUsed": false,
@@ -1076,7 +1448,7 @@
               "icons": [
                 {
                   "tooltip": "Oct 26, 9:39 PM: Ike won't start Monday's game against...",
-                  "typeId": "9"
+                  "typeId": "8"
                 }
               ],
               "rookie": true,
@@ -1095,7 +1467,6 @@
               "content": "Executed"
             },
             "claimType": "",
-            "disabled": true,
             "txSetId": "2muxq5rimvvwy1fp",
             "feesUsed": false,
             "transactionCode": "DROP",
@@ -1148,6 +1519,7 @@
               "content": "Executed"
             },
             "claimType": "WW",
+            "disabled": true,
             "numInGroup": 1,
             "txSetId": "3sgpn99mmvs676ye",
             "feesUsed": false,
@@ -1215,7 +1587,6 @@
               "content": "Executed"
             },
             "claimType": "",
-            "disabled": true,
             "numInGroup": 1,
             "txSetId": "62ai52r9mvs67ljg",
             "feesUsed": false,
@@ -1283,6 +1654,7 @@
               "content": "Executed"
             },
             "claimType": "WW",
+            "disabled": true,
             "numInGroup": 2,
             "txSetId": "gbml23nfmvqlxu40",
             "feesUsed": false,
@@ -1352,6 +1724,7 @@
               "content": "Executed"
             },
             "claimType": "",
+            "disabled": true,
             "txSetId": "gbml23nfmvqlxu40",
             "feesUsed": false,
             "transactionCode": "DROP",
@@ -1385,8 +1758,8 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 26, 2:25 PM: Williams (wrist) is available for...",
-                  "typeId": "9"
+                  "tooltip": "Nov 2, 6:45 PM: Williams will start in Monday's game...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -1406,7 +1779,6 @@
               "content": "Executed"
             },
             "claimType": "WW",
-            "disabled": true,
             "numInGroup": 2,
             "txSetId": "58vwmvhymvq6pw7l",
             "feesUsed": false,
@@ -1474,7 +1846,6 @@
               "content": "Executed"
             },
             "claimType": "",
-            "disabled": true,
             "txSetId": "58vwmvhymvq6pw7l",
             "feesUsed": false,
             "transactionCode": "DROP",
@@ -1508,8 +1879,12 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 30, 2:07 PM: Shannon's contract option for next...",
-                  "typeId": "9"
+                  "tooltip": "Hip - Out Indefinitely - Expected return Nov 4",
+                  "typeId": "30"
+                },
+                {
+                  "tooltip": "Nov 2, 6:22 PM: Shannon (hip) has been ruled out for...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -1529,6 +1904,7 @@
               "content": "Executed"
             },
             "claimType": "WW",
+            "disabled": true,
             "numInGroup": 2,
             "txSetId": "3sbqfajemvpzilmo",
             "feesUsed": false,
@@ -1577,7 +1953,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 10:24 AM: Phoenix recalled Peat from the G...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": true,
@@ -1596,6 +1972,7 @@
               "content": "Executed"
             },
             "claimType": "",
+            "disabled": true,
             "txSetId": "3sbqfajemvpzilmo",
             "feesUsed": false,
             "transactionCode": "DROP",
@@ -1648,7 +2025,6 @@
               "content": "Executed"
             },
             "claimType": "FA",
-            "disabled": true,
             "numInGroup": 2,
             "txSetId": "3ackg5cjmvq0wm8w",
             "feesUsed": false,
@@ -1722,7 +2098,6 @@
               "content": "Executed"
             },
             "claimType": "",
-            "disabled": true,
             "txSetId": "3ackg5cjmvq0wm8w",
             "feesUsed": false,
             "transactionCode": "DROP",
@@ -1755,8 +2130,12 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 29, 11:11 AM: Williams tallied 11 points (4-11 FG,...",
-                  "typeId": "9"
+                  "tooltip": "Quadriceps - Out Indefinitely - Expected return Nov 5",
+                  "typeId": "30"
+                },
+                {
+                  "tooltip": "Nov 2, 8:33 PM: Williams (quadriceps) has been ruled...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -1775,6 +2154,7 @@
               "content": "Executed"
             },
             "claimType": "FA",
+            "disabled": true,
             "numInGroup": 2,
             "txSetId": "wf51pa3wmvq0p6v1",
             "feesUsed": false,
@@ -1844,6 +2224,7 @@
               "content": "Executed"
             },
             "claimType": "",
+            "disabled": true,
             "txSetId": "wf51pa3wmvq0p6v1",
             "feesUsed": false,
             "transactionCode": "DROP",
@@ -1898,7 +2279,6 @@
               "content": "Executed"
             },
             "claimType": "WW",
-            "disabled": true,
             "numInGroup": 2,
             "txSetId": "0to109fpmvop8696",
             "feesUsed": false,
@@ -1946,7 +2326,11 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Nov 1, 3:38 PM: Nesmith (hamstring) is active for...",
+                  "tooltip": "Rest - Out Indefinitely - Expected return Nov 4",
+                  "typeId": "30"
+                },
+                {
+                  "tooltip": "Nov 2, 1:13 PM: Nesmith (rest) is sitting out Monday...",
                   "typeId": "14"
                 }
               ],
@@ -1966,7 +2350,6 @@
               "content": "Executed"
             },
             "claimType": "",
-            "disabled": true,
             "txSetId": "0to109fpmvop8696",
             "feesUsed": false,
             "transactionCode": "DROP",
@@ -1999,7 +2382,7 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Nov 1, 8:14 PM: Melton will start in Sunday's game...",
+                  "tooltip": "Nov 2, 9:43 AM: Melton had 21 points (6-9 FG, 6-8 3Pt,...",
                   "typeId": "14"
                 }
               ],
@@ -2019,6 +2402,7 @@
               "content": "Executed"
             },
             "claimType": "FA",
+            "disabled": true,
             "numInGroup": 2,
             "txSetId": "w5xskargmvp9075u",
             "feesUsed": false,
@@ -2067,7 +2451,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 10:47 AM: Stirtz racked up 11 points (4-8 FG, 3-6...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": true,
@@ -2086,6 +2470,7 @@
               "content": "Executed"
             },
             "claimType": "",
+            "disabled": true,
             "txSetId": "w5xskargmvp9075u",
             "feesUsed": false,
             "transactionCode": "DROP",
@@ -2138,7 +2523,6 @@
               "content": "Executed"
             },
             "claimType": "WW",
-            "disabled": true,
             "numInGroup": 2,
             "txSetId": "tfd880lymvnvgp7s",
             "feesUsed": false,
@@ -2186,11 +2570,7 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Wrist - Game-time decision - Expected return Nov 2",
-                  "typeId": "1"
-                },
-                {
-                  "tooltip": "Nov 1, 6:52 PM: Diallo (wrist) is listed as...",
+                  "tooltip": "Nov 2, 8:08 PM: Diallo (wrist) is available for...",
                   "typeId": "14"
                 }
               ],
@@ -2210,7 +2590,6 @@
               "content": "Executed"
             },
             "claimType": "",
-            "disabled": true,
             "txSetId": "tfd880lymvnvgp7s",
             "feesUsed": false,
             "transactionCode": "DROP",
@@ -2244,7 +2623,7 @@
               "icons": [
                 {
                   "tooltip": "Oct 26, 9:39 PM: Ike won't start Monday's game against...",
-                  "typeId": "9"
+                  "typeId": "8"
                 }
               ],
               "rookie": true,
@@ -2263,6 +2642,7 @@
               "content": "Executed"
             },
             "claimType": "WW",
+            "disabled": true,
             "numInGroup": 2,
             "txSetId": "sjsksgstmvlt2d9q",
             "feesUsed": false,
@@ -2332,6 +2712,7 @@
               "content": "Executed"
             },
             "claimType": "",
+            "disabled": true,
             "txSetId": "sjsksgstmvlt2d9q",
             "feesUsed": false,
             "transactionCode": "DROP",
@@ -2384,7 +2765,6 @@
               "content": "Executed"
             },
             "claimType": "WW",
-            "disabled": true,
             "numInGroup": 2,
             "txSetId": "hanm77ixmvlo823m",
             "feesUsed": false,
@@ -2454,7 +2834,6 @@
               "content": "Executed"
             },
             "claimType": "",
-            "disabled": true,
             "txSetId": "hanm77ixmvlo823m",
             "feesUsed": false,
             "transactionCode": "DROP",
@@ -2507,6 +2886,7 @@
               "content": "Executed"
             },
             "claimType": "FA",
+            "disabled": true,
             "numInGroup": 2,
             "txSetId": "9r84bf56mvlsythl",
             "feesUsed": false,
@@ -2554,7 +2934,7 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Nov 1, 11:09 AM: Spencer closed Saturday's 136-105...",
+                  "tooltip": "Nov 2, 7:42 PM: Spencer won't start Monday's game...",
                   "typeId": "14"
                 }
               ],
@@ -2574,6 +2954,7 @@
               "content": "Executed"
             },
             "claimType": "",
+            "disabled": true,
             "txSetId": "9r84bf56mvlsythl",
             "feesUsed": false,
             "transactionCode": "DROP",
@@ -2606,8 +2987,8 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 29, 1:11 PM: The Nets exercised Traore's team option...",
-                  "typeId": "9"
+                  "tooltip": "Nov 2, 11:25 AM: Traore tallied 16 points (6-14 FG, 4-8...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -2626,7 +3007,6 @@
               "content": "Executed"
             },
             "claimType": "",
-            "disabled": true,
             "numInGroup": 1,
             "txSetId": "kvpuw7xxmvlsvpu5",
             "feesUsed": false,
@@ -2696,6 +3076,7 @@
               "content": "Executed"
             },
             "claimType": "FA",
+            "disabled": true,
             "numInGroup": 2,
             "txSetId": "i3er2ozamvkg1g7a",
             "feesUsed": false,
@@ -2763,6 +3144,7 @@
               "content": "Executed"
             },
             "claimType": "",
+            "disabled": true,
             "txSetId": "i3er2ozamvkg1g7a",
             "feesUsed": false,
             "transactionCode": "DROP",
@@ -2817,7 +3199,6 @@
               "content": "Executed"
             },
             "claimType": "WW",
-            "disabled": true,
             "numInGroup": 2,
             "txSetId": "jm0ydgtqmvjlgwfz",
             "feesUsed": false,
@@ -2865,7 +3246,7 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Nov 1, 8:14 PM: Melton will start in Sunday's game...",
+                  "tooltip": "Nov 2, 9:43 AM: Melton had 21 points (6-9 FG, 6-8 3Pt,...",
                   "typeId": "14"
                 }
               ],
@@ -2885,7 +3266,6 @@
               "content": "Executed"
             },
             "claimType": "",
-            "disabled": true,
             "txSetId": "jm0ydgtqmvjlgwfz",
             "feesUsed": false,
             "transactionCode": "DROP",
@@ -2920,7 +3300,7 @@
               "icons": [
                 {
                   "tooltip": "Oct 26, 11:01 AM: Caldwell-Pope contributed seven points...",
-                  "typeId": "9"
+                  "typeId": "8"
                 }
               ],
               "rookie": false,
@@ -2940,6 +3320,7 @@
               "content": "Executed"
             },
             "claimType": "FA",
+            "disabled": true,
             "numInGroup": 2,
             "txSetId": "iwgy2x4bmvjkrww0",
             "feesUsed": false,
@@ -3009,6 +3390,7 @@
               "content": "Executed"
             },
             "claimType": "",
+            "disabled": true,
             "txSetId": "iwgy2x4bmvjkrww0",
             "feesUsed": false,
             "transactionCode": "DROP",
@@ -3063,7 +3445,6 @@
               "content": "Executed"
             },
             "claimType": "WW",
-            "disabled": true,
             "numInGroup": 2,
             "txSetId": "3xf7bj1wmvgnszch",
             "feesUsed": false,
@@ -3133,7 +3514,6 @@
               "content": "Executed"
             },
             "claimType": "",
-            "disabled": true,
             "txSetId": "3xf7bj1wmvgnszch",
             "feesUsed": false,
             "transactionCode": "DROP",
@@ -3167,11 +3547,7 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Finger - Game-time decision - Expected return Nov 2",
-                  "typeId": "1"
-                },
-                {
-                  "tooltip": "Nov 1, 4:40 PM: Smith (finger) is listed as probable...",
+                  "tooltip": "Nov 2, 5:52 PM: Smith (finger) is active for Monday's...",
                   "typeId": "14"
                 }
               ],
@@ -3192,6 +3568,7 @@
               "content": "Executed"
             },
             "claimType": "FA",
+            "disabled": true,
             "numInGroup": 2,
             "txSetId": "vnu1isrjmvgoyez6",
             "feesUsed": false,
@@ -3259,6 +3636,7 @@
               "content": "Executed"
             },
             "claimType": "",
+            "disabled": true,
             "txSetId": "vnu1isrjmvgoyez6",
             "feesUsed": false,
             "transactionCode": "DROP",
@@ -3311,7 +3689,6 @@
               "content": "Executed"
             },
             "claimType": "",
-            "disabled": true,
             "numInGroup": 1,
             "txSetId": "sapsir3xmvgajoc3",
             "feesUsed": false,
@@ -3384,6 +3761,7 @@
               "content": "Executed"
             },
             "claimType": "",
+            "disabled": true,
             "numInGroup": 1,
             "txSetId": "qoobfmmpmvgaif4v",
             "feesUsed": false,
@@ -3453,7 +3831,6 @@
               "content": "Executed"
             },
             "claimType": "",
-            "disabled": true,
             "numInGroup": 1,
             "txSetId": "ijj56sxdmvgai9m6",
             "feesUsed": false,
@@ -3523,6 +3900,7 @@
               "content": "Executed"
             },
             "claimType": "",
+            "disabled": true,
             "numInGroup": 1,
             "txSetId": "g900wklhmvgahino",
             "feesUsed": false,
@@ -3595,7 +3973,6 @@
               "content": "Executed"
             },
             "claimType": "",
-            "disabled": true,
             "numInGroup": 1,
             "txSetId": "oyz98defmvg2lcnf",
             "feesUsed": false,
@@ -3663,6 +4040,7 @@
               "content": "Executed"
             },
             "claimType": "",
+            "disabled": true,
             "numInGroup": 1,
             "txSetId": "25858dewmvg1unsp",
             "feesUsed": false,
@@ -3711,7 +4089,7 @@
               "icons": [
                 {
                   "tooltip": "Oct 26, 9:37 PM: Richard isn't in the starting lineup...",
-                  "typeId": "9"
+                  "typeId": "8"
                 }
               ],
               "rookie": false,
@@ -3730,7 +4108,6 @@
               "content": "Executed"
             },
             "claimType": "",
-            "disabled": true,
             "numInGroup": 1,
             "txSetId": "1q57t3xqmvg1ueo0",
             "feesUsed": false,
@@ -3779,11 +4156,7 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Foot - Out Indefinitely - Expected return Nov 8",
-                  "typeId": "30"
-                },
-                {
-                  "tooltip": "Nov 1, 7:45 PM: Strus (foot) practiced and participated...",
+                  "tooltip": "Nov 2, 4:19 PM: Strus (foot) will return Monday against...",
                   "typeId": "14"
                 }
               ],
@@ -3804,6 +4177,7 @@
               "content": "Executed"
             },
             "claimType": "",
+            "disabled": true,
             "numInGroup": 1,
             "txSetId": "384cd1h1mvg1r68i",
             "feesUsed": false,
@@ -3871,7 +4245,6 @@
               "content": "Executed"
             },
             "claimType": "",
-            "disabled": true,
             "numInGroup": 1,
             "txSetId": "prtz949jmvfwwr3d",
             "feesUsed": false,
@@ -3920,7 +4293,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 11:33 AM: Atlanta exercised Newell's third-year...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -3939,6 +4312,7 @@
               "content": "Executed"
             },
             "claimType": "",
+            "disabled": true,
             "numInGroup": 1,
             "txSetId": "1eofo68wmvfwunoo",
             "feesUsed": false,
@@ -3991,7 +4365,7 @@
                 },
                 {
                   "tooltip": "Nov 1, 5:17 PM: Williams (hamstring) is listed as out...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -4010,7 +4384,6 @@
               "content": "Executed"
             },
             "claimType": "",
-            "disabled": true,
             "numInGroup": 1,
             "txSetId": "6job7c9zmvfwck4y",
             "feesUsed": false,
@@ -4077,6 +4450,7 @@
               "content": "Executed"
             },
             "claimType": "",
+            "disabled": true,
             "numInGroup": 1,
             "txSetId": "i6zmx2ywmvfvv5vf",
             "feesUsed": false,
@@ -4125,8 +4499,8 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 26, 2:25 PM: Williams (wrist) is available for...",
-                  "typeId": "9"
+                  "tooltip": "Nov 2, 6:45 PM: Williams will start in Monday's game...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -4146,7 +4520,6 @@
               "content": "Executed"
             },
             "claimType": "",
-            "disabled": true,
             "numInGroup": 1,
             "txSetId": "8bvrdxl9mvekkf5i",
             "feesUsed": false,
@@ -4214,6 +4587,7 @@
               "content": "Executed"
             },
             "claimType": "",
+            "disabled": true,
             "numInGroup": 1,
             "txSetId": "hyk1cdchmvejpmzo",
             "feesUsed": false,
@@ -4285,7 +4659,6 @@
               "content": "Executed"
             },
             "claimType": "",
-            "disabled": true,
             "numInGroup": 1,
             "txSetId": "00jax0bymvejos1j",
             "feesUsed": false,
@@ -4353,6 +4726,7 @@
               "content": "Executed"
             },
             "claimType": "",
+            "disabled": true,
             "numInGroup": 1,
             "txSetId": "c5vccc5smvej7ieg",
             "feesUsed": false,
@@ -4420,7 +4794,6 @@
               "content": "Executed"
             },
             "claimType": "",
-            "disabled": true,
             "numInGroup": 1,
             "txSetId": "pc3lcqfmmvehsxjz",
             "feesUsed": false,
@@ -4469,8 +4842,12 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 31, 9:15 AM: Nance produced six points (2-4 FG, 2-2...",
-                  "typeId": "9"
+                  "tooltip": "Illness - Out Indefinitely - Expected return Nov 4",
+                  "typeId": "30"
+                },
+                {
+                  "tooltip": "Nov 2, 6:10 PM: Nance (illness) has been ruled out for...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -4490,6 +4867,7 @@
               "content": "Executed"
             },
             "claimType": "",
+            "disabled": true,
             "numInGroup": 1,
             "txSetId": "o8ls5078mvehruum",
             "feesUsed": false,
@@ -4557,7 +4935,6 @@
               "content": "Executed"
             },
             "claimType": "",
-            "disabled": true,
             "numInGroup": 1,
             "txSetId": "z2ew9oymmve1qcaa",
             "feesUsed": false,
@@ -4627,6 +5004,7 @@
               "content": "Executed"
             },
             "claimType": "",
+            "disabled": true,
             "numInGroup": 1,
             "txSetId": "vt7600oqmve1nm66",
             "feesUsed": false,
@@ -4693,7 +5071,6 @@
               "content": "Executed"
             },
             "claimType": "",
-            "disabled": true,
             "numInGroup": 1,
             "txSetId": "qn13s90wmve1iehu",
             "feesUsed": false,
@@ -4763,6 +5140,7 @@
               "content": "Executed"
             },
             "claimType": "",
+            "disabled": true,
             "numInGroup": 1,
             "txSetId": "a80juorzmve1da0a",
             "feesUsed": false,
@@ -4830,7 +5208,6 @@
               "content": "Executed"
             },
             "claimType": "WW",
-            "disabled": true,
             "numInGroup": 2,
             "txSetId": "fdyi27xgmvc31moy",
             "feesUsed": false,
@@ -4879,11 +5256,7 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Finger - Game-time decision - Expected return Nov 2",
-                  "typeId": "1"
-                },
-                {
-                  "tooltip": "Nov 1, 4:40 PM: Smith (finger) is listed as probable...",
+                  "tooltip": "Nov 2, 5:52 PM: Smith (finger) is active for Monday's...",
                   "typeId": "14"
                 }
               ],
@@ -4904,7 +5277,6 @@
               "content": "Executed"
             },
             "claimType": "",
-            "disabled": true,
             "txSetId": "fdyi27xgmvc31moy",
             "feesUsed": false,
             "transactionCode": "DROP",
@@ -4956,6 +5328,7 @@
               "content": "Executed"
             },
             "claimType": "",
+            "disabled": true,
             "numInGroup": 1,
             "txSetId": "81aeycvomvcw7150",
             "feesUsed": false,
@@ -5003,8 +5376,12 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 29, 11:11 AM: Williams tallied 11 points (4-11 FG,...",
-                  "typeId": "9"
+                  "tooltip": "Quadriceps - Out Indefinitely - Expected return Nov 5",
+                  "typeId": "30"
+                },
+                {
+                  "tooltip": "Nov 2, 8:33 PM: Williams (quadriceps) has been ruled...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -5023,7 +5400,6 @@
               "content": "Executed"
             },
             "claimType": "",
-            "disabled": true,
             "numInGroup": 1,
             "txSetId": "ihuxnyd4mvcixzfp",
             "feesUsed": false,
@@ -5091,6 +5467,7 @@
               "content": "Executed"
             },
             "claimType": "",
+            "disabled": true,
             "numInGroup": 1,
             "txSetId": "atpabqqamvciik9k",
             "feesUsed": false,
@@ -5139,8 +5516,12 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 25, 5:15 PM: Horford (back) isn't listed on the...",
-                  "typeId": "8"
+                  "tooltip": "Rest - Out Indefinitely - Expected return Nov 5",
+                  "typeId": "30"
+                },
+                {
+                  "tooltip": "Nov 2, 4:07 PM: Horford will be rested Monday against...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -5160,7 +5541,6 @@
               "content": "Executed"
             },
             "claimType": "",
-            "disabled": true,
             "numInGroup": 1,
             "txSetId": "od2ca4q0mvca95cr",
             "feesUsed": false,
@@ -5230,6 +5610,7 @@
               "content": "Executed"
             },
             "claimType": "",
+            "disabled": true,
             "numInGroup": 1,
             "txSetId": "ycl6cxxqmvca6rj3",
             "feesUsed": false,
@@ -5297,7 +5678,6 @@
               "content": "Executed"
             },
             "claimType": "",
-            "disabled": true,
             "numInGroup": 1,
             "txSetId": "wc43slb2mvca3tpq",
             "feesUsed": false,
@@ -5345,11 +5725,11 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Ankle - Game-time decision - Expected return Nov 2",
-                  "typeId": "1"
+                  "tooltip": "Ankle - Out Indefinitely - Expected return Nov 4",
+                  "typeId": "30"
                 },
                 {
-                  "tooltip": "Nov 1, 6:13 PM: Post (ankle) is questionable to suit up...",
+                  "tooltip": "Nov 2, 7:12 PM: Post (ankle) has been downgraded to out...",
                   "typeId": "14"
                 }
               ],
@@ -5369,6 +5749,7 @@
               "content": "Executed"
             },
             "claimType": "",
+            "disabled": true,
             "numInGroup": 1,
             "txSetId": "7dzsk74smvca3d3r",
             "feesUsed": false,
@@ -5421,7 +5802,7 @@
                 },
                 {
                   "tooltip": "Nov 1, 4:51 PM: Vukcevic (hip) is listed as out for...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -5440,7 +5821,6 @@
               "content": "Executed"
             },
             "claimType": "",
-            "disabled": true,
             "numInGroup": 1,
             "txSetId": "zlu92i7gmvc9wttw",
             "feesUsed": false,
@@ -5507,6 +5887,7 @@
               "content": "Executed"
             },
             "claimType": "",
+            "disabled": true,
             "numInGroup": 1,
             "txSetId": "a8j0i6c5mvc9oxqx",
             "feesUsed": false,
@@ -5577,7 +5958,6 @@
               "content": "Executed"
             },
             "claimType": "",
-            "disabled": true,
             "numInGroup": 1,
             "txSetId": "6hsqxrd6mvc9opmp",
             "feesUsed": false,
@@ -5647,6 +6027,7 @@
               "content": "Executed"
             },
             "claimType": "",
+            "disabled": true,
             "numInGroup": 1,
             "txSetId": "eibo0qromvc2y9y1",
             "feesUsed": false,
@@ -5714,7 +6095,6 @@
               "content": "Executed"
             },
             "claimType": "",
-            "disabled": true,
             "numInGroup": 1,
             "txSetId": "kgsf2001mvc15o4b",
             "feesUsed": false,
@@ -5784,6 +6164,7 @@
               "content": "Executed"
             },
             "claimType": "",
+            "disabled": true,
             "numInGroup": 1,
             "txSetId": "5k83jbwwmvc0toja",
             "feesUsed": false,
@@ -5836,8 +6217,8 @@
                   "typeId": "30"
                 },
                 {
-                  "tooltip": "Oct 19, 5:07 PM: Barlow will miss at least the next two...",
-                  "typeId": "8"
+                  "tooltip": "Nov 2, 6:05 PM: Barlow (back) has been on the court \"a...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -5857,7 +6238,6 @@
               "content": "Executed"
             },
             "claimType": "",
-            "disabled": true,
             "numInGroup": 1,
             "txSetId": "imv9gwjumvc0rsx3",
             "feesUsed": false,
@@ -5925,6 +6305,7 @@
               "content": "Executed"
             },
             "claimType": "",
+            "disabled": true,
             "numInGroup": 1,
             "txSetId": "0jfilp4amvbx3ouk",
             "feesUsed": false,
@@ -5992,7 +6373,6 @@
               "content": "Executed"
             },
             "claimType": "",
-            "disabled": true,
             "numInGroup": 1,
             "txSetId": "pzj50w1emvbwtqmd",
             "feesUsed": false,
@@ -6042,10 +6422,6 @@
                 {
                   "tooltip": "Inactive",
                   "typeId": "7"
-                },
-                {
-                  "tooltip": "Oct 3, 12:01 PM: Payne signed a one-year contract with...",
-                  "typeId": "8"
                 }
               ],
               "rookie": false,
@@ -6063,6 +6439,7 @@
               "content": "Executed"
             },
             "claimType": "",
+            "disabled": true,
             "numInGroup": 1,
             "txSetId": "ny02xjx3mvbwrj92",
             "feesUsed": false,
@@ -6129,7 +6506,6 @@
               "content": "Executed"
             },
             "claimType": "",
-            "disabled": true,
             "numInGroup": 1,
             "txSetId": "qr944shqmvbwreek",
             "feesUsed": false,
@@ -6178,11 +6554,11 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Calf - Game-time decision - Expected return Nov 2",
-                  "typeId": "1"
+                  "tooltip": "Calf - Out Indefinitely - Expected return Nov 4",
+                  "typeId": "30"
                 },
                 {
-                  "tooltip": "Nov 1, 6:24 PM: Cardwell (calf) is questionable to suit...",
+                  "tooltip": "Nov 2, 6:34 PM: Cardwell (calf) has been ruled out for...",
                   "typeId": "14"
                 }
               ],
@@ -6203,6 +6579,7 @@
               "content": "Executed"
             },
             "claimType": "",
+            "disabled": true,
             "numInGroup": 1,
             "txSetId": "k93nb5e1mvbwr6wh",
             "feesUsed": false,
@@ -6270,7 +6647,6 @@
               "content": "Executed"
             },
             "claimType": "FA",
-            "disabled": true,
             "numInGroup": 1,
             "txSetId": "uw5ggflkmv7fh3rm",
             "feesUsed": false,
@@ -6745,11 +7121,11 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Calf - Game-time decision - Expected return Nov 2",
-                  "typeId": "1"
+                  "tooltip": "Calf - Out Indefinitely - Expected return Nov 4",
+                  "typeId": "30"
                 },
                 {
-                  "tooltip": "Nov 1, 6:24 PM: Cardwell (calf) is questionable to suit...",
+                  "tooltip": "Nov 2, 6:34 PM: Cardwell (calf) has been ruled out for...",
                   "typeId": "14"
                 }
               ],
@@ -6816,11 +7192,7 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Foot - Out Indefinitely - Expected return Nov 8",
-                  "typeId": "30"
-                },
-                {
-                  "tooltip": "Nov 1, 7:45 PM: Strus (foot) practiced and participated...",
+                  "tooltip": "Nov 2, 4:19 PM: Strus (foot) will return Monday against...",
                   "typeId": "14"
                 }
               ],
@@ -6942,7 +7314,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 3:26 PM: Reese is listed as probable for...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": true,
@@ -7077,7 +7449,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 12:17 PM: Walker supplied 12 points (5-8 FG, 1-4...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -7564,8 +7936,8 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 22, 1:31 PM: Bitadze closed Wednesday's 132-125 loss...",
-                  "typeId": "8"
+                  "tooltip": "Nov 2, 11:59 AM: Bitadze totaled zero points (0-1 FG)...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -7618,7 +7990,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 3:26 PM: Reese is listed as probable for...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": true,
@@ -7742,10 +8114,6 @@
                 {
                   "tooltip": "Inactive",
                   "typeId": "7"
-                },
-                {
-                  "tooltip": "Oct 3, 12:01 PM: Payne signed a one-year contract with...",
-                  "typeId": "8"
                 }
               ],
               "rookie": false,
@@ -7866,7 +8234,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 12:17 PM: Walker supplied 12 points (5-8 FG, 1-4...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -8113,8 +8481,8 @@
                   "typeId": "30"
                 },
                 {
-                  "tooltip": "Oct 19, 5:07 PM: Barlow will miss at least the next two...",
-                  "typeId": "8"
+                  "tooltip": "Nov 2, 6:05 PM: Barlow (back) has been on the court \"a...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -8492,8 +8860,8 @@
                   "typeId": "30"
                 },
                 {
-                  "tooltip": "Oct 19, 5:07 PM: Barlow will miss at least the next two...",
-                  "typeId": "8"
+                  "tooltip": "Nov 2, 6:05 PM: Barlow (back) has been on the court \"a...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -8924,7 +9292,7 @@
               "icons": [
                 {
                   "tooltip": "Oct 26, 11:01 AM: Caldwell-Pope contributed seven points...",
-                  "typeId": "9"
+                  "typeId": "8"
                 }
               ],
               "rookie": false,
@@ -9336,7 +9704,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 11:04 AM: Achiuwa registered six points (2-6 FG,...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -9583,8 +9951,8 @@
                   "typeId": "30"
                 },
                 {
-                  "tooltip": "Oct 19, 5:07 PM: Barlow will miss at least the next two...",
-                  "typeId": "8"
+                  "tooltip": "Nov 2, 6:05 PM: Barlow (back) has been on the court \"a...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -9705,7 +10073,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 5:31 AM: Merrill supplied six points (2-4 FG,...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -9944,7 +10312,7 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Nov 1, 11:09 AM: Spencer closed Saturday's 136-105...",
+                  "tooltip": "Nov 2, 7:42 PM: Spencer won't start Monday's game...",
                   "typeId": "14"
                 }
               ],
@@ -10015,8 +10383,8 @@
                   "typeId": "30"
                 },
                 {
-                  "tooltip": "Oct 19, 5:07 PM: Barlow will miss at least the next two...",
-                  "typeId": "8"
+                  "tooltip": "Nov 2, 6:05 PM: Barlow (back) has been on the court \"a...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -10139,7 +10507,7 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Nov 1, 11:09 AM: Spencer closed Saturday's 136-105...",
+                  "tooltip": "Nov 2, 7:42 PM: Spencer won't start Monday's game...",
                   "typeId": "14"
                 }
               ],
@@ -10192,8 +10560,8 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Knee - Game-time decision - Expected return Nov 5",
-                  "typeId": "1"
+                  "tooltip": "Knee - Out Indefinitely - Expected return Nov 5",
+                  "typeId": "30"
                 },
                 {
                   "tooltip": "Nov 1, 11:19 PM: Santos did not play in the second half...",
@@ -10316,7 +10684,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 11:13 AM: Jackson logged 21 points (7-10 FG, 5-5...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -10434,8 +10802,8 @@
                   "typeId": "30"
                 },
                 {
-                  "tooltip": "Oct 19, 5:07 PM: Barlow will miss at least the next two...",
-                  "typeId": "8"
+                  "tooltip": "Nov 2, 6:05 PM: Barlow (back) has been on the court \"a...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -10862,7 +11230,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 11:04 AM: Achiuwa registered six points (2-6 FG,...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -10914,7 +11282,7 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Nov 1, 8:14 PM: Melton will start in Sunday's game...",
+                  "tooltip": "Nov 2, 9:43 AM: Melton had 21 points (6-9 FG, 6-8 3Pt,...",
                   "typeId": "14"
                 }
               ],
@@ -11149,7 +11517,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 11:04 AM: Achiuwa registered six points (2-6 FG,...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -11336,7 +11704,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 5:31 AM: Merrill supplied six points (2-4 FG,...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -11629,7 +11997,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 5:31 AM: Merrill supplied six points (2-4 FG,...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -11752,7 +12120,7 @@
                 },
                 {
                   "tooltip": "Nov 1, 4:51 PM: Vukcevic (hip) is listed as out for...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -12059,11 +12427,11 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Ankle - Game-time decision - Expected return Nov 2",
-                  "typeId": "1"
+                  "tooltip": "Ankle - Out Indefinitely - Expected return Nov 4",
+                  "typeId": "30"
                 },
                 {
-                  "tooltip": "Nov 1, 3:46 PM: Capela (ankle) is questionable to play...",
+                  "tooltip": "Nov 2, 2:13 PM: Capela (ankle) has been ruled out for...",
                   "typeId": "14"
                 }
               ],
@@ -12178,7 +12546,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 3:27 PM: Walsh won't start Sunday's game against...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -12229,11 +12597,11 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Ankle - Game-time decision - Expected return Nov 2",
-                  "typeId": "1"
+                  "tooltip": "Ankle - Out Indefinitely - Expected return Nov 4",
+                  "typeId": "30"
                 },
                 {
-                  "tooltip": "Nov 1, 3:46 PM: Capela (ankle) is questionable to play...",
+                  "tooltip": "Nov 2, 2:13 PM: Capela (ankle) has been ruled out for...",
                   "typeId": "14"
                 }
               ],
@@ -12425,8 +12793,8 @@
                   "typeId": "30"
                 },
                 {
-                  "tooltip": "Oct 19, 5:07 PM: Barlow will miss at least the next two...",
-                  "typeId": "8"
+                  "tooltip": "Nov 2, 6:05 PM: Barlow (back) has been on the court \"a...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -12669,8 +13037,8 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 31, 9:11 AM: Jackson contributed 24 points (9-13 FG,...",
-                  "typeId": "9"
+                  "tooltip": "Nov 2, 7:22 PM: Jackson will start in Monday's game...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -13087,7 +13455,7 @@
                 },
                 {
                   "tooltip": "Nov 1, 5:22 PM: Landale (hip) has been ruled out for...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -13153,11 +13521,11 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Ankle - Game-time decision - Expected return Nov 2",
-                  "typeId": "1"
+                  "tooltip": "Ankle - Out Indefinitely - Expected return Nov 4",
+                  "typeId": "30"
                 },
                 {
-                  "tooltip": "Nov 1, 3:46 PM: Capela (ankle) is questionable to play...",
+                  "tooltip": "Nov 2, 2:13 PM: Capela (ankle) has been ruled out for...",
                   "typeId": "14"
                 }
               ],
@@ -13344,8 +13712,8 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 31, 9:11 AM: Jackson contributed 24 points (9-13 FG,...",
-                  "typeId": "9"
+                  "tooltip": "Nov 2, 7:22 PM: Jackson will start in Monday's game...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -13532,8 +13900,8 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 28, 3:37 PM: Garza posted two points (1-4 FG, 0-1...",
-                  "typeId": "9"
+                  "tooltip": "Nov 2, 10:42 AM: Garza tallied 12 points (4-7 FG, 2-4...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -13953,7 +14321,7 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Nov 1, 11:09 AM: Spencer closed Saturday's 136-105...",
+                  "tooltip": "Nov 2, 7:42 PM: Spencer won't start Monday's game...",
                   "typeId": "14"
                 }
               ],
@@ -14194,7 +14562,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 3:27 PM: Walsh won't start Sunday's game against...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -14620,8 +14988,8 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 31, 9:11 AM: Jackson contributed 24 points (9-13 FG,...",
-                  "typeId": "9"
+                  "tooltip": "Nov 2, 7:22 PM: Jackson will start in Monday's game...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -14740,8 +15108,8 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 24, 4:47 AM: Lopez finished with 22 points (8-9 FG,...",
-                  "typeId": "8"
+                  "tooltip": "Nov 2, 11:59 AM: Lopez racked up seven points (3-8 FG,...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -15825,7 +16193,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 2:39 PM: Krejci finished with five points (2-6...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -15877,11 +16245,11 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Hamstring - Game-time decision - Expected return Nov 2",
-                  "typeId": "1"
+                  "tooltip": "Hamstring - Out Indefinitely - Expected return Nov 4",
+                  "typeId": "30"
                 },
                 {
-                  "tooltip": "Nov 1, 4:57 PM: Watson (hamstring) is questionable to...",
+                  "tooltip": "Nov 2, 6:17 PM: Watson (hamstring) is out for Monday's...",
                   "typeId": "14"
                 }
               ],
@@ -16257,7 +16625,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 2:39 PM: Krejci finished with five points (2-6...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -16500,8 +16868,8 @@
                   "typeId": "30"
                 },
                 {
-                  "tooltip": "Oct 19, 5:07 PM: Barlow will miss at least the next two...",
-                  "typeId": "8"
+                  "tooltip": "Nov 2, 6:05 PM: Barlow (back) has been on the court \"a...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -16690,10 +17058,6 @@
                 {
                   "tooltip": "Inactive",
                   "typeId": "7"
-                },
-                {
-                  "tooltip": "Oct 3, 10:28 AM: Olynyk signed a contract with BC Roma...",
-                  "typeId": "8"
                 }
               ],
               "rookie": false,
@@ -17172,8 +17536,8 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 29, 3:29 PM: Martin (thumb) racked up 10 points (4-6...",
-                  "typeId": "9"
+                  "tooltip": "Nov 2, 7:42 PM: Martin will start Monday's game against...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -17345,11 +17709,11 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Back - Game-time decision - Expected return Nov 2",
-                  "typeId": "1"
+                  "tooltip": "Back - Out Indefinitely - Expected return Nov 4",
+                  "typeId": "30"
                 },
                 {
-                  "tooltip": "Nov 1, 6:15 PM: Pippen (back) is listed as doubtful for...",
+                  "tooltip": "Nov 2, 7:14 PM: Pippen (back) has been ruled out for...",
                   "typeId": "14"
                 }
               ],
@@ -17468,11 +17832,7 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Finger - Game-time decision - Expected return Nov 2",
-                  "typeId": "1"
-                },
-                {
-                  "tooltip": "Nov 1, 4:40 PM: Smith (finger) is listed as probable...",
+                  "tooltip": "Nov 2, 5:52 PM: Smith (finger) is active for Monday's...",
                   "typeId": "14"
                 }
               ],
@@ -17900,11 +18260,11 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Hamstring - Game-time decision - Expected return Nov 2",
-                  "typeId": "1"
+                  "tooltip": "Hamstring - Out Indefinitely - Expected return Nov 4",
+                  "typeId": "30"
                 },
                 {
-                  "tooltip": "Nov 1, 4:57 PM: Watson (hamstring) is questionable to...",
+                  "tooltip": "Nov 2, 6:17 PM: Watson (hamstring) is out for Monday's...",
                   "typeId": "14"
                 }
               ],
@@ -18143,7 +18503,7 @@
                 },
                 {
                   "tooltip": "Nov 1, 5:22 PM: Landale (hip) has been ruled out for...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -18382,7 +18742,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 11:13 AM: Jackson logged 21 points (7-10 FG, 5-5...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -18454,7 +18814,7 @@
                 },
                 {
                   "tooltip": "Nov 1, 5:22 PM: Landale (hip) has been ruled out for...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -18521,7 +18881,7 @@
               "icons": [
                 {
                   "tooltip": "Oct 26, 3:43 PM: The Hawks transferred Dennis to the G...",
-                  "typeId": "9"
+                  "typeId": "8"
                 }
               ],
               "rookie": false,
@@ -18573,7 +18933,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 11:07 AM: Stewart recorded 24 points (8-9 FG, 2-3...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -18697,8 +19057,8 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 31, 9:11 AM: Jackson contributed 24 points (9-13 FG,...",
-                  "typeId": "9"
+                  "tooltip": "Nov 2, 7:22 PM: Jackson will start in Monday's game...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -18817,7 +19177,7 @@
               "icons": [
                 {
                   "tooltip": "Oct 26, 3:43 PM: The Hawks transferred Dennis to the G...",
-                  "typeId": "9"
+                  "typeId": "8"
                 }
               ],
               "rookie": false,
@@ -18885,7 +19245,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 11:07 AM: Stewart recorded 24 points (8-9 FG, 2-3...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -19249,7 +19609,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 5:31 AM: Merrill supplied six points (2-4 FG,...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -19369,7 +19729,7 @@
               "icons": [
                 {
                   "tooltip": "Oct 26, 1:18 PM: Mogbo supplied seven points (3-4 FG,...",
-                  "typeId": "9"
+                  "typeId": "8"
                 }
               ],
               "rookie": false,
@@ -19612,8 +19972,8 @@
                   "typeId": "30"
                 },
                 {
-                  "tooltip": "Oct 19, 5:07 PM: Barlow will miss at least the next two...",
-                  "typeId": "8"
+                  "tooltip": "Nov 2, 6:05 PM: Barlow (back) has been on the court \"a...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -19801,7 +20161,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 5:31 AM: Merrill supplied six points (2-4 FG,...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -19867,8 +20227,12 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 30, 2:07 PM: Shannon's contract option for next...",
-                  "typeId": "9"
+                  "tooltip": "Hip - Out Indefinitely - Expected return Nov 4",
+                  "typeId": "30"
+                },
+                {
+                  "tooltip": "Nov 2, 6:22 PM: Shannon (hip) has been ruled out for...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -19923,8 +20287,8 @@
                   "typeId": "30"
                 },
                 {
-                  "tooltip": "Oct 19, 5:07 PM: Barlow will miss at least the next two...",
-                  "typeId": "8"
+                  "tooltip": "Nov 2, 6:05 PM: Barlow (back) has been on the court \"a...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -20044,8 +20408,12 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 30, 2:07 PM: Shannon's contract option for next...",
-                  "typeId": "9"
+                  "tooltip": "Hip - Out Indefinitely - Expected return Nov 4",
+                  "typeId": "30"
+                },
+                {
+                  "tooltip": "Nov 2, 6:22 PM: Shannon (hip) has been ruled out for...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -20163,7 +20531,7 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Nov 1, 5:39 AM: Rollins chipped in nine points (4-11...",
+                  "tooltip": "Nov 2, 7:37 PM: Rollins isn't in the starting lineup...",
                   "typeId": "14"
                 }
               ],
@@ -20475,11 +20843,7 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Foot - Out Indefinitely - Expected return Nov 8",
-                  "typeId": "30"
-                },
-                {
-                  "tooltip": "Nov 1, 7:45 PM: Strus (foot) practiced and participated...",
+                  "tooltip": "Nov 2, 4:19 PM: Strus (foot) will return Monday against...",
                   "typeId": "14"
                 }
               ],
@@ -21189,8 +21553,12 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 30, 2:07 PM: Shannon's contract option for next...",
-                  "typeId": "9"
+                  "tooltip": "Hip - Out Indefinitely - Expected return Nov 4",
+                  "typeId": "30"
+                },
+                {
+                  "tooltip": "Nov 2, 6:22 PM: Shannon (hip) has been ruled out for...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -21462,11 +21830,11 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Back - Game-time decision - Expected return Nov 2",
-                  "typeId": "1"
+                  "tooltip": "Back - Out Indefinitely - Expected return Nov 4",
+                  "typeId": "30"
                 },
                 {
-                  "tooltip": "Nov 1, 6:15 PM: Pippen (back) is listed as doubtful for...",
+                  "tooltip": "Nov 2, 7:14 PM: Pippen (back) has been ruled out for...",
                   "typeId": "14"
                 }
               ],
@@ -21928,7 +22296,7 @@
               "icons": [
                 {
                   "tooltip": "Oct 26, 9:37 PM: Richard isn't in the starting lineup...",
-                  "typeId": "9"
+                  "typeId": "8"
                 }
               ],
               "rookie": true,
@@ -22115,11 +22483,7 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Finger - Game-time decision - Expected return Nov 2",
-                  "typeId": "1"
-                },
-                {
-                  "tooltip": "Nov 1, 4:40 PM: Smith (finger) is listed as probable...",
+                  "tooltip": "Nov 2, 5:52 PM: Smith (finger) is active for Monday's...",
                   "typeId": "14"
                 }
               ],
@@ -22175,7 +22539,7 @@
                   "typeId": "30"
                 },
                 {
-                  "tooltip": "Nov 1, 10:51 AM: Los Angeles assigned Niederhauser...",
+                  "tooltip": "Nov 2, 11:12 AM: The Clippers recalled Niederhauser...",
                   "typeId": "14"
                 }
               ],
@@ -22518,7 +22882,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 8:24 PM: Niang is listed as the starting power...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -23915,11 +24279,11 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Knee - Game-time decision - Expected return Nov 2",
-                  "typeId": "1"
+                  "tooltip": "Knee - Out Indefinitely - Expected return Nov 4",
+                  "typeId": "30"
                 },
                 {
-                  "tooltip": "Nov 1, 4:45 PM: Sarr (knee) is questionable to play in...",
+                  "tooltip": "Nov 2, 1:03 PM: Sarr (knee) is out for Monday's game...",
                   "typeId": "14"
                 }
               ],
@@ -24388,8 +24752,8 @@
                   "typeId": "30"
                 },
                 {
-                  "tooltip": "Oct 29, 2:29 PM: Isaac (knee) is out for Friday's game...",
-                  "typeId": "9"
+                  "tooltip": "Nov 2, 10:22 AM: Orlando recalled Isaac (knee) from the...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -24440,8 +24804,8 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 29, 10:17 AM: Mamukelashvili closed Wednesday's...",
-                  "typeId": "9"
+                  "tooltip": "Nov 2, 11:45 AM: Mamukelashvili contributed 11 points...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -25679,8 +26043,12 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 29, 11:11 AM: Williams tallied 11 points (4-11 FG,...",
-                  "typeId": "9"
+                  "tooltip": "Quadriceps - Out Indefinitely - Expected return Nov 5",
+                  "typeId": "30"
+                },
+                {
+                  "tooltip": "Nov 2, 8:33 PM: Williams (quadriceps) has been ruled...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -25746,8 +26114,8 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 29, 10:17 AM: Mamukelashvili closed Wednesday's...",
-                  "typeId": "9"
+                  "tooltip": "Nov 2, 11:45 AM: Mamukelashvili contributed 11 points...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -25987,7 +26355,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 11:04 AM: Achiuwa registered six points (2-6 FG,...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -26716,10 +27084,6 @@
                 {
                   "tooltip": "Inactive",
                   "typeId": "7"
-                },
-                {
-                  "tooltip": "Oct 3, 10:28 AM: Olynyk signed a contract with BC Roma...",
-                  "typeId": "8"
                 }
               ],
               "rookie": false,
@@ -26839,8 +27203,8 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 29, 10:17 AM: Mamukelashvili closed Wednesday's...",
-                  "typeId": "9"
+                  "tooltip": "Nov 2, 11:45 AM: Mamukelashvili contributed 11 points...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -26959,7 +27323,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 11:07 AM: Stewart recorded 24 points (8-9 FG, 2-3...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -27151,7 +27515,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 11:07 AM: Stewart recorded 24 points (8-9 FG, 2-3...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -27271,7 +27635,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 2:39 PM: Krejci finished with five points (2-6...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -27568,7 +27932,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 8:24 PM: Niang is listed as the starting power...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -28547,11 +28911,11 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Ankle - Game-time decision - Expected return Nov 2",
-                  "typeId": "1"
+                  "tooltip": "Ankle - Out Indefinitely - Expected return Nov 4",
+                  "typeId": "30"
                 },
                 {
-                  "tooltip": "Nov 1, 6:13 PM: Post (ankle) is questionable to suit up...",
+                  "tooltip": "Nov 2, 7:12 PM: Post (ankle) has been downgraded to out...",
                   "typeId": "14"
                 }
               ],
@@ -29416,7 +29780,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 2:39 PM: Krejci finished with five points (2-6...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -29848,10 +30212,6 @@
                 {
                   "tooltip": "Inactive",
                   "typeId": "7"
-                },
-                {
-                  "tooltip": "Oct 3, 10:28 AM: Olynyk signed a contract with BC Roma...",
-                  "typeId": "8"
                 }
               ],
               "rookie": false,
@@ -30024,10 +30384,6 @@
                 {
                   "tooltip": "Inactive",
                   "typeId": "7"
-                },
-                {
-                  "tooltip": "Oct 3, 10:28 AM: Olynyk signed a contract with BC Roma...",
-                  "typeId": "8"
                 }
               ],
               "rookie": false,
@@ -30215,7 +30571,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 2:57 PM: Queta will start in place of Mitchell...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -30574,7 +30930,7 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Nov 1, 11:09 AM: Spencer closed Saturday's 136-105...",
+                  "tooltip": "Nov 2, 7:42 PM: Spencer won't start Monday's game...",
                   "typeId": "14"
                 }
               ],
@@ -30750,7 +31106,7 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Nov 1, 11:09 AM: Spencer closed Saturday's 136-105...",
+                  "tooltip": "Nov 2, 7:42 PM: Spencer won't start Monday's game...",
                   "typeId": "14"
                 }
               ],
@@ -30820,10 +31176,6 @@
                 {
                   "tooltip": "Inactive",
                   "typeId": "7"
-                },
-                {
-                  "tooltip": "Oct 3, 12:01 PM: Payne signed a one-year contract with...",
-                  "typeId": "8"
                 }
               ],
               "rookie": false,
@@ -31120,7 +31472,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 2:57 PM: Queta will start in place of Mitchell...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -31559,8 +31911,8 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 31, 9:11 AM: Jackson contributed 24 points (9-13 FG,...",
-                  "typeId": "9"
+                  "tooltip": "Nov 2, 7:22 PM: Jackson will start in Monday's game...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -31731,8 +32083,8 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 31, 9:11 AM: Jackson contributed 24 points (9-13 FG,...",
-                  "typeId": "9"
+                  "tooltip": "Nov 2, 7:22 PM: Jackson will start in Monday's game...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -32103,10 +32455,6 @@
                 {
                   "tooltip": "Inactive",
                   "typeId": "7"
-                },
-                {
-                  "tooltip": "Oct 3, 12:01 PM: Payne signed a one-year contract with...",
-                  "typeId": "8"
                 }
               ],
               "rookie": false,
@@ -32286,7 +32634,7 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Nov 1, 8:14 PM: Melton will start in Sunday's game...",
+                  "tooltip": "Nov 2, 9:43 AM: Melton had 21 points (6-9 FG, 6-8 3Pt,...",
                   "typeId": "14"
                 }
               ],
@@ -32340,7 +32688,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 11:04 AM: Achiuwa registered six points (2-6 FG,...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -32520,8 +32868,8 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 29, 2:12 PM: Battle chipped in seven points (1-4 FG,...",
-                  "typeId": "9"
+                  "tooltip": "Nov 2, 10:13 AM: Battle had 20 points (7-14 FG, 4-10...",
+                  "typeId": "14"
                 }
               ],
               "rookie": true,
@@ -32881,7 +33229,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 2:57 PM: Queta will start in place of Mitchell...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -33001,7 +33349,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 12:17 PM: Walker supplied 12 points (5-8 FG, 1-4...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -33240,8 +33588,8 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 31, 10:11 AM: Wade finished Friday's 98-93 win over...",
-                  "typeId": "9"
+                  "tooltip": "Nov 2, 7:10 PM: Wade won't start Monday's game against...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -33294,7 +33642,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 6:09 PM: Jerome (back) is not listed on the...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -33413,7 +33761,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 2:57 PM: Queta will start in place of Mitchell...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -33533,8 +33881,8 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 22, 1:31 PM: Bitadze closed Wednesday's 132-125 loss...",
-                  "typeId": "8"
+                  "tooltip": "Nov 2, 11:59 AM: Bitadze totaled zero points (0-1 FG)...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -33846,10 +34194,6 @@
                 {
                   "tooltip": "Inactive",
                   "typeId": "7"
-                },
-                {
-                  "tooltip": "Oct 3, 10:28 AM: Olynyk signed a contract with BC Roma...",
-                  "typeId": "8"
                 }
               ],
               "rookie": false,
@@ -33901,7 +34245,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 11:15 AM: Wells logged four points (2-5 FG, 0-3...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": true,
@@ -34461,7 +34805,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 2:57 PM: Queta will start in place of Mitchell...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -34632,8 +34976,8 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 29, 2:12 PM: Battle chipped in seven points (1-4 FG,...",
-                  "typeId": "9"
+                  "tooltip": "Nov 2, 10:13 AM: Battle had 20 points (7-14 FG, 4-10...",
+                  "typeId": "14"
                 }
               ],
               "rookie": true,
@@ -34873,7 +35217,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 2:57 PM: Queta will start in place of Mitchell...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -35112,8 +35456,8 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 31, 10:11 AM: Wade finished Friday's 98-93 win over...",
-                  "typeId": "9"
+                  "tooltip": "Nov 2, 7:10 PM: Wade won't start Monday's game against...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -35360,11 +35704,7 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Foot - Out Indefinitely - Expected return Nov 8",
-                  "typeId": "30"
-                },
-                {
-                  "tooltip": "Nov 1, 7:45 PM: Strus (foot) practiced and participated...",
+                  "tooltip": "Nov 2, 4:19 PM: Strus (foot) will return Monday against...",
                   "typeId": "14"
                 }
               ],
@@ -35747,7 +36087,7 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Nov 1, 5:39 AM: Rollins chipped in nine points (4-11...",
+                  "tooltip": "Nov 2, 7:37 PM: Rollins isn't in the starting lineup...",
                   "typeId": "14"
                 }
               ],
@@ -36016,11 +36356,7 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Foot - Out Indefinitely - Expected return Nov 8",
-                  "typeId": "30"
-                },
-                {
-                  "tooltip": "Nov 1, 7:45 PM: Strus (foot) practiced and participated...",
+                  "tooltip": "Nov 2, 4:19 PM: Strus (foot) will return Monday against...",
                   "typeId": "14"
                 }
               ],
@@ -36365,7 +36701,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 11:04 AM: Achiuwa registered six points (2-6 FG,...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -37175,11 +37511,7 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Finger - Game-time decision - Expected return Nov 2",
-                  "typeId": "1"
-                },
-                {
-                  "tooltip": "Nov 1, 4:40 PM: Smith (finger) is listed as probable...",
+                  "tooltip": "Nov 2, 5:52 PM: Smith (finger) is active for Monday's...",
                   "typeId": "14"
                 }
               ],
@@ -37498,11 +37830,7 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Finger - Game-time decision - Expected return Nov 2",
-                  "typeId": "1"
-                },
-                {
-                  "tooltip": "Nov 1, 4:40 PM: Smith (finger) is listed as probable...",
+                  "tooltip": "Nov 2, 5:52 PM: Smith (finger) is active for Monday's...",
                   "typeId": "14"
                 }
               ],
@@ -38346,7 +38674,7 @@
                 },
                 {
                   "tooltip": "Nov 1, 4:51 PM: Vukcevic (hip) is listed as out for...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -39391,7 +39719,7 @@
                 },
                 {
                   "tooltip": "Nov 1, 5:17 PM: Williams (hamstring) is listed as out...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -39580,7 +39908,11 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Nov 1, 3:47 PM: Murray (personal) is not listed on the...",
+                  "tooltip": "Personal - Out Indefinitely - Expected return Nov 4",
+                  "typeId": "30"
+                },
+                {
+                  "tooltip": "Nov 2, 5:33 PM: Murray (personal) is out for Monday's...",
                   "typeId": "14"
                 }
               ],
@@ -39699,7 +40031,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 10:55 AM: Sabonis racked up 11 points (3-5 FG,...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -39768,8 +40100,8 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 29, 3:29 PM: Martin (thumb) racked up 10 points (4-6...",
-                  "typeId": "9"
+                  "tooltip": "Nov 2, 7:42 PM: Martin will start Monday's game against...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -39942,8 +40274,8 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 31, 7:57 AM: Bane provided 28 points (8-18 FG, 6-12...",
-                  "typeId": "9"
+                  "tooltip": "Nov 2, 10:54 AM: Bane delivered 19 points (7-13 FG, 5-9...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -40000,8 +40332,8 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 31, 3:37 AM: Podziemski closed Friday's 112-95 win...",
-                  "typeId": "9"
+                  "tooltip": "Nov 2, 9:47 AM: Podziemski supplied 17 points (7-14 FG,...",
+                  "typeId": "14"
                 }
               ],
               "rookie": true,
@@ -40059,7 +40391,7 @@
               "icons": [
                 {
                   "tooltip": "Oct 26, 4:14 PM: Hendricks amassed zero points (0-2 FG,...",
-                  "typeId": "9"
+                  "typeId": "8"
                 }
               ],
               "rookie": true,
@@ -40176,10 +40508,6 @@
                 {
                   "tooltip": "Inactive",
                   "typeId": "7"
-                },
-                {
-                  "tooltip": "Oct 3, 10:28 AM: Olynyk signed a contract with BC Roma...",
-                  "typeId": "8"
                 }
               ],
               "rookie": false,
@@ -40379,7 +40707,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 3:40 PM: VanVleet (knee) isn't listed on the...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -40436,11 +40764,7 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Knee - Game-time decision - Expected return Nov 2",
-                  "typeId": "1"
-                },
-                {
-                  "tooltip": "Nov 1, 3:19 PM: Murphy (knee) is listed as probable for...",
+                  "tooltip": "Nov 2, 1:53 PM: Murphy (knee) will play Monday against...",
                   "typeId": "14"
                 }
               ],
@@ -40793,7 +41117,7 @@
                 },
                 {
                   "tooltip": "Nov 1, 4:51 PM: Vukcevic (hip) is listed as out for...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": true,
@@ -41778,11 +42102,7 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Foot - Out Indefinitely - Expected return Nov 2",
-                  "typeId": "30"
-                },
-                {
-                  "tooltip": "Nov 1, 4:04 PM: Williams (foot) is out for Sunday's...",
+                  "tooltip": "Nov 2, 4:03 PM: Williams (foot) is good to go for...",
                   "typeId": "14"
                 }
               ],
@@ -41901,8 +42221,8 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 29, 3:29 PM: Martin (thumb) racked up 10 points (4-6...",
-                  "typeId": "9"
+                  "tooltip": "Nov 2, 7:42 PM: Martin will start Monday's game against...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -42089,8 +42409,8 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 22, 1:31 PM: Bitadze closed Wednesday's 132-125 loss...",
-                  "typeId": "8"
+                  "tooltip": "Nov 2, 11:59 AM: Bitadze totaled zero points (0-1 FG)...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -42209,8 +42529,8 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 29, 3:29 PM: Martin (thumb) racked up 10 points (4-6...",
-                  "typeId": "9"
+                  "tooltip": "Nov 2, 7:42 PM: Martin will start Monday's game against...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -42330,7 +42650,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 5:31 AM: Merrill supplied six points (2-4 FG,...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -42569,11 +42889,7 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Foot - Out Indefinitely - Expected return Nov 2",
-                  "typeId": "30"
-                },
-                {
-                  "tooltip": "Nov 1, 4:04 PM: Williams (foot) is out for Sunday's...",
+                  "tooltip": "Nov 2, 4:03 PM: Williams (foot) is good to go for...",
                   "typeId": "14"
                 }
               ],
@@ -42746,11 +43062,11 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Back - Game-time decision - Expected return Nov 2",
-                  "typeId": "1"
+                  "tooltip": "Back - Out Indefinitely - Expected return Nov 4",
+                  "typeId": "30"
                 },
                 {
-                  "tooltip": "Nov 1, 6:15 PM: Pippen (back) is listed as doubtful for...",
+                  "tooltip": "Nov 2, 7:14 PM: Pippen (back) has been ruled out for...",
                   "typeId": "14"
                 }
               ],
@@ -42869,8 +43185,8 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 29, 3:29 PM: Martin (thumb) racked up 10 points (4-6...",
-                  "typeId": "9"
+                  "tooltip": "Nov 2, 7:42 PM: Martin will start Monday's game against...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -43235,7 +43551,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 11:04 AM: Achiuwa registered six points (2-6 FG,...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -43301,8 +43617,8 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 29, 3:29 PM: Martin (thumb) racked up 10 points (4-6...",
-                  "typeId": "9"
+                  "tooltip": "Nov 2, 7:42 PM: Martin will start Monday's game against...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -43841,8 +44157,12 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 31, 9:15 AM: Nance produced six points (2-4 FG, 2-2...",
-                  "typeId": "9"
+                  "tooltip": "Illness - Out Indefinitely - Expected return Nov 4",
+                  "typeId": "30"
+                },
+                {
+                  "tooltip": "Nov 2, 6:10 PM: Nance (illness) has been ruled out for...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -44459,7 +44779,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 11:13 AM: Jackson logged 21 points (7-10 FG, 5-5...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": true,
@@ -44699,7 +45019,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 5:31 AM: Merrill supplied six points (2-4 FG,...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -45126,7 +45446,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 11:04 AM: Achiuwa registered six points (2-6 FG,...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -46225,7 +46545,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 8:20 PM: Bassey is listed as the starting center...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -46532,7 +46852,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 10:49 AM: Williams ended with 11 points (3-7 FG,...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -46773,10 +47093,6 @@
                 {
                   "tooltip": "Inactive",
                   "typeId": "7"
-                },
-                {
-                  "tooltip": "Oct 3, 12:01 PM: Payne signed a one-year contract with...",
-                  "typeId": "8"
                 }
               ],
               "rookie": false,
@@ -47188,8 +47504,8 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 22, 1:31 PM: Bitadze closed Wednesday's 132-125 loss...",
-                  "typeId": "8"
+                  "tooltip": "Nov 2, 11:59 AM: Bitadze totaled zero points (0-1 FG)...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -47256,7 +47572,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 5:36 AM: Bryant chipped in 11 points (3-7 FG,...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -47379,8 +47695,8 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 22, 1:31 PM: Bitadze closed Wednesday's 132-125 loss...",
-                  "typeId": "8"
+                  "tooltip": "Nov 2, 11:59 AM: Bitadze totaled zero points (0-1 FG)...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -47672,11 +47988,11 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Knee - Game-time decision - Expected return Nov 2",
-                  "typeId": "1"
+                  "tooltip": "Knee - Out Indefinitely - Expected return Nov 4",
+                  "typeId": "30"
                 },
                 {
-                  "tooltip": "Nov 1, 10:47 PM: Jones (right knee) has been ruled out...",
+                  "tooltip": "Nov 2, 4:12 PM: Jones (knee) has been ruled out for...",
                   "typeId": "14"
                 }
               ],
@@ -48505,8 +48821,8 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 25, 1:46 PM: Payton ended Saturday's 131-122 loss to...",
-                  "typeId": "8"
+                  "tooltip": "Nov 2, 11:57 AM: Payton accumulated five points (2-4 FG,...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -48868,8 +49184,8 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 25, 1:46 PM: Payton ended Saturday's 131-122 loss to...",
-                  "typeId": "8"
+                  "tooltip": "Nov 2, 11:57 AM: Payton accumulated five points (2-4 FG,...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -49830,8 +50146,8 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 28, 3:35 PM: Sharpe finished Tuesday's 125-124...",
-                  "typeId": "9"
+                  "tooltip": "Nov 2, 11:31 AM: Sharpe registered 15 points (5-7 FG,...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -50700,8 +51016,8 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 28, 3:35 PM: Sharpe finished Tuesday's 125-124...",
-                  "typeId": "9"
+                  "tooltip": "Nov 2, 11:31 AM: Sharpe registered 15 points (5-7 FG,...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -50881,8 +51197,8 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 22, 1:31 PM: Bitadze closed Wednesday's 132-125 loss...",
-                  "typeId": "8"
+                  "tooltip": "Nov 2, 11:59 AM: Bitadze totaled zero points (0-1 FG)...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -51361,8 +51677,8 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 28, 3:35 PM: Sharpe finished Tuesday's 125-124...",
-                  "typeId": "9"
+                  "tooltip": "Nov 2, 11:31 AM: Sharpe registered 15 points (5-7 FG,...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -52364,11 +52680,7 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Foot - Out Indefinitely - Expected return Nov 2",
-                  "typeId": "30"
-                },
-                {
-                  "tooltip": "Nov 1, 4:04 PM: Williams (foot) is out for Sunday's...",
+                  "tooltip": "Nov 2, 4:03 PM: Williams (foot) is good to go for...",
                   "typeId": "14"
                 }
               ],
@@ -53755,11 +54067,11 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Hamstring - Game-time decision - Expected return Nov 2",
-                  "typeId": "1"
+                  "tooltip": "Hamstring - Out Indefinitely - Expected return Nov 4",
+                  "typeId": "30"
                 },
                 {
-                  "tooltip": "Nov 1, 4:57 PM: Watson (hamstring) is questionable to...",
+                  "tooltip": "Nov 2, 6:17 PM: Watson (hamstring) is out for Monday's...",
                   "typeId": "14"
                 }
               ],
@@ -54220,11 +54532,7 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Foot - Out Indefinitely - Expected return Nov 2",
-                  "typeId": "30"
-                },
-                {
-                  "tooltip": "Nov 1, 4:04 PM: Williams (foot) is out for Sunday's...",
+                  "tooltip": "Nov 2, 4:03 PM: Williams (foot) is good to go for...",
                   "typeId": "14"
                 }
               ],
@@ -54561,8 +54869,8 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 28, 10:32 PM: Barrett finished Wednesday's 129-99 win...",
-                  "typeId": "9"
+                  "tooltip": "Nov 2, 9:57 AM: Barrett closed with 22 points (9-18 FG,...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -54677,11 +54985,11 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Knee - Game-time decision - Expected return Nov 2",
-                  "typeId": "1"
+                  "tooltip": "Knee - Out Indefinitely - Expected return Nov 4",
+                  "typeId": "30"
                 },
                 {
-                  "tooltip": "Nov 1, 5:57 PM: Irving (knee) is questionable to play...",
+                  "tooltip": "Nov 2, 6:13 PM: Irving (knee) has been ruled out for...",
                   "typeId": "14"
                 }
               ],
@@ -55475,7 +55783,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 5:36 AM: Bryant chipped in 11 points (3-7 FG,...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -56180,7 +56488,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 5:36 AM: Bryant chipped in 11 points (3-7 FG,...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -57275,8 +57583,12 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 31, 9:15 AM: Nance produced six points (2-4 FG, 2-2...",
-                  "typeId": "9"
+                  "tooltip": "Illness - Out Indefinitely - Expected return Nov 4",
+                  "typeId": "30"
+                },
+                {
+                  "tooltip": "Nov 2, 6:10 PM: Nance (illness) has been ruled out for...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -58026,7 +58338,11 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Nov 1, 3:38 PM: Nesmith (hamstring) is active for...",
+                  "tooltip": "Rest - Out Indefinitely - Expected return Nov 4",
+                  "typeId": "30"
+                },
+                {
+                  "tooltip": "Nov 2, 1:13 PM: Nesmith (rest) is sitting out Monday...",
                   "typeId": "14"
                 }
               ],
@@ -58488,8 +58804,8 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 28, 3:35 PM: Sharpe finished Tuesday's 125-124...",
-                  "typeId": "9"
+                  "tooltip": "Nov 2, 11:31 AM: Sharpe registered 15 points (5-7 FG,...",
+                  "typeId": "14"
                 },
                 {
                   "tooltip": "Minors-eligible",
@@ -59106,8 +59422,8 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 25, 1:46 PM: Payton ended Saturday's 131-122 loss to...",
-                  "typeId": "8"
+                  "tooltip": "Nov 2, 11:57 AM: Payton accumulated five points (2-4 FG,...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -59163,8 +59479,8 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 25, 1:46 PM: Payton ended Saturday's 131-122 loss to...",
-                  "typeId": "8"
+                  "tooltip": "Nov 2, 11:57 AM: Payton accumulated five points (2-4 FG,...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -59419,8 +59735,8 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 28, 3:35 PM: Sharpe finished Tuesday's 125-124...",
-                  "typeId": "9"
+                  "tooltip": "Nov 2, 11:31 AM: Sharpe registered 15 points (5-7 FG,...",
+                  "typeId": "14"
                 },
                 {
                   "tooltip": "Minors-eligible",
@@ -59700,7 +60016,11 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Nov 1, 3:38 PM: Nesmith (hamstring) is active for...",
+                  "tooltip": "Rest - Out Indefinitely - Expected return Nov 4",
+                  "typeId": "30"
+                },
+                {
+                  "tooltip": "Nov 2, 1:13 PM: Nesmith (rest) is sitting out Monday...",
                   "typeId": "14"
                 }
               ],
@@ -59771,11 +60091,11 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Hip - Game-time decision - Expected return Nov 2",
-                  "typeId": "1"
+                  "tooltip": "Hip - Out Indefinitely - Expected return Nov 4",
+                  "typeId": "30"
                 },
                 {
-                  "tooltip": "Nov 1, 5:17 PM: Joe (hip) is questionable for Friday's...",
+                  "tooltip": "Nov 2, 12:35 PM: Joe (hip) is out for Monday against the...",
                   "typeId": "14"
                 }
               ],
@@ -59974,8 +60294,12 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 31, 9:15 AM: Nance produced six points (2-4 FG, 2-2...",
-                  "typeId": "9"
+                  "tooltip": "Illness - Out Indefinitely - Expected return Nov 4",
+                  "typeId": "30"
+                },
+                {
+                  "tooltip": "Nov 2, 6:10 PM: Nance (illness) has been ruled out for...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -60454,8 +60778,12 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 31, 9:15 AM: Nance produced six points (2-4 FG, 2-2...",
-                  "typeId": "9"
+                  "tooltip": "Illness - Out Indefinitely - Expected return Nov 4",
+                  "typeId": "30"
+                },
+                {
+                  "tooltip": "Nov 2, 6:10 PM: Nance (illness) has been ruled out for...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -60659,8 +60987,8 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 29, 3:29 PM: Martin (thumb) racked up 10 points (4-6...",
-                  "typeId": "9"
+                  "tooltip": "Nov 2, 7:42 PM: Martin will start Monday's game against...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -60805,11 +61133,11 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Hamstring - Game-time decision - Expected return Nov 2",
-                  "typeId": "1"
+                  "tooltip": "Hamstring - Out Indefinitely - Expected return Nov 9",
+                  "typeId": "30"
                 },
                 {
-                  "tooltip": "Nov 1, 11:26 AM: Indiana recalled McConnell (hamstring)...",
+                  "tooltip": "Nov 2, 1:19 PM: McConnell (hamstring) is out for...",
                   "typeId": "14"
                 }
               ],
@@ -60955,7 +61283,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 8:24 PM: Niang is listed as the starting power...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -61011,8 +61339,12 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 31, 9:15 AM: Nance produced six points (2-4 FG, 2-2...",
-                  "typeId": "9"
+                  "tooltip": "Illness - Out Indefinitely - Expected return Nov 4",
+                  "typeId": "30"
+                },
+                {
+                  "tooltip": "Nov 2, 6:10 PM: Nance (illness) has been ruled out for...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -61221,7 +61553,11 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Nov 1, 3:38 PM: Nesmith (hamstring) is active for...",
+                  "tooltip": "Rest - Out Indefinitely - Expected return Nov 4",
+                  "typeId": "30"
+                },
+                {
+                  "tooltip": "Nov 2, 1:13 PM: Nesmith (rest) is sitting out Monday...",
                   "typeId": "14"
                 }
               ],
@@ -61349,7 +61685,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 10:49 AM: Williams ended with 11 points (3-7 FG,...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -61679,8 +62015,12 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 31, 9:15 AM: Nance produced six points (2-4 FG, 2-2...",
-                  "typeId": "9"
+                  "tooltip": "Illness - Out Indefinitely - Expected return Nov 4",
+                  "typeId": "30"
+                },
+                {
+                  "tooltip": "Nov 2, 6:10 PM: Nance (illness) has been ruled out for...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -61938,11 +62278,7 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Foot - Out Indefinitely - Expected return Nov 8",
-                  "typeId": "30"
-                },
-                {
-                  "tooltip": "Nov 1, 7:45 PM: Strus (foot) practiced and participated...",
+                  "tooltip": "Nov 2, 4:19 PM: Strus (foot) will return Monday against...",
                   "typeId": "14"
                 }
               ],
@@ -62589,8 +62925,8 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 29, 3:29 PM: Martin (thumb) racked up 10 points (4-6...",
-                  "typeId": "9"
+                  "tooltip": "Nov 2, 7:42 PM: Martin will start Monday's game against...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -62717,7 +63053,11 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Nov 1, 3:38 PM: Nesmith (hamstring) is active for...",
+                  "tooltip": "Rest - Out Indefinitely - Expected return Nov 4",
+                  "typeId": "30"
+                },
+                {
+                  "tooltip": "Nov 2, 1:13 PM: Nesmith (rest) is sitting out Monday...",
                   "typeId": "14"
                 }
               ],
@@ -62861,11 +63201,7 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Foot - Out Indefinitely - Expected return Nov 8",
-                  "typeId": "30"
-                },
-                {
-                  "tooltip": "Nov 1, 7:45 PM: Strus (foot) practiced and participated...",
+                  "tooltip": "Nov 2, 4:19 PM: Strus (foot) will return Monday against...",
                   "typeId": "14"
                 }
               ],
@@ -63068,11 +63404,11 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Hamstring - Game-time decision - Expected return Nov 2",
-                  "typeId": "1"
+                  "tooltip": "Hamstring - Out Indefinitely - Expected return Nov 9",
+                  "typeId": "30"
                 },
                 {
-                  "tooltip": "Nov 1, 11:26 AM: Indiana recalled McConnell (hamstring)...",
+                  "tooltip": "Nov 2, 1:19 PM: McConnell (hamstring) is out for...",
                   "typeId": "14"
                 }
               ],
@@ -63143,7 +63479,11 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Nov 1, 3:38 PM: Nesmith (hamstring) is active for...",
+                  "tooltip": "Rest - Out Indefinitely - Expected return Nov 4",
+                  "typeId": "30"
+                },
+                {
+                  "tooltip": "Nov 2, 1:13 PM: Nesmith (rest) is sitting out Monday...",
                   "typeId": "14"
                 }
               ],
@@ -63759,7 +64099,11 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Nov 1, 3:38 PM: Nesmith (hamstring) is active for...",
+                  "tooltip": "Rest - Out Indefinitely - Expected return Nov 4",
+                  "typeId": "30"
+                },
+                {
+                  "tooltip": "Nov 2, 1:13 PM: Nesmith (rest) is sitting out Monday...",
                   "typeId": "14"
                 }
               ],
@@ -63889,7 +64233,11 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Nov 1, 3:38 PM: Nesmith (hamstring) is active for...",
+                  "tooltip": "Rest - Out Indefinitely - Expected return Nov 4",
+                  "typeId": "30"
+                },
+                {
+                  "tooltip": "Nov 2, 1:13 PM: Nesmith (rest) is sitting out Monday...",
                   "typeId": "14"
                 }
               ],
@@ -64230,8 +64578,8 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 30, 5:57 PM: Schroder (foot) is available for...",
-                  "typeId": "9"
+                  "tooltip": "Nov 2, 7:16 PM: Schroder will come off the bench for...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -64303,8 +64651,8 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 25, 1:46 PM: Payton ended Saturday's 131-122 loss to...",
-                  "typeId": "8"
+                  "tooltip": "Nov 2, 11:57 AM: Payton accumulated five points (2-4 FG,...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -64579,11 +64927,11 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Hamstring - Game-time decision - Expected return Nov 2",
-                  "typeId": "1"
+                  "tooltip": "Hamstring - Out Indefinitely - Expected return Nov 9",
+                  "typeId": "30"
                 },
                 {
-                  "tooltip": "Nov 1, 11:26 AM: Indiana recalled McConnell (hamstring)...",
+                  "tooltip": "Nov 2, 1:19 PM: McConnell (hamstring) is out for...",
                   "typeId": "14"
                 }
               ],
@@ -64654,7 +65002,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 8:20 PM: Bassey is listed as the starting center...",
-                  "typeId": "14"
+                  "typeId": "9"
                 },
                 {
                   "tooltip": "Minors-eligible",
@@ -65237,7 +65585,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 8:20 PM: Bassey is listed as the starting center...",
-                  "typeId": "14"
+                  "typeId": "9"
                 },
                 {
                   "tooltip": "Minors-eligible",
@@ -65440,7 +65788,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 8:24 PM: Niang is listed as the starting power...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -65511,8 +65859,8 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 30, 5:57 PM: Schroder (foot) is available for...",
-                  "typeId": "9"
+                  "tooltip": "Nov 2, 7:16 PM: Schroder will come off the bench for...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -65931,8 +66279,8 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 29, 3:29 PM: Martin (thumb) racked up 10 points (4-6...",
-                  "typeId": "9"
+                  "tooltip": "Nov 2, 7:42 PM: Martin will start Monday's game against...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -66007,7 +66355,7 @@
                 },
                 {
                   "tooltip": "Nov 1, 5:22 PM: Landale (hip) has been ruled out for...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -66728,7 +67076,7 @@
               "icons": [
                 {
                   "tooltip": "Nov 1, 8:20 PM: Bassey is listed as the starting center...",
-                  "typeId": "14"
+                  "typeId": "9"
                 },
                 {
                   "tooltip": "Minors-eligible",
@@ -67612,8 +67960,12 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 31, 9:15 AM: Nance produced six points (2-4 FG, 2-2...",
-                  "typeId": "9"
+                  "tooltip": "Illness - Out Indefinitely - Expected return Nov 4",
+                  "typeId": "30"
+                },
+                {
+                  "tooltip": "Nov 2, 6:10 PM: Nance (illness) has been ruled out for...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -67900,8 +68252,8 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 30, 5:57 PM: Schroder (foot) is available for...",
-                  "typeId": "9"
+                  "tooltip": "Nov 2, 7:16 PM: Schroder will come off the bench for...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -67957,8 +68309,8 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 30, 5:57 PM: Schroder (foot) is available for...",
-                  "typeId": "9"
+                  "tooltip": "Nov 2, 7:16 PM: Schroder will come off the bench for...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -68290,8 +68642,8 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 29, 3:29 PM: Martin (thumb) racked up 10 points (4-6...",
-                  "typeId": "9"
+                  "tooltip": "Nov 2, 7:42 PM: Martin will start Monday's game against...",
+                  "typeId": "14"
                 }
               ],
               "rookie": false,
@@ -68689,8 +69041,8 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 28, 3:35 PM: Sharpe finished Tuesday's 125-124...",
-                  "typeId": "9"
+                  "tooltip": "Nov 2, 11:31 AM: Sharpe registered 15 points (5-7 FG,...",
+                  "typeId": "14"
                 },
                 {
                   "tooltip": "Minors-eligible",
@@ -68897,7 +69249,7 @@
                 },
                 {
                   "tooltip": "Nov 1, 5:22 PM: Landale (hip) has been ruled out for...",
-                  "typeId": "14"
+                  "typeId": "9"
                 }
               ],
               "rookie": false,
@@ -69369,11 +69721,7 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Foot - Out Indefinitely - Expected return Nov 8",
-                  "typeId": "30"
-                },
-                {
-                  "tooltip": "Nov 1, 7:45 PM: Strus (foot) practiced and participated...",
+                  "tooltip": "Nov 2, 4:19 PM: Strus (foot) will return Monday against...",
                   "typeId": "14"
                 }
               ],
@@ -69446,7 +69794,7 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Nov 1, 5:11 PM: White (calf) is not listed on the...",
+                  "tooltip": "Nov 2, 7:15 PM: White will start Monday's game against...",
                   "typeId": "14"
                 }
               ],
@@ -69647,11 +69995,7 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Foot - Out Indefinitely - Expected return Nov 8",
-                  "typeId": "30"
-                },
-                {
-                  "tooltip": "Nov 1, 7:45 PM: Strus (foot) practiced and participated...",
+                  "tooltip": "Nov 2, 4:19 PM: Strus (foot) will return Monday against...",
                   "typeId": "14"
                 }
               ],
@@ -70101,11 +70445,7 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Foot - Out Indefinitely - Expected return Nov 8",
-                  "typeId": "30"
-                },
-                {
-                  "tooltip": "Nov 1, 7:45 PM: Strus (foot) practiced and participated...",
+                  "tooltip": "Nov 2, 4:19 PM: Strus (foot) will return Monday against...",
                   "typeId": "14"
                 }
               ],
@@ -71787,8 +72127,8 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Oct 28, 3:35 PM: Sharpe finished Tuesday's 125-124...",
-                  "typeId": "9"
+                  "tooltip": "Nov 2, 11:31 AM: Sharpe registered 15 points (5-7 FG,...",
+                  "typeId": "14"
                 },
                 {
                   "tooltip": "Minors-eligible",
@@ -72142,7 +72482,7 @@
               "team": false,
               "icons": [
                 {
-                  "tooltip": "Nov 1, 5:11 PM: White (calf) is not listed on the...",
+                  "tooltip": "Nov 2, 7:15 PM: White will start Monday's game against...",
                   "typeId": "14"
                 }
               ],

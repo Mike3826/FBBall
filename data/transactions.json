@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-11-02T05:18:04.683Z",
+  "fetchedAt": "2026-11-03T01:50:03.673Z",
   "leagueId": "r7yj6bpwmtswkp9p",
   "seasons": [
     "2026-27",
@@ -9,6 +9,138 @@
     "2022-23"
   ],
   "transactions": [
+    {
+      "id": "2026-27:ewh2u4sfmvytnrhm",
+      "date": "2026-11-02T21:55:00.000Z",
+      "dateText": "Mon Nov 2, 2026, 4:55PM",
+      "week": 3,
+      "type": "MULTI",
+      "teams": [
+        "7f7redubmtswkpax"
+      ],
+      "moves": [
+        {
+          "teamId": "7f7redubmtswkpax",
+          "teamName": "Mike Lee Double Team",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "WW",
+          "actionLabel": "Claim",
+          "playerId": "05qt4",
+          "playerName": "Aaron Nesmith",
+          "nbaTeam": "IND",
+          "pos": "F",
+          "bid": "1.00",
+          "note": null,
+          "executed": true
+        },
+        {
+          "teamId": "7f7redubmtswkpax",
+          "teamName": "Mike Lee Double Team",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "DROP",
+          "actionLabel": "Drop",
+          "playerId": "0623m",
+          "playerName": "Keon Ellis",
+          "nbaTeam": "BKN",
+          "pos": "G",
+          "bid": null,
+          "note": null,
+          "executed": true
+        }
+      ],
+      "season": "2026-27",
+      "leagueId": "r7yj6bpwmtswkp9p"
+    },
+    {
+      "id": "2026-27:oioeb88emvytmy68",
+      "date": "2026-11-02T21:55:00.000Z",
+      "dateText": "Mon Nov 2, 2026, 4:55PM",
+      "week": 3,
+      "type": "MULTI",
+      "teams": [
+        "7f7redubmtswkpax"
+      ],
+      "moves": [
+        {
+          "teamId": "7f7redubmtswkpax",
+          "teamName": "Mike Lee Double Team",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "WW",
+          "actionLabel": "Claim",
+          "playerId": "06v5p",
+          "playerName": "Nolan Traore",
+          "nbaTeam": "BKN",
+          "pos": "G",
+          "bid": "6.00",
+          "note": null,
+          "executed": true
+        },
+        {
+          "teamId": "7f7redubmtswkpax",
+          "teamName": "Mike Lee Double Team",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "DROP",
+          "actionLabel": "Drop",
+          "playerId": "05y9y",
+          "playerName": "Brandon Williams",
+          "nbaTeam": "GS",
+          "pos": "G",
+          "bid": null,
+          "note": null,
+          "executed": true
+        }
+      ],
+      "season": "2026-27",
+      "leagueId": "r7yj6bpwmtswkp9p"
+    },
+    {
+      "id": "2026-27:rse0e9k5mvytlg59",
+      "date": "2026-11-02T21:55:00.000Z",
+      "dateText": "Mon Nov 2, 2026, 4:55PM",
+      "week": 3,
+      "type": "MULTI",
+      "teams": [
+        "7f7redubmtswkpax"
+      ],
+      "moves": [
+        {
+          "teamId": "7f7redubmtswkpax",
+          "teamName": "Mike Lee Double Team",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "WW",
+          "actionLabel": "Claim",
+          "playerId": "06ccd",
+          "playerName": "Noah Clowney",
+          "nbaTeam": "BKN",
+          "pos": "F,C",
+          "bid": "1.00",
+          "note": null,
+          "executed": true
+        },
+        {
+          "teamId": "7f7redubmtswkpax",
+          "teamName": "Mike Lee Double Team",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "DROP",
+          "actionLabel": "Drop",
+          "playerId": "0621q",
+          "playerName": "Nikola Jovic",
+          "nbaTeam": "MIA",
+          "pos": "F,C",
+          "bid": null,
+          "note": null,
+          "executed": true
+        }
+      ],
+      "season": "2026-27",
+      "leagueId": "r7yj6bpwmtswkp9p"
+    },
     {
       "id": "2026-27:kqymb443mvwp072g",
       "date": "2026-10-31T17:46:00.000Z",

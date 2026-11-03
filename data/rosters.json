@@ -671,7 +671,7 @@
         },
         {
           "id": "02nfz",
-          "position": "F",
+          "position": "C",
           "status": "ACTIVE"
         },
         {
@@ -751,7 +751,7 @@
         },
         {
           "id": "05qtr",
-          "position": "F",
+          "position": "G",
           "status": "ACTIVE"
         },
         {
@@ -761,7 +761,7 @@
         },
         {
           "id": "001aw",
-          "position": "F",
+          "position": "G",
           "status": "ACTIVE"
         },
         {
@@ -781,12 +781,12 @@
         },
         {
           "id": "051os",
-          "position": "C",
+          "position": "F",
           "status": "ACTIVE"
         },
         {
           "id": "05ujt",
-          "position": "G",
+          "position": "F",
           "status": "ACTIVE"
         },
         {
@@ -1286,7 +1286,7 @@
         },
         {
           "id": "06215",
-          "position": "F",
+          "position": "G",
           "status": "ACTIVE"
         },
         {
@@ -1335,6 +1335,11 @@
           "status": "ACTIVE"
         },
         {
+          "id": "05qt4",
+          "position": "F",
+          "status": "ACTIVE"
+        },
+        {
           "id": "05qu0",
           "position": "F",
           "status": "ACTIVE"
@@ -1371,7 +1376,7 @@
         },
         {
           "id": "06mkc",
-          "position": "G",
+          "position": "F",
           "status": "ACTIVE"
         },
         {
@@ -1380,23 +1385,18 @@
           "status": "ACTIVE"
         },
         {
-          "id": "0621q",
-          "position": "C",
+          "id": "06v5p",
+          "position": "G",
           "status": "ACTIVE"
         },
         {
           "id": "06mll",
-          "position": "G",
+          "position": "F",
           "status": "ACTIVE"
         },
         {
           "id": "076t3",
           "position": "F",
-          "status": "ACTIVE"
-        },
-        {
-          "id": "0623m",
-          "position": "G",
           "status": "ACTIVE"
         },
         {
@@ -1425,8 +1425,8 @@
           "status": "ACTIVE"
         },
         {
-          "id": "05y9y",
-          "position": "G",
+          "id": "06ccd",
+          "position": "C",
           "status": "ACTIVE"
         },
         {
