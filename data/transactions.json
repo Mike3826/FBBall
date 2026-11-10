@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-11-03T01:52:04.321Z",
+  "fetchedAt": "2026-11-10T05:49:44.773Z",
   "leagueId": "r7yj6bpwmtswkp9p",
   "seasons": [
     "2026-27",
@@ -9,6 +9,242 @@
     "2022-23"
   ],
   "transactions": [
+    {
+      "id": "2026-27:4v8jadlomw3uyxui",
+      "date": "2026-11-06T00:25:00.000Z",
+      "dateText": "Thu Nov 5, 2026, 7:25PM",
+      "week": 4,
+      "type": "MULTI",
+      "teams": [
+        "qqq57v0gmtswkpax"
+      ],
+      "moves": [
+        {
+          "teamId": "qqq57v0gmtswkpax",
+          "teamName": "achen88",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "WW",
+          "actionLabel": "Claim",
+          "playerId": "05ujt",
+          "playerName": "Aaron Wiggins",
+          "nbaTeam": "ATL",
+          "pos": "G,F",
+          "bid": "0.00",
+          "note": null,
+          "executed": true
+        },
+        {
+          "teamId": "qqq57v0gmtswkpax",
+          "teamName": "achen88",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "DROP",
+          "actionLabel": "Drop",
+          "playerId": "06v5i",
+          "playerName": "Thomas Sorber",
+          "nbaTeam": "OKC",
+          "pos": "F,C",
+          "bid": null,
+          "note": null,
+          "executed": true
+        }
+      ],
+      "season": "2026-27",
+      "leagueId": "r7yj6bpwmtswkp9p"
+    },
+    {
+      "id": "2026-27:mm03cdrhmw2tw1nj",
+      "date": "2026-11-05T00:49:00.000Z",
+      "dateText": "Wed Nov 4, 2026, 7:49PM",
+      "week": 4,
+      "type": "MULTI",
+      "teams": [
+        "htjic831mtswkpax"
+      ],
+      "moves": [
+        {
+          "teamId": "htjic831mtswkpax",
+          "teamName": "Team Şengün and Friends",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "FA",
+          "actionLabel": "Claim",
+          "playerId": "0558t",
+          "playerName": "Max Strus",
+          "nbaTeam": "LAC",
+          "pos": "G,F",
+          "bid": null,
+          "note": null,
+          "executed": true
+        },
+        {
+          "teamId": "htjic831mtswkpax",
+          "teamName": "Team Şengün and Friends",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "DROP",
+          "actionLabel": "Drop",
+          "playerId": "0621x",
+          "playerName": "Jaylin Williams",
+          "nbaTeam": "OKC",
+          "pos": "F,C",
+          "bid": null,
+          "note": null,
+          "executed": true
+        }
+      ],
+      "season": "2026-27",
+      "leagueId": "r7yj6bpwmtswkp9p"
+    },
+    {
+      "id": "2026-27:2mhhr3ivmw2507rr",
+      "date": "2026-11-05T00:25:00.000Z",
+      "dateText": "Wed Nov 4, 2026, 7:25PM",
+      "week": 4,
+      "type": "MULTI",
+      "teams": [
+        "qqq57v0gmtswkpax"
+      ],
+      "moves": [
+        {
+          "teamId": "qqq57v0gmtswkpax",
+          "teamName": "achen88",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "WW",
+          "actionLabel": "Claim",
+          "playerId": "05qt4",
+          "playerName": "Aaron Nesmith",
+          "nbaTeam": "IND",
+          "pos": "F",
+          "bid": "1.00",
+          "note": null,
+          "executed": true
+        },
+        {
+          "teamId": "qqq57v0gmtswkpax",
+          "teamName": "achen88",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "DROP",
+          "actionLabel": "Drop",
+          "playerId": "05ujt",
+          "playerName": "Aaron Wiggins",
+          "nbaTeam": "ATL",
+          "pos": "G,F",
+          "bid": null,
+          "note": null,
+          "executed": true
+        }
+      ],
+      "season": "2026-27",
+      "leagueId": "r7yj6bpwmtswkp9p"
+    },
+    {
+      "id": "2026-27:hzwqb7h7mw0wokyv",
+      "date": "2026-11-04T00:25:00.000Z",
+      "dateText": "Tue Nov 3, 2026, 7:25PM",
+      "week": 4,
+      "type": "MULTI",
+      "teams": [
+        "7f7redubmtswkpax"
+      ],
+      "moves": [
+        {
+          "teamId": "7f7redubmtswkpax",
+          "teamName": "Mike Lee Double Team",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "WW",
+          "actionLabel": "Claim",
+          "playerId": "076u6",
+          "playerName": "Braden Smith",
+          "nbaTeam": "IND",
+          "pos": "G",
+          "bid": "16.00",
+          "note": null,
+          "executed": true
+        },
+        {
+          "teamId": "7f7redubmtswkpax",
+          "teamName": "Mike Lee Double Team",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "DROP",
+          "actionLabel": "Drop",
+          "playerId": "05qt4",
+          "playerName": "Aaron Nesmith",
+          "nbaTeam": "IND",
+          "pos": "F",
+          "bid": null,
+          "note": null,
+          "executed": true
+        }
+      ],
+      "season": "2026-27",
+      "leagueId": "r7yj6bpwmtswkp9p"
+    },
+    {
+      "id": "2026-27:n4jx6t82mw0t6iz5",
+      "date": "2026-11-03T16:32:00.000Z",
+      "dateText": "Tue Nov 3, 2026, 11:32AM",
+      "week": 4,
+      "type": "TRADE",
+      "teams": [
+        "qqq57v0gmtswkpax",
+        "rowc20kzmtswkpax"
+      ],
+      "moves": [
+        {
+          "teamId": "qqq57v0gmtswkpax",
+          "teamName": "achen88",
+          "fromTeamId": "rowc20kzmtswkpax",
+          "fromTeamName": "Notorious BI3",
+          "action": "TRADE",
+          "actionLabel": "Trade",
+          "playerId": "01enh",
+          "playerName": "Stephen Curry",
+          "nbaTeam": "GS",
+          "pos": "G",
+          "bid": null,
+          "note": null,
+          "executed": true
+        },
+        {
+          "teamId": "rowc20kzmtswkpax",
+          "teamName": "Notorious BI3",
+          "fromTeamId": "qqq57v0gmtswkpax",
+          "fromTeamName": "achen88",
+          "action": "TRADE",
+          "actionLabel": "Trade",
+          "playerId": "02nfz",
+          "playerName": "Draymond Green",
+          "nbaTeam": "GS",
+          "pos": "F,C",
+          "bid": null,
+          "note": null,
+          "executed": true
+        },
+        {
+          "teamId": "rowc20kzmtswkpax",
+          "teamName": "Notorious BI3",
+          "fromTeamId": "qqq57v0gmtswkpax",
+          "fromTeamName": "achen88",
+          "action": "TRADE",
+          "actionLabel": "Trade",
+          "playerId": null,
+          "playerName": null,
+          "nbaTeam": null,
+          "pos": null,
+          "bid": null,
+          "note": "2027 Draft Pick · Round 1 (achen88)",
+          "executed": true
+        }
+      ],
+      "season": "2026-27",
+      "leagueId": "r7yj6bpwmtswkp9p"
+    },
     {
       "id": "2026-27:ewh2u4sfmvytnrhm",
       "date": "2026-11-02T21:55:00.000Z",

@@ -1,9 +1,14 @@
 {
-  "period": 3,
+  "period": 4,
   "rosters": {
     "htjic831mtswkpax": {
       "teamName": "Team Şengün and Friends",
       "rosterItems": [
+        {
+          "id": "0558t",
+          "position": "F",
+          "status": "ACTIVE"
+        },
         {
           "id": "076tl",
           "position": "G",
@@ -65,11 +70,6 @@
           "status": "ACTIVE"
         },
         {
-          "id": "0621x",
-          "position": "C",
-          "status": "ACTIVE"
-        },
-        {
           "id": "05uij",
           "position": "G",
           "status": "ACTIVE"
@@ -121,7 +121,7 @@
         },
         {
           "id": "05uiz",
-          "position": "F",
+          "position": "G",
           "status": "ACTIVE"
         },
         {
@@ -330,17 +330,17 @@
           "status": "ACTIVE"
         },
         {
+          "id": "02nfz",
+          "position": "C",
+          "status": "ACTIVE"
+        },
+        {
           "id": "051pb",
           "position": "C",
           "status": "ACTIVE"
         },
         {
           "id": "027oj",
-          "position": "G",
-          "status": "ACTIVE"
-        },
-        {
-          "id": "01enh",
           "position": "G",
           "status": "ACTIVE"
         },
@@ -670,11 +670,6 @@
           "status": "ACTIVE"
         },
         {
-          "id": "02nfz",
-          "position": "C",
-          "status": "ACTIVE"
-        },
-        {
           "id": "04ewn",
           "position": "F",
           "status": "ACTIVE"
@@ -686,12 +681,22 @@
         },
         {
           "id": "04ewu",
-          "position": "F",
+          "position": "G",
           "status": "ACTIVE"
         },
         {
           "id": "031lx",
           "position": "G",
+          "status": "ACTIVE"
+        },
+        {
+          "id": "01enh",
+          "position": "G",
+          "status": "ACTIVE"
+        },
+        {
+          "id": "05qt4",
+          "position": "F",
           "status": "ACTIVE"
         },
         {
@@ -706,7 +711,7 @@
         },
         {
           "id": "05qtj",
-          "position": "F",
+          "position": "G",
           "status": "ACTIVE"
         },
         {
@@ -735,11 +740,6 @@
           "status": "ACTIVE"
         },
         {
-          "id": "06v5i",
-          "position": "F",
-          "status": "ACTIVE"
-        },
-        {
           "id": "05qto",
           "position": "G",
           "status": "ACTIVE"
@@ -751,7 +751,7 @@
         },
         {
           "id": "05qtr",
-          "position": "G",
+          "position": "F",
           "status": "ACTIVE"
         },
         {
@@ -786,7 +786,7 @@
         },
         {
           "id": "05ujt",
-          "position": "F",
+          "position": "G",
           "status": "ACTIVE"
         },
         {
@@ -1335,11 +1335,6 @@
           "status": "ACTIVE"
         },
         {
-          "id": "05qt4",
-          "position": "F",
-          "status": "ACTIVE"
-        },
-        {
           "id": "05qu0",
           "position": "F",
           "status": "ACTIVE"
@@ -1381,6 +1376,11 @@
         },
         {
           "id": "05qt3",
+          "position": "G",
+          "status": "ACTIVE"
+        },
+        {
+          "id": "076u6",
           "position": "G",
           "status": "ACTIVE"
         },
