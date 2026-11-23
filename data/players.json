@@ -68,7 +68,7 @@
     "nbaTeam": "CHA",
     "position": "PF",
     "eligiblePos": "F",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 6262
   },
   "07apl": {
@@ -218,10 +218,10 @@
   "07234": {
     "id": "07234",
     "name": "Gilbert, Keshon",
-    "nbaTeam": "ATL",
+    "nbaTeam": "(N/A)",
     "position": "SG",
     "eligiblePos": "G",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 6656
   },
   "07235": {
@@ -236,10 +236,10 @@
   "07232": {
     "id": "07232",
     "name": "Lovering, Lawson",
-    "nbaTeam": "LAL",
+    "nbaTeam": "(N/A)",
     "position": "C",
     "eligiblePos": "C",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 6744
   },
   "059fz": {
@@ -365,7 +365,7 @@
     "nbaTeam": "NY",
     "position": "SF",
     "eligiblePos": "G,F",
-    "status": "FA",
+    "status": "WW",
     "rotowireId": 6258
   },
   "06mk6": {
@@ -407,10 +407,10 @@
   "07aoe": {
     "id": "07aoe",
     "name": "Aidoo, Jonas",
-    "nbaTeam": "(N/A)",
+    "nbaTeam": "UTA",
     "position": "C",
     "eligiblePos": "C",
-    "status": "FA",
+    "status": "WW",
     "rotowireId": 6781
   },
   "06mk5": {
@@ -419,7 +419,7 @@
     "nbaTeam": "BOS",
     "position": "PG",
     "eligiblePos": "G",
-    "status": "FA",
+    "status": "WW",
     "rotowireId": 6265
   },
   "06mk2": {
@@ -662,7 +662,7 @@
     "nbaTeam": "MEM",
     "position": "C",
     "eligiblePos": "C",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 6299
   },
   "059ik": {
@@ -716,7 +716,7 @@
     "nbaTeam": "UTA",
     "position": "SF",
     "eligiblePos": "F",
-    "status": "FA",
+    "status": "WW",
     "rotowireId": 6252
   },
   "06mlv": {
@@ -887,7 +887,7 @@
     "nbaTeam": "NY",
     "position": "PG",
     "eligiblePos": "G",
-    "status": "FA",
+    "status": "WW",
     "rotowireId": 6273
   },
   "03nwm": {
@@ -986,7 +986,7 @@
     "nbaTeam": "TOR",
     "position": "SF",
     "eligiblePos": "F",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 6323
   },
   "06mld": {
@@ -1001,7 +1001,7 @@
   "0723g": {
     "id": "0723g",
     "name": "Austin, Zack",
-    "nbaTeam": "(N/A)",
+    "nbaTeam": "CLE",
     "position": "SG",
     "eligiblePos": "G,F",
     "status": "FA",
@@ -1049,7 +1049,7 @@
     "nbaTeam": "MIA",
     "position": "SF",
     "eligiblePos": "F",
-    "status": "FA",
+    "status": "WW",
     "rotowireId": 6285
   },
   "06mm9": {
@@ -1085,7 +1085,7 @@
     "nbaTeam": "CHA",
     "position": "C",
     "eligiblePos": "C",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 6253
   },
   "04ik2": {
@@ -1130,7 +1130,7 @@
     "nbaTeam": "TOR",
     "position": "SF",
     "eligiblePos": "F",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 5983
   },
   "06mm3": {
@@ -1175,7 +1175,7 @@
     "nbaTeam": "LAL",
     "position": "SG",
     "eligiblePos": "G",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 6251
   },
   "07244": {
@@ -1220,7 +1220,7 @@
     "nbaTeam": "CLE",
     "position": "PF",
     "eligiblePos": "F",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 6658
   },
   "06mkm": {
@@ -1229,7 +1229,7 @@
     "nbaTeam": "BOS",
     "position": "SG",
     "eligiblePos": "G,F",
-    "status": "FA",
+    "status": "WW",
     "rotowireId": 6280
   },
   "06mkj": {
@@ -1247,7 +1247,7 @@
     "nbaTeam": "PHO",
     "position": "SF",
     "eligiblePos": "F",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 6276
   },
   "07240": {
@@ -1265,7 +1265,7 @@
     "nbaTeam": "NY",
     "position": "SG",
     "eligiblePos": "G",
-    "status": "FA",
+    "status": "WW",
     "rotowireId": 6281
   },
   "07apz": {
@@ -1301,7 +1301,7 @@
     "nbaTeam": "NO",
     "position": "SG",
     "eligiblePos": "G",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 6294
   },
   "07apx": {
@@ -1517,7 +1517,7 @@
     "nbaTeam": "CHA",
     "position": "PG",
     "eligiblePos": "G",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 6976
   },
   "03r7e": {
@@ -1535,7 +1535,7 @@
     "nbaTeam": "CLE",
     "position": "PF",
     "eligiblePos": "G,F",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 3578
   },
   "076we": {
@@ -1544,7 +1544,7 @@
     "nbaTeam": "CHA",
     "position": "SF",
     "eligiblePos": "F",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 6964
   },
   "03llw": {
@@ -1634,7 +1634,7 @@
     "nbaTeam": "UTA",
     "position": "SF",
     "eligiblePos": "F",
-    "status": "FA",
+    "status": "WW",
     "rotowireId": 4457
   },
   "04qsp": {
@@ -1733,7 +1733,7 @@
     "nbaTeam": "LAL",
     "position": "PF",
     "eligiblePos": "F",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 4458
   },
   "05r0c": {
@@ -1850,7 +1850,7 @@
     "nbaTeam": "PHO",
     "position": "PG",
     "eligiblePos": "G",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 5548
   },
   "0524i": {
@@ -2066,7 +2066,7 @@
     "nbaTeam": "CHI",
     "position": "SG",
     "eligiblePos": "G",
-    "status": "FA",
+    "status": "WW",
     "rotowireId": 5935
   },
   "03wr4": {
@@ -2093,7 +2093,7 @@
     "nbaTeam": "UTA",
     "position": "SG",
     "eligiblePos": "G",
-    "status": "FA",
+    "status": "WW",
     "rotowireId": 5892
   },
   "06ca5": {
@@ -2102,7 +2102,7 @@
     "nbaTeam": "MEM",
     "position": "SF",
     "eligiblePos": "F",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 5943
   },
   "06ca2": {
@@ -2144,10 +2144,10 @@
   "06mog": {
     "id": "06mog",
     "name": "Minix, Riley",
-    "nbaTeam": "CLE",
+    "nbaTeam": "(N/A)",
     "position": "SF",
     "eligiblePos": "F",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 6314
   },
   "06mod": {
@@ -2324,7 +2324,7 @@
   "06mp4": {
     "id": "06mp4",
     "name": "Alexander, Trey",
-    "nbaTeam": "UTA",
+    "nbaTeam": "(N/A)",
     "position": "SG",
     "eligiblePos": "G",
     "status": "FA",
@@ -2561,7 +2561,7 @@
     "nbaTeam": "SA",
     "position": "PG",
     "eligiblePos": "G",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 4533
   },
   "06mmh": {
@@ -2606,7 +2606,7 @@
     "nbaTeam": "HOU",
     "position": "SF",
     "eligiblePos": "F",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 6313
   },
   "04xlp": {
@@ -2696,7 +2696,7 @@
     "nbaTeam": "SA",
     "position": "SF",
     "eligiblePos": "F",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 6309
   },
   "06mos": {
@@ -2966,7 +2966,7 @@
     "nbaTeam": "TOR",
     "position": "SG",
     "eligiblePos": "G",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 6048
   },
   "06y2o": {
@@ -3056,7 +3056,7 @@
     "nbaTeam": "BOS",
     "position": "PG",
     "eligiblePos": "G",
-    "status": "FA",
+    "status": "WW",
     "rotowireId": 2813
   },
   "06hqq": {
@@ -3263,7 +3263,7 @@
     "nbaTeam": "NY",
     "position": "G",
     "eligiblePos": "G",
-    "status": "FA",
+    "status": "WW",
     "rotowireId": 6725
   },
   "072af": {
@@ -3272,7 +3272,7 @@
     "nbaTeam": "NO",
     "position": "SF",
     "eligiblePos": "F",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 6653
   },
   "072ag": {
@@ -3424,7 +3424,7 @@
     "name": "Johnson, Morez",
     "nbaTeam": "DAL",
     "position": "PF",
-    "eligiblePos": "F",
+    "eligiblePos": "C,F",
     "status": "T",
     "rotowireId": 6971
   },
@@ -3443,7 +3443,7 @@
     "nbaTeam": "OKC",
     "position": "SG",
     "eligiblePos": "G",
-    "status": "FA",
+    "status": "WW",
     "rotowireId": 6937
   },
   "06304": {
@@ -3470,7 +3470,7 @@
     "nbaTeam": "ORL",
     "position": "PF",
     "eligiblePos": "F",
-    "status": "FA",
+    "status": "WW",
     "rotowireId": 7006
   },
   "06303": {
@@ -3533,7 +3533,7 @@
     "nbaTeam": "NO",
     "position": "SG",
     "eligiblePos": "G",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 6959
   },
   "076u2": {
@@ -3542,7 +3542,7 @@
     "nbaTeam": "BOS",
     "position": "SF",
     "eligiblePos": "F",
-    "status": "FA",
+    "status": "WW",
     "rotowireId": 7001
   },
   "076u3": {
@@ -3551,7 +3551,7 @@
     "nbaTeam": "HOU",
     "position": "PG",
     "eligiblePos": "G",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 6980
   },
   "076u0": {
@@ -3785,7 +3785,7 @@
     "nbaTeam": "UTA",
     "position": "SG",
     "eligiblePos": "G,F",
-    "status": "FA",
+    "status": "WW",
     "rotowireId": 4436
   },
   "05vyx": {
@@ -3818,10 +3818,10 @@
   "076ut": {
     "id": "076ut",
     "name": "Cooper, Carson",
-    "nbaTeam": "MEM",
+    "nbaTeam": "LAL",
     "position": "C",
     "eligiblePos": "C",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 7038
   },
   "04qrq": {
@@ -3848,7 +3848,7 @@
     "nbaTeam": "CHI",
     "position": "PG",
     "eligiblePos": "G",
-    "status": "FA",
+    "status": "WW",
     "rotowireId": 6934
   },
   "04qrs": {
@@ -3908,10 +3908,10 @@
   "076uq": {
     "id": "076uq",
     "name": "Castro, Rafael",
-    "nbaTeam": "(N/A)",
+    "nbaTeam": "ATL",
     "position": "C",
     "eligiblePos": "C",
-    "status": "FA",
+    "status": "WW",
     "rotowireId": 6960
   },
   "04qrp": {
@@ -3947,7 +3947,7 @@
     "nbaTeam": "CHI",
     "position": "PF",
     "eligiblePos": "F",
-    "status": "FA",
+    "status": "WW",
     "rotowireId": 7008
   },
   "04qrj": {
@@ -3965,7 +3965,7 @@
     "nbaTeam": "SA",
     "position": "PF",
     "eligiblePos": "F",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 6977
   },
   "076um": {
@@ -3974,7 +3974,7 @@
     "nbaTeam": "HOU",
     "position": "PG",
     "eligiblePos": "G",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 6962
   },
   "04qrl": {
@@ -4010,7 +4010,7 @@
     "nbaTeam": "SA",
     "position": "PG",
     "eligiblePos": "G",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 7003
   },
   "076uh": {
@@ -4028,7 +4028,7 @@
     "nbaTeam": "MEM",
     "position": "SG",
     "eligiblePos": "G",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 7000
   },
   "076uf": {
@@ -4199,7 +4199,7 @@
     "nbaTeam": "ORL",
     "position": "PG",
     "eligiblePos": "G",
-    "status": "FA",
+    "status": "WW",
     "rotowireId": 4456
   },
   "076tu": {
@@ -4226,7 +4226,7 @@
     "nbaTeam": "TOR",
     "position": "PG",
     "eligiblePos": "G",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 6998
   },
   "076ts": {
@@ -4235,7 +4235,7 @@
     "nbaTeam": "NY",
     "position": "F",
     "eligiblePos": "F",
-    "status": "FA",
+    "status": "WW",
     "rotowireId": 7009
   },
   "07401": {
@@ -4253,7 +4253,7 @@
     "nbaTeam": "NY",
     "position": "SG",
     "eligiblePos": "G",
-    "status": "FA",
+    "status": "WW",
     "rotowireId": 4414
   },
   "065us": {
@@ -4289,7 +4289,7 @@
     "nbaTeam": "MIA",
     "position": "SG",
     "eligiblePos": "G",
-    "status": "FA",
+    "status": "WW",
     "rotowireId": 6994
   },
   "04qs5": {
@@ -4343,7 +4343,7 @@
     "nbaTeam": "MIA",
     "position": "G",
     "eligiblePos": "G",
-    "status": "FA",
+    "status": "WW",
     "rotowireId": 6957
   },
   "076tm": {
@@ -4370,7 +4370,7 @@
     "nbaTeam": "TOR",
     "position": "C",
     "eligiblePos": "C",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 6608
   },
   "04qs0": {
@@ -4388,7 +4388,7 @@
     "nbaTeam": "CLE",
     "position": "C",
     "eligiblePos": "C",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 6952
   },
   "076tk": {
@@ -4433,7 +4433,7 @@
     "nbaTeam": "PHO",
     "position": "PF",
     "eligiblePos": "F",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 6988
   },
   "076th": {
@@ -4478,7 +4478,7 @@
     "nbaTeam": "HOU",
     "position": "C",
     "eligiblePos": "C",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 3587
   },
   "03e6m": {
@@ -4559,7 +4559,7 @@
     "nbaTeam": "TOR",
     "position": "SF",
     "eligiblePos": "F",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 3586
   },
   "03e75": {
@@ -4574,7 +4574,7 @@
   "05g3q": {
     "id": "05g3q",
     "name": "Vincent, Gabe",
-    "nbaTeam": "(N/A)",
+    "nbaTeam": "SAC",
     "position": "PG",
     "eligiblePos": "G",
     "status": "FA",
@@ -4757,7 +4757,7 @@
     "nbaTeam": "NO",
     "position": "PF",
     "eligiblePos": "F",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 7015
   },
   "03apx": {
@@ -4775,7 +4775,7 @@
     "nbaTeam": "HOU",
     "position": "SG",
     "eligiblePos": "G,F",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 3593
   },
   "05xcn": {
@@ -4820,7 +4820,7 @@
     "nbaTeam": "HOU",
     "position": "SF",
     "eligiblePos": "F",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 4599
   },
   "06ppp": {
@@ -5036,7 +5036,7 @@
     "nbaTeam": "PHO",
     "position": "PG",
     "eligiblePos": "G",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 5725
   },
   "05qto": {
@@ -5153,7 +5153,7 @@
     "nbaTeam": "UTA",
     "position": "SG",
     "eligiblePos": "G,F",
-    "status": "FA",
+    "status": "WW",
     "rotowireId": 5192
   },
   "0623i": {
@@ -5243,7 +5243,7 @@
     "nbaTeam": "CLE",
     "position": "PF",
     "eligiblePos": "F",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 6311
   },
   "06prm": {
@@ -5276,10 +5276,10 @@
   "06prk": {
     "id": "06prk",
     "name": "Enaruna, Tristan",
-    "nbaTeam": "CLE",
+    "nbaTeam": "(N/A)",
     "position": "SF",
     "eligiblePos": "F",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 6333
   },
   "073y0": {
@@ -5603,7 +5603,7 @@
     "nbaTeam": "MIA",
     "position": "C",
     "eligiblePos": "C",
-    "status": "FA",
+    "status": "WW",
     "rotowireId": 6571
   },
   "06v86": {
@@ -5612,7 +5612,7 @@
     "nbaTeam": "OKC",
     "position": "SG",
     "eligiblePos": "G,F",
-    "status": "FA",
+    "status": "WW",
     "rotowireId": 6607
   },
   "06223": {
@@ -5621,7 +5621,7 @@
     "nbaTeam": "NO",
     "position": "SG",
     "eligiblePos": "G",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 5719
   },
   "06v87": {
@@ -5639,7 +5639,7 @@
     "nbaTeam": "CLE",
     "position": "C",
     "eligiblePos": "C",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 5681
   },
   "06vxw": {
@@ -5675,7 +5675,7 @@
     "nbaTeam": "OKC",
     "position": "PF",
     "eligiblePos": "F",
-    "status": "FA",
+    "status": "WW",
     "rotowireId": 4462
   },
   "001ax": {
@@ -5711,7 +5711,7 @@
     "nbaTeam": "TOR",
     "position": "SG",
     "eligiblePos": "G",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 6612
   },
   "06v82": {
@@ -5720,7 +5720,7 @@
     "nbaTeam": "LAL",
     "position": "SF",
     "eligiblePos": "F",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 6578
   },
   "06v83": {
@@ -5771,7 +5771,7 @@
   "06v81": {
     "id": "06v81",
     "name": "Broome, Johni",
-    "nbaTeam": "(N/A)",
+    "nbaTeam": "MIN",
     "position": "PF",
     "eligiblePos": "C,F",
     "status": "FA",
@@ -5783,7 +5783,7 @@
     "nbaTeam": "LAL",
     "position": "SG",
     "eligiblePos": "G",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 5374
   },
   "06vxq": {
@@ -5792,7 +5792,7 @@
     "nbaTeam": "MEM",
     "position": "SG",
     "eligiblePos": "G,F",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 6647
   },
   "06rph": {
@@ -5837,7 +5837,7 @@
     "nbaTeam": "NY",
     "position": "SG",
     "eligiblePos": "G,F",
-    "status": "FA",
+    "status": "WW",
     "rotowireId": 3614
   },
   "06216": {
@@ -5957,6 +5957,15 @@
     "status": "T",
     "rotowireId": 5643
   },
+  "0558u": {
+    "id": "0558u",
+    "name": "Fall, Tacko",
+    "nbaTeam": "PHI",
+    "position": "C",
+    "eligiblePos": "C",
+    "status": "FA",
+    "rotowireId": 4855
+  },
   "06v5t": {
     "id": "06v5t",
     "name": "Saraf, Ben",
@@ -5999,7 +6008,7 @@
     "nbaTeam": "BKN",
     "position": "PF",
     "eligiblePos": "C,F",
-    "status": "FA",
+    "status": "T",
     "rotowireId": 6560
   },
   "06v5r": {
@@ -6035,7 +6044,7 @@
     "nbaTeam": "CHA",
     "position": "SF",
     "eligiblePos": "F",
-    "status": "T",
+    "status": "FA",
     "rotowireId": 6589
   },
   "06vy3": {
@@ -6161,7 +6170,7 @@
     "nbaTeam": "OKC",
     "position": "C",
     "eligiblePos": "C,F",
-    "status": "FA",
+    "status": "WW",
     "rotowireId": 6544
   },
   "06v5j": {
@@ -6197,7 +6206,7 @@
     "nbaTeam": "POR",
     "position": "C",
     "eligiblePos": "C",
-    "status": "T",
+    "status": "FA",
     "rotowireId": 6617
   },
   "06v5f": {
@@ -6323,16 +6332,16 @@
     "nbaTeam": "MEM",
     "position": "PG",
     "eligiblePos": "G",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 5685
   },
   "0622z": {
     "id": "0622z",
     "name": "Robinson, Orlando",
-    "nbaTeam": "(N/A)",
+    "nbaTeam": "CHI",
     "position": "C",
     "eligiblePos": "C",
-    "status": "FA",
+    "status": "WW",
     "rotowireId": 5779
   },
   "05xac": {
@@ -6512,7 +6521,7 @@
     "nbaTeam": "NY",
     "position": "C",
     "eligiblePos": "C",
-    "status": "FA",
+    "status": "WW",
     "rotowireId": 5100
   },
   "05qso": {
@@ -6602,7 +6611,7 @@
     "nbaTeam": "CHI",
     "position": "SG",
     "eligiblePos": "G,F",
-    "status": "FA",
+    "status": "WW",
     "rotowireId": 5264
   },
   "0779m": {
@@ -6674,7 +6683,7 @@
     "nbaTeam": "GS",
     "position": "PF",
     "eligiblePos": "F",
-    "status": "T",
+    "status": "WW",
     "rotowireId": 5738
   },
   "06v8h": {
@@ -6683,7 +6692,7 @@
     "nbaTeam": "NY",
     "position": "SF",
     "eligiblePos": "F",
-    "status": "FA",
+    "status": "WW",
     "rotowireId": 6634
   },
   "0622h": {
@@ -6710,7 +6719,7 @@
     "nbaTeam": "CLE",
     "position": "PG",
     "eligiblePos": "G",
-    "status": "WW",
+    "status": "T",
     "rotowireId": 6569
   },
   "0622c": {
@@ -6764,7 +6773,7 @@
     "nbaTeam": "MEM",
     "position": "PG",
     "eligiblePos": "G",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 6581
   },
   "0622d": {
@@ -6791,7 +6800,7 @@
     "nbaTeam": "BOS",
     "position": "PF",
     "eligiblePos": "C,F",
-    "status": "FA",
+    "status": "WW",
     "rotowireId": 6606
   },
   "02ym0": {
@@ -6818,7 +6827,7 @@
     "nbaTeam": "OKC",
     "position": "SG",
     "eligiblePos": "G",
-    "status": "FA",
+    "status": "WW",
     "rotowireId": 6633
   },
   "0621z": {
@@ -6881,7 +6890,7 @@
     "nbaTeam": "ORL",
     "position": "SF",
     "eligiblePos": "F",
-    "status": "FA",
+    "status": "WW",
     "rotowireId": 6577
   },
   "073rx": {
@@ -6899,7 +6908,7 @@
     "nbaTeam": "CHA",
     "position": "SG",
     "eligiblePos": "G,F",
-    "status": "WW",
+    "status": "T",
     "rotowireId": 6582
   },
   "0621u": {
@@ -6944,7 +6953,7 @@
     "nbaTeam": "OKC",
     "position": "PF",
     "eligiblePos": "C,F",
-    "status": "FA",
+    "status": "WW",
     "rotowireId": 5690
   },
   "05qt9": {
@@ -7007,7 +7016,7 @@
     "nbaTeam": "MIA",
     "position": "PF",
     "eligiblePos": "C,F",
-    "status": "FA",
+    "status": "WW",
     "rotowireId": 5640
   },
   "06233": {
@@ -7016,7 +7025,7 @@
     "nbaTeam": "BOS",
     "position": "SF",
     "eligiblePos": "F",
-    "status": "FA",
+    "status": "WW",
     "rotowireId": 5661
   },
   "06236": {
@@ -7157,7 +7166,7 @@
   "0621o": {
     "id": "0621o",
     "name": "Wesley, Blake",
-    "nbaTeam": "LAC",
+    "nbaTeam": "(N/A)",
     "position": "SG",
     "eligiblePos": "G",
     "status": "FA",
@@ -7376,7 +7385,7 @@
     "nbaTeam": "LAL",
     "position": "C",
     "eligiblePos": "C",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 3722
   },
   "06hi8": {
@@ -8375,7 +8384,7 @@
     "nbaTeam": "MIA",
     "position": "SG",
     "eligiblePos": "G",
-    "status": "FA",
+    "status": "WW",
     "rotowireId": 5352
   },
   "059y7": {
@@ -8735,7 +8744,7 @@
     "nbaTeam": "LAL",
     "position": "SG",
     "eligiblePos": "G",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 6714
   },
   "042nl": {
@@ -8762,7 +8771,7 @@
     "nbaTeam": "MIA",
     "position": "SF",
     "eligiblePos": "F",
-    "status": "FA",
+    "status": "WW",
     "rotowireId": 6067
   },
   "048zs": {
@@ -9266,7 +9275,7 @@
     "nbaTeam": "BOS",
     "position": "PF",
     "eligiblePos": "F",
-    "status": "FA",
+    "status": "WW",
     "rotowireId": 5942
   },
   "05uid": {
@@ -9320,7 +9329,7 @@
     "nbaTeam": "NO",
     "position": "SF",
     "eligiblePos": "G,F",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 5414
   },
   "05uj6": {
@@ -9419,7 +9428,7 @@
     "nbaTeam": "MEM",
     "position": "PF",
     "eligiblePos": "F",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 5930
   },
   "06cc6": {
@@ -9437,7 +9446,7 @@
     "nbaTeam": "PHO",
     "position": "C",
     "eligiblePos": "C",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 4546
   },
   "06cc7": {
@@ -9518,7 +9527,7 @@
     "nbaTeam": "HOU",
     "position": "C",
     "eligiblePos": "C",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 5940
   },
   "06ceg": {
@@ -9542,7 +9551,7 @@
   "031m9": {
     "id": "031m9",
     "name": "Plumlee, Mason",
-    "nbaTeam": "(N/A)",
+    "nbaTeam": "SAC",
     "position": "C",
     "eligiblePos": "C",
     "status": "FA",
@@ -9608,7 +9617,7 @@
     "nbaTeam": "PHO",
     "position": "PF",
     "eligiblePos": "C,F",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 5916
   },
   "06cdn": {
@@ -9698,7 +9707,7 @@
     "nbaTeam": "HOU",
     "position": "SF",
     "eligiblePos": "F",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 5978
   },
   "06kv0": {
@@ -9788,7 +9797,7 @@
     "nbaTeam": "GS",
     "position": "C",
     "eligiblePos": "C",
-    "status": "WW",
+    "status": "T",
     "rotowireId": 4833
   },
   "05ujs": {
@@ -9815,7 +9824,7 @@
     "nbaTeam": "BOS",
     "position": "C",
     "eligiblePos": "C",
-    "status": "FA",
+    "status": "WW",
     "rotowireId": 5423
   },
   "06ccz": {
@@ -10049,7 +10058,7 @@
     "nbaTeam": "(N/A)",
     "position": "SG",
     "eligiblePos": "G",
-    "status": "T",
+    "status": "FA",
     "rotowireId": 4773
   },
   "051pb": {
@@ -10130,7 +10139,7 @@
     "nbaTeam": "ORL",
     "position": "C",
     "eligiblePos": "C",
-    "status": "FA",
+    "status": "WW",
     "rotowireId": 4914
   },
   "073o8": {
@@ -10238,7 +10247,7 @@
     "nbaTeam": "NO",
     "position": "PF",
     "eligiblePos": "G,F",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 5358
   },
   "06668": {
@@ -10571,7 +10580,7 @@
     "nbaTeam": "CLE",
     "position": "PG",
     "eligiblePos": "G",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 6062
   },
   "06cp1": {
@@ -10598,7 +10607,7 @@
     "nbaTeam": "ORL",
     "position": "C",
     "eligiblePos": "C",
-    "status": "FA",
+    "status": "WW",
     "rotowireId": 5988
   },
   "051p9": {
@@ -10778,7 +10787,7 @@
     "nbaTeam": "CHA",
     "position": "PF",
     "eligiblePos": "F",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 4814
   },
   "04exa": {
@@ -10886,7 +10895,7 @@
     "nbaTeam": "MIA",
     "position": "SF",
     "eligiblePos": "F",
-    "status": "FA",
+    "status": "WW",
     "rotowireId": 5797
   },
   "0666f": {
@@ -11102,7 +11111,7 @@
     "nbaTeam": "PHO",
     "position": "PG",
     "eligiblePos": "G",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 5460
   },
   "051po": {
@@ -11210,7 +11219,7 @@
     "nbaTeam": "ORL",
     "position": "PG",
     "eligiblePos": "G",
-    "status": "FA",
+    "status": "WW",
     "rotowireId": 5764
   },
   "055sg": {
@@ -11264,7 +11273,7 @@
     "nbaTeam": "UTA",
     "position": "C",
     "eligiblePos": "C",
-    "status": "FA",
+    "status": "WW",
     "rotowireId": 4170
   },
   "04ewr": {
@@ -11399,7 +11408,7 @@
     "nbaTeam": "CHI",
     "position": "PF",
     "eligiblePos": "C,F",
-    "status": "FA",
+    "status": "WW",
     "rotowireId": 4162
   },
   "05wy5": {
@@ -11417,7 +11426,7 @@
     "nbaTeam": "ORL",
     "position": "PF",
     "eligiblePos": "F",
-    "status": "FA",
+    "status": "WW",
     "rotowireId": 4103
   },
   "04ewe": {
@@ -11435,7 +11444,7 @@
     "nbaTeam": "PHO",
     "position": "SG",
     "eligiblePos": "G",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 4123
   },
   "05wy4": {
@@ -11489,7 +11498,7 @@
     "nbaTeam": "CLE",
     "position": "C",
     "eligiblePos": "C",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 4155
   },
   "05wvx": {
@@ -11561,7 +11570,7 @@
     "nbaTeam": "LAL",
     "position": "F",
     "eligiblePos": "F",
-    "status": "WW",
+    "status": "FA",
     "rotowireId": 6646
   },
   "05wvu": {
@@ -11579,7 +11588,7 @@
     "nbaTeam": "ORL",
     "position": "SF",
     "eligiblePos": "G,F",
-    "status": "FA",
+    "status": "WW",
     "rotowireId": 5796
   }
 }

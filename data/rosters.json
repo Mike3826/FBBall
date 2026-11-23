@@ -1,5 +1,5 @@
 {
-  "period": 4,
+  "period": 6,
   "rosters": {
     "htjic831mtswkpax": {
       "teamName": "Team Şengün and Friends",
@@ -46,7 +46,7 @@
         },
         {
           "id": "076sy",
-          "position": "F",
+          "position": "C",
           "status": "ACTIVE"
         },
         {
@@ -60,12 +60,12 @@
           "status": "ACTIVE"
         },
         {
-          "id": "0622i",
-          "position": "F",
+          "id": "051pi",
+          "position": "C",
           "status": "ACTIVE"
         },
         {
-          "id": "051pi",
+          "id": "06v5q",
           "position": "C",
           "status": "ACTIVE"
         },
@@ -81,12 +81,12 @@
         },
         {
           "id": "05uie",
-          "position": "C",
+          "position": "F",
           "status": "ACTIVE"
         },
         {
           "id": "051oj",
-          "position": "F",
+          "position": "G",
           "status": "ACTIVE"
         },
         {
@@ -121,7 +121,7 @@
         },
         {
           "id": "05uiz",
-          "position": "G",
+          "position": "F",
           "status": "ACTIVE"
         },
         {
@@ -326,7 +326,7 @@
       "rosterItems": [
         {
           "id": "03nwm",
-          "position": "G",
+          "position": "F",
           "status": "ACTIVE"
         },
         {
@@ -391,7 +391,7 @@
         },
         {
           "id": "02ym0",
-          "position": "F",
+          "position": "G",
           "status": "ACTIVE"
         },
         {
@@ -600,17 +600,17 @@
           "status": "ACTIVE"
         },
         {
+          "id": "05ujr",
+          "position": "C",
+          "status": "ACTIVE"
+        },
+        {
           "id": "051op",
           "position": "F",
           "status": "ACTIVE"
         },
         {
           "id": "051p0",
-          "position": "G",
-          "status": "ACTIVE"
-        },
-        {
-          "id": "051pa",
           "position": "G",
           "status": "ACTIVE"
         },
@@ -646,7 +646,7 @@
       "rosterItems": [
         {
           "id": "06mlq",
-          "position": "G",
+          "position": "F",
           "status": "ACTIVE"
         },
         {
@@ -681,7 +681,7 @@
         },
         {
           "id": "04ewu",
-          "position": "G",
+          "position": "F",
           "status": "ACTIVE"
         },
         {
@@ -711,12 +711,12 @@
         },
         {
           "id": "05qtj",
-          "position": "G",
+          "position": "F",
           "status": "ACTIVE"
         },
         {
           "id": "05qty",
-          "position": "F",
+          "position": "C",
           "status": "ACTIVE"
         },
         {
@@ -761,7 +761,7 @@
         },
         {
           "id": "001aw",
-          "position": "G",
+          "position": "F",
           "status": "ACTIVE"
         },
         {
@@ -822,11 +822,6 @@
         {
           "id": "05uic",
           "position": "G",
-          "status": "ACTIVE"
-        },
-        {
-          "id": "06v5e",
-          "position": "C",
           "status": "ACTIVE"
         },
         {
@@ -958,12 +953,22 @@
           "id": "05qt0",
           "position": "F",
           "status": "ACTIVE"
+        },
+        {
+          "id": "06v7z",
+          "position": "G",
+          "status": "ACTIVE"
         }
       ]
     },
     "exf8aagxmtswkpax": {
       "teamName": "Masai & Bobby",
       "rosterItems": [
+        {
+          "id": "06v8f",
+          "position": "G",
+          "status": "ACTIVE"
+        },
         {
           "id": "04848",
           "position": "G",
@@ -1027,11 +1032,6 @@
         {
           "id": "05uj3",
           "position": "C",
-          "status": "ACTIVE"
-        },
-        {
-          "id": "06v5o",
-          "position": "F",
           "status": "ACTIVE"
         },
         {

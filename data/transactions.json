@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-11-10T05:49:44.773Z",
+  "fetchedAt": "2026-11-23T16:00:03.064Z",
   "leagueId": "r7yj6bpwmtswkp9p",
   "seasons": [
     "2026-27",
@@ -9,6 +9,182 @@
     "2022-23"
   ],
   "transactions": [
+    {
+      "id": "2026-27:xsmgc6qumwpt477v",
+      "date": "2026-11-21T02:46:00.000Z",
+      "dateText": "Fri Nov 20, 2026, 9:46PM",
+      "week": 6,
+      "type": "MULTI",
+      "teams": [
+        "k2ki420pmtswkpax"
+      ],
+      "moves": [
+        {
+          "teamId": "k2ki420pmtswkpax",
+          "teamName": "Tony and the Gabagools",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "FA",
+          "actionLabel": "Claim",
+          "playerId": "05ujr",
+          "playerName": "Charles Bassey",
+          "nbaTeam": "GS",
+          "pos": "C",
+          "bid": null,
+          "note": null,
+          "executed": true
+        },
+        {
+          "teamId": "k2ki420pmtswkpax",
+          "teamName": "Tony and the Gabagools",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "DROP",
+          "actionLabel": "Drop",
+          "playerId": "051pa",
+          "playerName": "Kevin Porter",
+          "nbaTeam": "(N/A)",
+          "pos": "G",
+          "bid": null,
+          "note": null,
+          "executed": true
+        }
+      ],
+      "season": "2026-27",
+      "leagueId": "r7yj6bpwmtswkp9p"
+    },
+    {
+      "id": "2026-27:ik7is0almwlweiwf",
+      "date": "2026-11-18T09:07:00.000Z",
+      "dateText": "Wed Nov 18, 2026, 4:07AM",
+      "week": 6,
+      "type": "MULTI",
+      "teams": [
+        "exf8aagxmtswkpax"
+      ],
+      "moves": [
+        {
+          "teamId": "exf8aagxmtswkpax",
+          "teamName": "Masai & Bobby",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "FA",
+          "actionLabel": "Claim",
+          "playerId": "06v8f",
+          "playerName": "Tyrese Proctor",
+          "nbaTeam": "CLE",
+          "pos": "G",
+          "bid": null,
+          "note": null,
+          "executed": true
+        },
+        {
+          "teamId": "exf8aagxmtswkpax",
+          "teamName": "Masai & Bobby",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "DROP",
+          "actionLabel": "Drop",
+          "playerId": "06v5o",
+          "playerName": "Liam McNeeley",
+          "nbaTeam": "CHA",
+          "pos": "F",
+          "bid": null,
+          "note": null,
+          "executed": true
+        }
+      ],
+      "season": "2026-27",
+      "leagueId": "r7yj6bpwmtswkp9p"
+    },
+    {
+      "id": "2026-27:mofo1stamwipk8vm",
+      "date": "2026-11-16T03:32:00.000Z",
+      "dateText": "Sun Nov 15, 2026, 10:32PM",
+      "week": 5,
+      "type": "MULTI",
+      "teams": [
+        "htjic831mtswkpax"
+      ],
+      "moves": [
+        {
+          "teamId": "htjic831mtswkpax",
+          "teamName": "Team Şengün and Friends",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "FA",
+          "actionLabel": "Claim",
+          "playerId": "06v5q",
+          "playerName": "Danny Wolf",
+          "nbaTeam": "BKN",
+          "pos": "F,C",
+          "bid": null,
+          "note": null,
+          "executed": true
+        },
+        {
+          "teamId": "htjic831mtswkpax",
+          "teamName": "Team Şengün and Friends",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "DROP",
+          "actionLabel": "Drop",
+          "playerId": "0622i",
+          "playerName": "Gui Santos",
+          "nbaTeam": "GS",
+          "pos": "F",
+          "bid": null,
+          "note": null,
+          "executed": true
+        }
+      ],
+      "season": "2026-27",
+      "leagueId": "r7yj6bpwmtswkp9p"
+    },
+    {
+      "id": "2026-27:p72f593wmweyzo8o",
+      "date": "2026-11-14T01:55:00.000Z",
+      "dateText": "Fri Nov 13, 2026, 8:55PM",
+      "week": 5,
+      "type": "MULTI",
+      "teams": [
+        "sj9cohbumtswkpax"
+      ],
+      "moves": [
+        {
+          "teamId": "sj9cohbumtswkpax",
+          "teamName": "LENGTH > GIRTH",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "WW",
+          "actionLabel": "Claim",
+          "playerId": "06v7z",
+          "playerName": "Sion James",
+          "nbaTeam": "CHA",
+          "pos": "G,F",
+          "bid": "10.00",
+          "note": null,
+          "executed": true
+        },
+        {
+          "teamId": "sj9cohbumtswkpax",
+          "teamName": "LENGTH > GIRTH",
+          "fromTeamId": null,
+          "fromTeamName": null,
+          "action": "DROP",
+          "actionLabel": "Drop",
+          "playerId": "06v5e",
+          "playerName": "Yang Hansen",
+          "nbaTeam": "POR",
+          "pos": "C",
+          "bid": null,
+          "note": null,
+          "executed": true
+        }
+      ],
+      "season": "2026-27",
+      "leagueId": "r7yj6bpwmtswkp9p"
+    },
     {
       "id": "2026-27:4v8jadlomw3uyxui",
       "date": "2026-11-06T00:25:00.000Z",
@@ -456,7 +632,7 @@
           "playerId": "07ag3",
           "playerName": "Graham Ike",
           "nbaTeam": "GS",
-          "pos": "F",
+          "pos": "F,C",
           "bid": null,
           "note": null,
           "executed": true
@@ -940,7 +1116,7 @@
           "playerId": "07ag3",
           "playerName": "Graham Ike",
           "nbaTeam": "GS",
-          "pos": "F",
+          "pos": "F,C",
           "bid": "2.00",
           "note": null,
           "executed": true
@@ -2659,7 +2835,7 @@
           "playerId": "076sy",
           "playerName": "Morez Johnson",
           "nbaTeam": "DAL",
-          "pos": "F",
+          "pos": "F,C",
           "bid": null,
           "note": null,
           "executed": true
